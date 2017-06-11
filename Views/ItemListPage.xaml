@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage x:Class="SampleApplication.Views.ItemListPage"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:core="clr-namespace:Core;assembly=XForms.Shared"
+             xmlns:local="clr-namespace:SampleApplication">
+  <ContentPage.ToolbarItems>
+    <ToolbarItem Command="{Binding CreateSampleItemNavigationCommand}"
+                 Order="Primary"
+                 Priority="0">
+      <ToolbarItem.Icon>
+        <OnPlatform x:TypeArguments="FileImageSource"
+                    Android="ic_insert_dark.png"
+                    WinPhone="Images/ic_insert_dark.png"
+                    iOS="ic_insert.png" />
+      </ToolbarItem.Icon>
+    </ToolbarItem>
+  </ContentPage.ToolbarItems>
+
+  <ContentPage.Content>
+    <Grid>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="*" />
+      </Grid.RowDefinitions>
+      <StackLayout>
+        <Label HorizontalOptions="CenterAndExpand" Text="{Binding Title}" />
+      </StackLayout>
+      <core:ListView x:Name="_listView"
+                     Grid.Row="1"
+                     IsPullToRefreshEnabled="True"
+                     IsRefreshing="{Binding ListRefreshing}"
+                     ItemTapCommand="{Binding OpenSelectedSampleItemCommand}"
+                     ItemsSource="{Binding SampleItems}"
+                     RefreshCommand="{Binding FetchSampleItemsCommand}"
+                     SelectedItem="{Binding SelectedSampleItem,
+                                                  Mode=TwoWay}">
+        <core:ListView.ItemTemplate>
+          <DataTemplate>
+            <TextCell Detail="{Binding Description}" Text="{Binding Name}" />
+          </DataTemplate>
+        </core:ListView.ItemTemplate>
+      </core:ListView>
+    </Grid>
+  </ContentPage.Content>
+</ContentPage>

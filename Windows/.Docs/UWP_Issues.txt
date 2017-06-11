@@ -1,0 +1,4 @@
+﻿ - ToolbarItem:	
+	- Cannot determine default location for images. OnPlatform doesn't appear to have a UWP/Windows enumeration
+ - ListView:
+	- CacheStrategy property throws exception

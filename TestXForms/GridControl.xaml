@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="TestXForms.GridControl">
+	<ContentView.Content>
+		<Grid BackgroundColor="Black" Opacity="0.5" x:Name="_grdGrid">
+			<ActivityIndicator IsRunning="true" 
+							   IsVisible="true" 
+							   Color="Red"
+							   VerticalOptions="CenterAndExpand" 
+							   HorizontalOptions="CenterAndExpand"/>
+		</Grid>
+	</ContentView.Content>
+</ContentView>
