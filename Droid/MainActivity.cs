@@ -7,10 +7,7 @@ using Xamarin.Forms.Platform.Android;
 
 namespace SampleApplication
 {
-    [Activity(Label = "Cliniko Care",
-              Icon = "@drawable/icon",
-              MainLauncher = true,
-              ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    [Activity(Icon = "@drawable/icon", ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         //TODO: replace with Forms.Context

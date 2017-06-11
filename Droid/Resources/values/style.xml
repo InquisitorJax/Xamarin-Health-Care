@@ -8,4 +8,10 @@
     <item name="android:windowBackground">@color/window_background</item>
     <item name="windowActionModeOverlay">true</item>
   </style>
+
+  <style name="MyTheme.Splash" parent ="Theme.AppCompat.Light.NoActionBar">
+    <item name="android:windowBackground">@drawable/splash_screen</item>
+    <item name="android:windowNoTitle">true</item>
+    <item name="android:windowFullscreen">true</item>
+  </style>
 </resources>
