@@ -2,6 +2,7 @@
 using Moq;
 using NUnit.Framework;
 using SampleApplication;
+using SampleApplication.ViewModels;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 

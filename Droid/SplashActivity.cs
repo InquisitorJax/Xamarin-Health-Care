@@ -3,6 +3,8 @@ using Android.Content;
 using Android.OS;
 using Android.Support.V7.App;
 using Android.Util;
+using SampleApplication.AppServices;
+using SampleApplication.Droid;
 using System.Threading.Tasks;
 
 namespace SampleApplication
@@ -33,7 +35,9 @@ namespace SampleApplication
         private async void SimulateStartup()
         {
             Log.Debug(TAG, "Performing some startup work that takes a bit of time.");
-            await Task.Delay(1500); // Simulate a bit of startup work.
+            await BootstrapperService.Initialize(new IocAndroidModule());
+            await Task.Delay(500); // Simulate a bit of startup work.
+
             Log.Debug(TAG, "Startup work is finished - starting MainActivity.");
             StartActivity(new Intent(Application.Context, typeof(MainActivity)));
         }

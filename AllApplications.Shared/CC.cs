@@ -1,6 +1,6 @@
 ﻿using Autofac;
+using Core.AppServices;
 using Prism.Events;
-using System;
 
 namespace Core
 {
@@ -13,6 +13,11 @@ namespace Core
 
         static CC()
         {
+        }
+
+        public static IDevice Device
+        {
+            get { return _container.Resolve<IDevice>(); }
         }
 
         public static IEventAggregator EventMessenger

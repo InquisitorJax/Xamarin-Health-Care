@@ -2,7 +2,6 @@
 using Android.Content;
 using Android.Content.PM;
 using Android.OS;
-using SampleApplication.Droid;
 using Xamarin.Forms.Platform.Android;
 
 namespace SampleApplication
@@ -29,7 +28,7 @@ namespace SampleApplication
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
 
-            LoadApplication(new App(new IocAndroidModule()));
+            LoadApplication(new App());
         }
     }
 }

@@ -2,26 +2,32 @@
 <ContentPage x:Class="SampleApplication.Views.MainMenuPage"
              xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:Core.Controls;assembly=XForms.Shared"
              Title="Menu"
              Padding="0,40,0,0">
-  <ContentPage.Icon>
-    <OnPlatform x:TypeArguments="FileImageSource"
-                Android="ic_hamburger_dark.png"
-                WinPhone="Images/ic_hamburger_dark.png"
-                iOS="ic_hamburger.png" />
-  </ContentPage.Icon>
-  <ContentPage.Content>
-    <StackLayout VerticalOptions="FillAndExpand">
-      <ListView x:Name="listView"
-                ItemsSource="{Binding MainMenuItems}"
-                SeparatorVisibility="None"
-                VerticalOptions="FillAndExpand">
-        <ListView.ItemTemplate>
-          <DataTemplate>
-            <ImageCell ImageSource="{Binding IconSource}" Text="{Binding Title}" />
-          </DataTemplate>
-        </ListView.ItemTemplate>
-      </ListView>
-    </StackLayout>
-  </ContentPage.Content>
+    <ContentPage.Icon>
+        <OnPlatform x:TypeArguments="FileImageSource"
+                    Android="ic_hamburger_dark.png"
+                    WinPhone="Images/ic_hamburger_dark.png"
+                    iOS="ic_hamburger.png" />
+    </ContentPage.Icon>
+    <ContentPage.Content>
+        <controls:GradientView EndColor="White" StartColor="Blue">
+            <StackLayout VerticalOptions="FillAndExpand">
+                <controls:ListView x:Name="listView"
+                                   ItemsSource="{Binding MainMenuItems}"
+                                   SeparatorVisibility="None"
+                                   VerticalOptions="FillAndExpand">
+                    <controls:ListView.Header>
+                        <Image HeightRequest="100" Source="cliniko_logo" />
+                    </controls:ListView.Header>
+                    <controls:ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ImageCell ImageSource="{Binding IconSource}" Text="{Binding Title}" />
+                        </DataTemplate>
+                    </controls:ListView.ItemTemplate>
+                </controls:ListView>
+            </StackLayout>
+        </controls:GradientView>
+    </ContentPage.Content>
 </ContentPage>

@@ -37,7 +37,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="AppServices\Device.cs" />
     <Compile Include="CC.cs" />
+    <Compile Include="Controls\GradientView.cs" />
     <Compile Include="Controls\ListView.cs" />
     <Compile Include="Converters\ByteArrayToImageSourceConverter.cs" />
     <Compile Include="INavigationService.cs" />

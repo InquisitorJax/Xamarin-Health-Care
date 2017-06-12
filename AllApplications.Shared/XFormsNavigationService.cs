@@ -191,14 +191,14 @@ namespace Core
 
         private IView ResolveView(string destination)
         {
-            IView view = CC.IoC.ResolveKeyed<IView>(destination);
+            IView view = CC.IoC.ResolveNamed<IView>(destination);
 
             return view;
         }
 
         private Task<IViewModel> ResolveViewModelAsync(string destination, Dictionary<string, string> args = null)
         {
-            IViewModel viewModel = CC.IoC.ResolveKeyed<IViewModel>(destination);
+            IViewModel viewModel = CC.IoC.ResolveNamed<IViewModel>(destination);
             viewModel.InitializeAsync(args); //don't await initialization - run purposefully async
             return Task.FromResult(viewModel);
         }

@@ -1,6 +1,8 @@
 ﻿using Autofac;
 using Core;
+using SampleApplication.Models;
 using SQLite;
+using System;
 using System.Threading.Tasks;
 
 namespace SampleApplication
@@ -11,7 +13,11 @@ namespace SampleApplication
 
         Task<FetchModelCollectionResult<SampleItem>> FetchSampleItemsAsync();
 
-        Task Initialize();
+        Task<FetchModelResult<HealthCareUser>> GetCurrentUserAsync();
+
+        Task InitializeAsync();
+
+        Task<Notification> SaveCurrentUserAsync(HealthCareUser user);
 
         Task<Notification> SaveSampleItemAsync(SampleItem item, ModelUpdateEvent updateEvent);
     }
@@ -20,6 +26,7 @@ namespace SampleApplication
     {
         #region IRepository implementation
 
+        private readonly string _currentUserId = Guid.NewGuid().ToString();
         private SQLiteAsyncConnection _database;
 
         private bool _isInitialized = false;
@@ -42,7 +49,17 @@ namespace SampleApplication
             return retResult;
         }
 
-        public async Task Initialize()
+        public async Task<FetchModelResult<HealthCareUser>> GetCurrentUserAsync()
+        {
+            var retResult = new FetchModelResult<HealthCareUser>();
+
+            var item = await _database.FindAsync<HealthCareUser>(_currentUserId);
+            retResult.Model = item;
+
+            return retResult;
+        }
+
+        public async Task InitializeAsync()
         {
             if (_isInitialized)
                 return;
@@ -54,7 +71,25 @@ namespace SampleApplication
             {
                 _database = connectionResult.Connection;
                 await _database.CreateTableAsync<SampleItem>();
+                await _database.CreateTableAsync<HealthCareUser>();
+
+                await CheckCurrentUser();
             }
+        }
+
+        public async Task<Notification> SaveCurrentUserAsync(HealthCareUser item)
+        {
+            Notification retNotification = Notification.Success();
+            try
+            {
+                await _database.UpdateAsync(item);
+            }
+            catch (SQLiteException)
+            {
+                retNotification.Add(new NotificationItem("Save Failed"));
+            }
+
+            return retNotification;
         }
 
         public async Task<Notification> SaveSampleItemAsync(SampleItem item, ModelUpdateEvent updateEvent)
@@ -78,6 +113,16 @@ namespace SampleApplication
             }
 
             return retNotification;
+        }
+
+        private async Task CheckCurrentUser()
+        {
+            var result = await GetCurrentUserAsync();
+            if (result.Model == null)
+            {
+                var currentUser = new HealthCareUser { Id = _currentUserId };
+                await _database.InsertAsync(currentUser);
+            }
         }
 
         #endregion IRepository implementation

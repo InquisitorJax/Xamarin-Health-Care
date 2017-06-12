@@ -7,7 +7,7 @@ using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace SampleApplication
+namespace SampleApplication.ViewModels
 {
     public class MainViewModel : ViewModelBase
     {
@@ -27,21 +27,28 @@ namespace SampleApplication
             FetchSampleItemsCommand = new DelegateCommand(FetchSampleItems);
             OpenSelectedSampleItemCommand = new DelegateCommand(OpenSelectedSampleItem);
             CreateSampleItemNavigationCommand = new DelegateCommand(CreateSampleItemNavigate);
-            Title = "Sample Application For Xamarin Forms";
+            Title = "Cliniko Care";
 
             MainMenuItems = new List<MainMenuItem>();
             MainMenuItems.Add(new MainMenuItem
             {
-                Title = "The Flash",
+                Title = "Appointments",
                 IconSource = "flash.png",
-                ActionId = Constants.Navigation.TheFlashPage
+                ActionId = Constants.Navigation.AppointmentPage
             });
             MainMenuItems.Add(new MainMenuItem
             {
-                Title = "Green Lantern",
-                IconSource = "greenlantern.png",
-                ActionId = Constants.Navigation.GreenLanternPage
+                Title = "Log out",
+                IconSource = "logout_dark.png",
+                ActionId = Constants.Navigation.Logout
             });
+
+            //MainMenuItems.Add(new MainMenuItem
+            //{
+            //    Title = "About",
+            //    IconSource = "greenlantern.png",
+            //    ActionId = Constants.Navigation.AboutPage;
+            //});
         }
 
         public ICommand CreateSampleItemNavigationCommand { get; private set; }
@@ -83,7 +90,7 @@ namespace SampleApplication
 
         private async void CreateSampleItemNavigate()
         {
-            await Navigation.NavigateAsync(Constants.Navigation.ItemPage);
+            await Navigation.NavigateAsync(Constants.Navigation.HealthCareProviderPage);
         }
 
         private async void FetchSampleItems()
@@ -136,7 +143,7 @@ namespace SampleApplication
                     {Constants.Parameters.Id, SelectedSampleItem.Id}
                 };
 
-                await Navigation.NavigateAsync(Constants.Navigation.ItemPage, args);
+                await Navigation.NavigateAsync(Constants.Navigation.HealthCareProviderPage, args);
             }
         }
     }

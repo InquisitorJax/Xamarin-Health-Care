@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application x:Class="SampleApplication.App"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <Application.Resources>
+        <ResourceDictionary>
+            <!--  TODO: Share this resource dictionary between apps  -->
+            <OnPlatform x:Key="ButtonFont"
+                        x:TypeArguments="Font"
+                        Android="Medium"
+                        iOS="Small" />
+            <OnPlatform x:Key="HeaderFont"
+                        x:TypeArguments="Font"
+                        Android="Large"
+                        WinPhone="Large"
+                        iOS="Large" />
+            <OnPlatform x:Key="PrimaryTextColor"
+                        x:TypeArguments="Color"
+                        Android="White"
+                        WinPhone="White"
+                        iOS="White" />
+            <OnPlatform x:Key="SmallFontSize"
+                        x:TypeArguments="x:Double"
+                        Android="10"
+                        WinPhone="12"
+                        iOS="10" />
+            <OnPlatform x:Key="RegularFontSize"
+                        x:TypeArguments="x:Double"
+                        Android="15"
+                        WinPhone="20"
+                        iOS="15" />
+            <OnPlatform x:Key="LargeFontSize"
+                        x:TypeArguments="x:Double"
+                        Android="30"
+                        WinPhone="40"
+                        iOS="30" />
+            <OnPlatform x:Key="MediumFontSize"
+                        x:TypeArguments="x:Double"
+                        Android="20"
+                        WinPhone="30"
+                        iOS="20" />
+
+            <OnPlatform x:Key="CardHeight"
+                        x:TypeArguments="x:Double"
+                        Android="100"
+                        WinPhone="100"
+                        iOS="100" />
+
+            <OnPlatform x:Key="CardImageHeight"
+                        x:TypeArguments="x:Double"
+                        Android="90"
+                        WinPhone="90"
+                        iOS="90" />
+
+            <!--  Same colors that are in the android color resource and static class ColorResources  -->
+            <Color x:Key="PrimaryDark">#2286C4</Color>
+            <Color x:Key="Primary">#2C92D1</Color>
+            <Color x:Key="PrimaryLight">#2C92D1</Color>
+            <Color x:Key="Text">#FFFFFF</Color>
+            <Color x:Key="Icons">#FFFFFF</Color>
+            <Color x:Key="WindowBackground">#F5F5F5</Color>
+            <Color x:Key="Accent">#EE2B89</Color>
+            <Color x:Key="PrimaryText">#212121</Color>
+            <Color x:Key="SecondaryText">#727272</Color>
+            <Color x:Key="Divider">#B6B6B6</Color>
+
+            <Thickness x:Key="FormPadding">12,5,12,0</Thickness>
+
+            <Style x:Key="MyButtonStyle" TargetType="Button">
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="BackgroundColor" Value="Pink" />
+                <Setter Property="BorderWidth" Value="1" />
+                <Setter Property="BorderRadius" Value="3" />
+                <Setter Property="BorderColor" Value="#ADADAD" />
+                <Setter Property="Font" Value="{StaticResource ButtonFont}" />
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

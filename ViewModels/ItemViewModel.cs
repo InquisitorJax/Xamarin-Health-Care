@@ -6,7 +6,7 @@ using System;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace SampleApplication
+namespace SampleApplication.ViewModels
 {
     public class ItemViewModel : ViewModelBase
     {

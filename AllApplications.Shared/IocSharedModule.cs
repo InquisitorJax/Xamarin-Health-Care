@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using Core.AppServices;
 using Prism.Events;
 
 namespace Core
@@ -14,6 +15,7 @@ namespace Core
             builder.RegisterType(typeof(XFormsNavigationService)).As(typeof(INavigationService)).AsSelf().SingleInstance();
 
             builder.RegisterType(typeof(XFormsUserNotifier)).As(typeof(IUserNotifier)).AsSelf();
+            builder.RegisterType(typeof(Device)).As(typeof(IDevice)).AsSelf();
         }
     }
 }

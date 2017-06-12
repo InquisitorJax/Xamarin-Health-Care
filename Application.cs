@@ -1,17 +1,17 @@
 ﻿using Autofac;
 using Core;
-using System.Collections.Generic;
+using SampleApplication.AppServices;
 
 namespace SampleApplication
 {
-    public class App : Xamarin.Forms.Application
+    public partial class App : Xamarin.Forms.Application
     {
-        public App(Module platformModule)
+        public App()
         {
-            //TODO: Incorporate Splash screen to await initialization, and then navigation to main page
-            Initialize(platformModule);
-            // The root page of your application
-            Navigation.NavigateAsync(Constants.Navigation.MainPage);
+            var landingPageNavigationService = CC.IoC.Resolve<ILandingPageNavigationService>();
+            landingPageNavigationService.NavigateAsync().ConfigureAwait(true);
+
+            InitializeComponent();
         }
 
         private INavigationService Navigation
@@ -34,27 +34,6 @@ namespace SampleApplication
         protected override void OnStart()
         {
             // Handle when your app starts
-        }
-
-        private void Initialize(Module platformModule)
-        {
-            //IOC
-            List<Module> modules = new List<Module>
-            {
-                new IocSharedModule(),
-                new IocApplicationModule(),
-                platformModule
-            };
-
-            CC.InitializeIoc(modules.ToArray());
-
-            //REPO
-            var repository = CC.IoC.Resolve<IRepository>();
-            repository.Initialize();
-
-            //Exception Manager
-            var exceptionManager = CC.IoC.Resolve<IPlatformExceptionManager>();
-            exceptionManager.ReportApplicationCrash();
         }
     }
 }
