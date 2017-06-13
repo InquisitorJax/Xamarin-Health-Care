@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<controls:CommandView x:Class="SampleApplication.Views.HealthProviderCard"
+                      xmlns="http://xamarin.com/schemas/2014/forms"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                      xmlns:controls="clr-namespace:Core.Controls;assembly=XForms.Shared">
+    <ContentView.Content>
+        <Frame HasShadow="True">
+            <Label Text="Hello Xamarin.Forms!" />
+        </Frame>
+    </ContentView.Content>
+</controls:CommandView>

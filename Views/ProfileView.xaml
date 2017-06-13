@@ -1,11 +1,12 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
-<ContentView x:Class="SampleApplication.Views.ProfileView"
-             xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:ic="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
-             x:Name="profileCard"
-             BackgroundColor="White"
-             HeightRequest="120">
+<controls:CommandView x:Class="SampleApplication.Views.ProfileView"
+                      xmlns="http://xamarin.com/schemas/2014/forms"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                      xmlns:controls="clr-namespace:Core.Controls;assembly=XForms.Shared"
+                      xmlns:ic="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
+                      x:Name="profileCard"
+                      BackgroundColor="White"
+                      HeightRequest="120">
     <ContentView.Content>
         <Grid Padding="0,7,0,7">
             <Grid.GestureRecognizers>
@@ -44,4 +45,4 @@
             </AbsoluteLayout>
         </Grid>
     </ContentView.Content>
-</ContentView>
+</controls:CommandView>

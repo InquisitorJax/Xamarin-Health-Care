@@ -11,7 +11,7 @@
     <MasterDetailPage.Detail>
         <NavigationPage>
             <x:Arguments>
-                <local:ItemListPage />
+                <local:AppointmentListPage />
             </x:Arguments>
         </NavigationPage>
     </MasterDetailPage.Detail>

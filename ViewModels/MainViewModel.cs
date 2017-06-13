@@ -13,22 +13,20 @@ namespace SampleApplication.ViewModels
     {
         private readonly IRepository _repository;
 
+        private ObservableCollection<Appointment> _appointments;
         private HealthCareUser _currentUser;
         private bool _listRefreshing;
 
         private bool _mainMenuOpen;
         private SubscriptionToken _modelUpdatedEventToken;
-
-        private ObservableCollection<SampleItem> _sampleItems;
-
-        private SampleItem _selectedSampleItem;
+        private Appointment _selectedAppointment;
 
         public MainViewModel(IRepository repository)
         {
             _repository = repository;
-            FetchSampleItemsCommand = new DelegateCommand(FetchSampleItems);
-            OpenSelectedSampleItemCommand = new DelegateCommand(OpenSelectedSampleItem);
-            CreateSampleItemNavigationCommand = new DelegateCommand(CreateSampleItemNavigate);
+            FetchAppointmentsCommand = new DelegateCommand(FetchAppointments);
+            OpenSelectedAppointmentCommand = new DelegateCommand(OpenSelectedAppointment);
+            CreateAppointmentNavigationCommand = new DelegateCommand(CreateAppointmentNavigate);
             MainMenuItemClickCommand = new DelegateCommand<MainMenuItem>(MainMenuItemClick);
             Title = "Cliniko Care";
 
@@ -54,7 +52,13 @@ namespace SampleApplication.ViewModels
             //});
         }
 
-        public ICommand CreateSampleItemNavigationCommand { get; private set; }
+        public ObservableCollection<Appointment> Appointments
+        {
+            get { return _appointments; }
+            set { SetProperty(ref _appointments, value); }
+        }
+
+        public ICommand CreateAppointmentNavigationCommand { get; private set; }
 
         public HealthCareUser CurrentUser
         {
@@ -62,7 +66,7 @@ namespace SampleApplication.ViewModels
             set { SetProperty(ref _currentUser, value); }
         }
 
-        public ICommand FetchSampleItemsCommand { get; private set; }
+        public ICommand FetchAppointmentsCommand { get; private set; }
 
         public bool ListRefreshing
         {
@@ -80,37 +84,62 @@ namespace SampleApplication.ViewModels
             set { SetProperty(ref _mainMenuOpen, value); }
         }
 
-        public ICommand OpenSelectedSampleItemCommand { get; private set; }
+        public ICommand OpenSelectedAppointmentCommand { get; private set; }
 
-        public ObservableCollection<SampleItem> SampleItems
+        public Appointment SelectedAppointment
         {
-            get { return _sampleItems; }
-            set { SetProperty(ref _sampleItems, value); }
-        }
-
-        public SampleItem SelectedSampleItem
-        {
-            get { return _selectedSampleItem; }
-            set { SetProperty(ref _selectedSampleItem, value); }
+            get { return _selectedAppointment; }
+            set { SetProperty(ref _selectedAppointment, value); }
         }
 
         public string Title { get; set; }
 
         public override void Closing()
         {
-            CC.EventMessenger.GetEvent<ModelUpdatedMessageEvent<SampleItem>>().Unsubscribe(_modelUpdatedEventToken);
+            CC.EventMessenger.GetEvent<ModelUpdatedMessageEvent<Appointment>>().Unsubscribe(_modelUpdatedEventToken);
         }
 
         public override async Task InitializeAsync(System.Collections.Generic.Dictionary<string, string> args)
         {
-            _modelUpdatedEventToken = CC.EventMessenger.GetEvent<ModelUpdatedMessageEvent<SampleItem>>().Subscribe(OnSampleItemUpdated);
+            _modelUpdatedEventToken = CC.EventMessenger.GetEvent<ModelUpdatedMessageEvent<Appointment>>().Subscribe(OnAppointmentUpdated);
             await FetchCurrentUserAsync();
-            await FetchSampleItemsAsync();
+            await FetchAppointmentsAsync();
         }
 
-        private async void CreateSampleItemNavigate()
+        private async void CreateAppointmentNavigate()
         {
             await Navigation.NavigateAsync(Constants.Navigation.HealthCareProviderPage);
+        }
+
+        private async void FetchAppointments()
+        {
+            await FetchAppointmentsAsync();
+        }
+
+        private async Task FetchAppointmentsAsync()
+        {
+            ListRefreshing = true;
+
+            try
+            {
+                FetchModelCollectionResult<Appointment> fetchResult = await _repository.FetchAppointmentsAsync(CurrentUser.Id, null);
+
+                if (fetchResult.IsValid())
+                {
+                    Appointments = fetchResult.ModelCollection.AsObservableCollection();
+
+                    ListRefreshing = false;
+                }
+                else
+                {
+                    ListRefreshing = false;
+                    await CC.UserNotifier.ShowMessageAsync(fetchResult.Notification.ToString(), "Fetch Appointments Failed :(");
+                }
+            }
+            finally
+            {
+                ListRefreshing = false;
+            }
         }
 
         private async Task FetchCurrentUserAsync()
@@ -118,37 +147,6 @@ namespace SampleApplication.ViewModels
             var fetchResult = await _repository.GetCurrentUserAsync();
 
             CurrentUser = fetchResult.Model;
-        }
-
-        private async void FetchSampleItems()
-        {
-            await FetchSampleItemsAsync();
-        }
-
-        private async Task FetchSampleItemsAsync()
-        {
-            ListRefreshing = true;
-
-            try
-            {
-                FetchModelCollectionResult<SampleItem> fetchResult = await _repository.FetchSampleItemsAsync();
-
-                if (fetchResult.IsValid())
-                {
-                    SampleItems = fetchResult.ModelCollection.AsObservableCollection();
-
-                    ListRefreshing = false;
-                }
-                else
-                {
-                    ListRefreshing = false;
-                    await CC.UserNotifier.ShowMessageAsync(fetchResult.Notification.ToString(), "Fetch Sample Items Failed");
-                }
-            }
-            finally
-            {
-                ListRefreshing = false;
-            }
         }
 
         private async Task LogoutAsync()
@@ -176,23 +174,23 @@ namespace SampleApplication.ViewModels
             }
         }
 
-        private void OnSampleItemUpdated(ModelUpdatedMessageResult<SampleItem> updateResult)
+        private void OnAppointmentUpdated(ModelUpdatedMessageResult<Appointment> updateResult)
         {
-            SampleItems.UpdateCollection(updateResult.UpdatedModel, updateResult.UpdateEvent);
+            Appointments.UpdateCollection(updateResult.UpdatedModel, updateResult.UpdateEvent);
         }
 
-        private async void OpenSelectedSampleItem()
+        private async void OpenSelectedAppointment()
         {
-            await OpenSelectedSampleItemAsync();
+            await OpenSelectedAppointmentAsync();
         }
 
-        private async Task OpenSelectedSampleItemAsync()
+        private async Task OpenSelectedAppointmentAsync()
         {
-            if (SelectedSampleItem != null)
+            if (SelectedAppointment != null)
             {
                 Dictionary<string, string> args = new Dictionary<string, string>
                 {
-                    {Constants.Parameters.Id, SelectedSampleItem.Id}
+                    {Constants.Parameters.Id, SelectedAppointment.Id}
                 };
 
                 await Navigation.NavigateAsync(Constants.Navigation.HealthCareProviderPage, args);

@@ -39,8 +39,10 @@
   <ItemGroup>
     <Compile Include="AppServices\Device.cs" />
     <Compile Include="CC.cs" />
+    <Compile Include="Controls\CommandView.cs" />
     <Compile Include="Controls\GradientView.cs" />
     <Compile Include="Controls\ListView.cs" />
+    <Compile Include="Controls\SfListViewEx.cs" />
     <Compile Include="Converters\ByteArrayToImageSourceConverter.cs" />
     <Compile Include="INavigationService.cs" />
     <Compile Include="IocSharedModule.cs" />

@@ -298,6 +298,14 @@
       <HintPath>..\packages\WebP.Touch.1.0.3\lib\Xamarin.iOS10\WebP.Touch.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Wibci.LogicCommand, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Wibci.LogicCommand.1.1.0\lib\portable-net45+win8\Wibci.LogicCommand.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Wibci.Xamarin.Forms.Converters, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Wibcisoft.Xamarin.Forms.Converters.1.0.2\lib\Wibci.Xamarin.Forms.Converters.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Xamarin.Forms.Core, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Xamarin.Forms.2.3.4.247\lib\Xamarin.iOS10\Xamarin.Forms.Core.dll</HintPath>
       <Private>True</Private>

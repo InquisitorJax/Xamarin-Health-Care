@@ -1,6 +1,7 @@
 ﻿using Autofac;
 using Core;
 using SampleApplication.AppServices;
+using SampleApplication.Models;
 using SampleApplication.ViewModels;
 using SampleApplication.Views;
 
@@ -16,7 +17,7 @@ namespace SampleApplication
 
             builder.RegisterType<LandingPageNavigationService>().As<ILandingPageNavigationService>().AsSelf().SingleInstance();
 
-            builder.RegisterType<SampleItemValidator>().As<IModelValidator<SampleItem>>().AsSelf();
+            builder.RegisterType<AppointmentValidator>().As<IModelValidator<Appointment>>().AsSelf();
 
             builder.RegisterType<MainViewModel>().Named<IViewModel>(Constants.Navigation.MainPage);
             builder.RegisterType<ItemViewModel>().Named<IViewModel>(Constants.Navigation.HealthCareProviderPage);

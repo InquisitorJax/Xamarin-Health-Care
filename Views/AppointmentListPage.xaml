@@ -1,9 +1,11 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
-<ContentPage x:Class="SampleApplication.Views.ItemListPage"
+<ContentPage x:Class="SampleApplication.Views.AppointmentListPage"
              xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:Core.Controls;assembly=XForms.Shared"
-             xmlns:local="clr-namespace:SampleApplication">
+             xmlns:local="clr-namespace:SampleApplication"
+             xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             xmlns:views="clr-namespace:SampleApplication.Views">
     <ContentPage.ToolbarItems>
         <ToolbarItem Command="{Binding CreateSampleItemNavigationCommand}"
                      Order="Primary"
@@ -19,14 +21,20 @@
 
     <ContentPage.Content>
         <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
-            <StackLayout>
-                <Label HorizontalOptions="CenterAndExpand" Text="{Binding Title}" />
-            </StackLayout>
-            <controls:ListView x:Name="_listView"
+            <controls:SfListViewEx x:Name="_listView"
+                                   ItemSize="100"
+                                   ItemSpacing="5"
+                                   ItemTappedCommand="{Binding OpenSelectedAppointmentCommand}"
+                                   ItemsSource="{Binding Appointments}"
+                                   SelectedItem="{Binding SelectedAppointment}"
+                                   SelectionMode="None">
+                <controls:SfListViewEx.ItemTemplate>
+                    <DataTemplate>
+                        <views:AppointmentCard Value="{Binding .}" />
+                    </DataTemplate>
+                </controls:SfListViewEx.ItemTemplate>
+            </controls:SfListViewEx>
+            <!--<controls:ListView x:Name="_listView"
                                Grid.Row="1"
                                IsPullToRefreshEnabled="True"
                                IsRefreshing="{Binding ListRefreshing}"
@@ -40,7 +48,7 @@
                         <TextCell Detail="{Binding Description}" Text="{Binding Name}" />
                     </DataTemplate>
                 </controls:ListView.ItemTemplate>
-            </controls:ListView>
+            </controls:ListView>-->
         </Grid>
     </ContentPage.Content>
 </ContentPage>

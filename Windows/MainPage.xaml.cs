@@ -1,6 +1,7 @@
 ﻿// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
-using SampleApplication.Windows;
+using SampleApplication.AppServices;
+using Syncfusion.ListView.XForms.UWP;
 
 namespace SampleApplication.Windows
 {
@@ -15,7 +16,11 @@ namespace SampleApplication.Windows
 
             this.InitializeComponent();
 
-            LoadApplication(new SampleApplication.App(new IocWindowsModule()));
+            SfListViewRenderer.Init();
+
+            BootstrapperService.Initialize(new IocWindowsModule()).GetAwaiter();
+
+            LoadApplication(new SampleApplication.App());
         }
     }
 }

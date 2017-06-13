@@ -40,6 +40,7 @@
     <Compile Include="Application.cs" />
     <Compile Include="AppServices\BootstrapperService.cs" />
     <Compile Include="AppServices\LandingPageNavigationService.cs" />
+    <Compile Include="Models\HealthCareProvider.cs" />
     <Compile Include="Models\MainMenuItem.cs" />
     <Compile Include="Models\HealthCareUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -47,8 +48,14 @@
     <Compile Include="ViewModels\AuthViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\ItemViewModel.cs" />
+    <Compile Include="Views\AppointmentCard.xaml.cs">
+      <DependentUpon>AppointmentCard.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\AuthPage.xaml.cs">
       <DependentUpon>AuthPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\HealthProviderCard.xaml.cs">
+      <DependentUpon>HealthProviderCard.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MainMenuPage.xaml.cs">
       <DependentUpon>MainMenuPage.xaml</DependentUpon>
@@ -56,13 +63,13 @@
     <Compile Include="Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ItemListPage.xaml.cs">
-      <DependentUpon>ItemListPage.xaml</DependentUpon>
+    <Compile Include="Views\AppointmentListPage.xaml.cs">
+      <DependentUpon>AppointmentListPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ItemPage.xaml.cs">
       <DependentUpon>ItemPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Models\SampleItem.cs" />
+    <Compile Include="Models\Appointment.cs" />
     <Compile Include="Repository\Repository.cs" />
     <Compile Include="Models\SampleItemValidator.cs" />
     <Compile Include="Constants.cs" />
@@ -80,7 +87,7 @@
     <Folder Include="Events\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\ItemListPage.xaml">
+    <EmbeddedResource Include="Views\AppointmentListPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\ItemPage.xaml">
@@ -120,6 +127,18 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\ProfileView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\HealthProviderCard.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\AppointmentCard.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

@@ -2,6 +2,7 @@
 using Moq;
 using NUnit.Framework;
 using SampleApplication;
+using SampleApplication.Models;
 using SampleApplication.ViewModels;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -18,18 +19,18 @@ namespace Application.Tests
         public async Task Initialize_Call_Pass()
         {
             //Arrange
-            FetchModelCollectionResult<SampleItem> fetchResult = new FetchModelCollectionResult<SampleItem>();
-            fetchResult.ModelCollection = new List<SampleItem> { new SampleItem { Name = "Item 1" } };
-            _repoMock.Setup(x => x.FetchSampleItemsAsync()).ReturnsAsync(new FetchModelCollectionResult<SampleItem>());
+            FetchModelCollectionResult<Appointment> fetchResult = new FetchModelCollectionResult<Appointment>();
+            fetchResult.ModelCollection = new List<Appointment> { new Appointment { Name = "Item 1" } };
+            _repoMock.Setup(x => x.FetchAppointmentsAsync(It.IsAny<string>(), It.IsAny<string>())).ReturnsAsync(new FetchModelCollectionResult<Appointment>());
 
             //Act
             await _viewModel.InitializeAsync(null);
 
             //Assert
             _repoMock.VerifyAll();
-            Assert.NotNull(_viewModel.SampleItems, "Expected collection not to be null");
-            Assert.IsTrue(_viewModel.SampleItems.Count > 0, "Expected some sample items");
-            Assert.IsTrue(_viewModel.SampleItems.Contains(fetchResult.ModelCollection[0]), "Expected SampleItems to contain the correct values");
+            Assert.NotNull(_viewModel.Appointments, "Expected collection not to be null");
+            Assert.IsTrue(_viewModel.Appointments.Count > 0, "Expected some sample items");
+            Assert.IsTrue(_viewModel.Appointments.Contains(fetchResult.ModelCollection[0]), "Expected SampleItems to contain the correct values");
         }
 
         [SetUp]

@@ -1,4 +1,6 @@
 ﻿using Foundation;
+using SampleApplication.AppServices;
+using Syncfusion.ListView.XForms.iOS;
 using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
@@ -34,7 +36,11 @@ namespace SampleApplication.iOS
 
             Forms.Init();
 
-            LoadApplication(new App(new IociOSModule()));
+            SfListViewRenderer.Init();
+
+            BootstrapperService.Initialize(new IociOSModule()).GetAwaiter();
+
+            LoadApplication(new App());
 
             // make the window visible
             Window.MakeKeyAndVisible();

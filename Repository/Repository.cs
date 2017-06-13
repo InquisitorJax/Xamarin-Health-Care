@@ -2,23 +2,26 @@
 using Core;
 using SampleApplication.Models;
 using SQLite;
+using System;
 using System.Threading.Tasks;
 
 namespace SampleApplication
 {
     public interface IRepository
     {
-        Task<FetchModelResult<SampleItem>> FetchSampleItemAsync(string id);
+        Task<FetchModelResult<Appointment>> FetchAppointmentAsync(string id);
 
-        Task<FetchModelCollectionResult<SampleItem>> FetchSampleItemsAsync();
+        Task<FetchModelCollectionResult<Appointment>> FetchAppointmentsAsync(string userId, string providerId);
+
+        Task<FetchModelCollectionResult<HealthCareProvider>> FetchProvidersAsync(string providerId = null);
 
         Task<FetchModelResult<HealthCareUser>> GetCurrentUserAsync();
 
         Task InitializeAsync();
 
-        Task<Notification> SaveCurrentUserAsync(HealthCareUser user);
+        Task<Notification> SaveAppointmentAsync(Appointment item, ModelUpdateEvent updateEvent);
 
-        Task<Notification> SaveSampleItemAsync(SampleItem item, ModelUpdateEvent updateEvent);
+        Task<Notification> SaveCurrentUserAsync(HealthCareUser user);
     }
 
     public class Repository : IRepository
@@ -30,21 +33,58 @@ namespace SampleApplication
 
         private bool _isInitialized = false;
 
-        public async Task<FetchModelResult<SampleItem>> FetchSampleItemAsync(string id)
+        public async Task<FetchModelResult<Appointment>> FetchAppointmentAsync(string id)
         {
-            FetchModelResult<SampleItem> retResult = new FetchModelResult<SampleItem>();
+            FetchModelResult<Appointment> retResult = new FetchModelResult<Appointment>();
 
-            var item = await _database.FindAsync<SampleItem>(id);
+            var item = await _database.FindAsync<Appointment>(id);
             retResult.Model = item;
 
             return retResult;
         }
 
-        public async Task<FetchModelCollectionResult<SampleItem>> FetchSampleItemsAsync()
+        public async Task<FetchModelCollectionResult<Appointment>> FetchAppointmentsAsync(string userId, string providerId)
         {
-            FetchModelCollectionResult<SampleItem> retResult = new FetchModelCollectionResult<SampleItem>();
-            var items = await _database.Table<SampleItem>().ToListAsync();
+            FetchModelCollectionResult<Appointment> retResult = new FetchModelCollectionResult<Appointment>();
+
+            var query = _database.Table<Appointment>();
+            if (!string.IsNullOrWhiteSpace(userId))
+            {
+                query = query.Where(x => x.UserId == userId);
+            }
+
+            if (!string.IsNullOrWhiteSpace(providerId))
+            {
+                query = query.Where(x => x.ProviderId == providerId);
+            }
+
+            var items = await query.ToListAsync();
+
             retResult.ModelCollection = items;
+            return retResult;
+        }
+
+        public async Task<FetchModelCollectionResult<HealthCareProvider>> FetchProvidersAsync(string providerId = null)
+        {
+            FetchModelCollectionResult<HealthCareProvider> retResult = new FetchModelCollectionResult<HealthCareProvider>();
+
+            try
+            {
+                var query = _database.Table<HealthCareProvider>();
+                if (!string.IsNullOrWhiteSpace(providerId))
+                {
+                    query = query.Where(x => x.Id == providerId);
+                }
+
+                var items = await query.ToListAsync();
+
+                retResult.ModelCollection = items;
+            }
+            catch (Exception)
+            {
+                retResult.Notification.Add("Error fetching providers");
+            }
+
             return retResult;
         }
 
@@ -69,35 +109,56 @@ namespace SampleApplication
             if (connectionResult.IsValid())
             {
                 _database = connectionResult.Connection;
-                await _database.CreateTableAsync<SampleItem>();
+                await _database.CreateTableAsync<Appointment>();
                 await _database.CreateTableAsync<HealthCareUser>();
+                await _database.CreateTableAsync<HealthCareProvider>();
 
-                await CheckCurrentUser();
+                var user = await CheckCurrentUser();
+
+                await SeedSampleDataAsync(user.Id);
             }
+        }
+
+        public async Task<Notification> SaveAppointmentAsync(Appointment item, ModelUpdateEvent updateEvent)
+        {
+            return await SaveItem(item, updateEvent);
         }
 
         public async Task<Notification> SaveCurrentUserAsync(HealthCareUser item)
         {
-            Notification retNotification = Notification.Success();
-            try
-            {
-                await _database.UpdateAsync(item);
-            }
-            catch (SQLiteException)
-            {
-                retNotification.Add(new NotificationItem("Save Failed"));
-            }
-
-            return retNotification;
+            return await SaveItem(item, ModelUpdateEvent.Created);
         }
 
-        public async Task<Notification> SaveSampleItemAsync(SampleItem item, ModelUpdateEvent updateEvent)
+        public async Task<Notification> SaveProviderAsync(HealthCareProvider item, ModelUpdateEvent updateEvent)
+        {
+            return await SaveItem(item, updateEvent);
+        }
+
+        private async Task<HealthCareUser> CheckCurrentUser()
+        {
+            HealthCareUser retUser = null;
+            var result = await GetCurrentUserAsync();
+            retUser = result.Model;
+            if (retUser == null)
+            {
+                retUser = new HealthCareUser { Id = _currentUserId, Name = "Jack Family", Description = "Dedicated to improving our health" };
+                await _database.InsertAsync(retUser);
+            }
+
+            return retUser;
+        }
+
+        private async Task<Notification> SaveItem<T>(T item, ModelUpdateEvent updateEvent) where T : ModelBase
         {
             Notification retNotification = Notification.Success();
             try
             {
                 if (updateEvent == ModelUpdateEvent.Created)
                 {
+                    if (string.IsNullOrWhiteSpace(item.Id))
+                    {
+                        item.Id = Guid.NewGuid().ToString();
+                    }
                     await _database.InsertAsync(item);
                 }
                 else
@@ -114,13 +175,28 @@ namespace SampleApplication
             return retNotification;
         }
 
-        private async Task CheckCurrentUser()
+        private async Task SeedSampleDataAsync(string currentUserId)
         {
-            var result = await GetCurrentUserAsync();
-            if (result.Model == null)
+            //providers
+            var fetchProvidersResult = await FetchProvidersAsync();
+
+            if (fetchProvidersResult.IsValid() && fetchProvidersResult.ModelCollection.Count == 0)
             {
-                var currentUser = new HealthCareUser { Id = _currentUserId, Name = "Jack Family", Description = "Dedicated to improving our health" };
-                await _database.InsertAsync(currentUser);
+                var provider1 = new HealthCareProvider { Name = "Doctor Strange", Description = "For all your mystical needs", ImageName = "strange" };
+                var provider2 = new HealthCareProvider { Name = "Doctor Manhattan", Description = "For everything in the DC universe that needs fixing", ImageName = "manhattan" };
+                await SaveProviderAsync(provider1, ModelUpdateEvent.Created);
+                await SaveProviderAsync(provider2, ModelUpdateEvent.Created);
+
+                //appointments
+                var fetchAppointmentsResult = await FetchAppointmentsAsync(currentUserId, null);
+
+                if (fetchAppointmentsResult.IsValid() && fetchAppointmentsResult.ModelCollection.Count == 0)
+                {
+                    var appointment1 = new Appointment { Name = "Doctor Strange", AppointmentDate = DateTime.Now.AddDays(2), ProviderId = provider1.Id, UserId = currentUserId };
+                    var appointment2 = new Appointment { Name = "Doctor Manhattan", AppointmentDate = DateTime.Now.AddDays(4), ProviderId = provider2.Id, UserId = currentUserId };
+                    await SaveAppointmentAsync(appointment1, ModelUpdateEvent.Created);
+                    await SaveAppointmentAsync(appointment2, ModelUpdateEvent.Created);
+                }
             }
         }
 

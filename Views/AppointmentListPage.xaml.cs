@@ -6,9 +6,9 @@ using Xamarin.Forms.Xaml;
 namespace SampleApplication.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ItemListPage : ContentPage, IView
+    public partial class AppointmentListPage : ContentPage, IView
     {
-        public ItemListPage()
+        public AppointmentListPage()
         {
             InitializeComponent();
         }

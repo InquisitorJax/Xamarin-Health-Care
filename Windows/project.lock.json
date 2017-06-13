@@ -2565,6 +2565,25 @@
           "lib/uap10.0/Toasts.Forms.Plugin.UWP.dll": {}
         }
       },
+      "Wibci.LogicCommand/1.1.0": {
+        "compile": {
+          "lib/uap10.0/Wibci.LogicCommand.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Wibci.LogicCommand.dll": {}
+        }
+      },
+      "Wibcisoft.Xamarin.Forms.Converters/1.0.2": {
+        "dependencies": {
+          "Xamarin.Forms": "2.2.0.31"
+        },
+        "compile": {
+          "lib/uap10.0/Wibci.Xamarin.Forms.Converters.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Wibci.Xamarin.Forms.Converters.dll": {}
+        }
+      },
       "Xam.Plugin.Connectivity/2.3.0": {
         "compile": {
           "lib/UAP10/Plugin.Connectivity.Abstractions.dll": {},
@@ -5143,6 +5162,25 @@
         "runtime": {
           "lib/uap10.0/Toasts.Forms.Plugin.Abstractions.dll": {},
           "lib/uap10.0/Toasts.Forms.Plugin.UWP.dll": {}
+        }
+      },
+      "Wibci.LogicCommand/1.1.0": {
+        "compile": {
+          "lib/uap10.0/Wibci.LogicCommand.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Wibci.LogicCommand.dll": {}
+        }
+      },
+      "Wibcisoft.Xamarin.Forms.Converters/1.0.2": {
+        "dependencies": {
+          "Xamarin.Forms": "2.2.0.31"
+        },
+        "compile": {
+          "lib/uap10.0/Wibci.Xamarin.Forms.Converters.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Wibci.Xamarin.Forms.Converters.dll": {}
         }
       },
       "Xam.Plugin.Connectivity/2.3.0": {
@@ -7764,6 +7802,25 @@
           "lib/uap10.0/Toasts.Forms.Plugin.UWP.dll": {}
         }
       },
+      "Wibci.LogicCommand/1.1.0": {
+        "compile": {
+          "lib/uap10.0/Wibci.LogicCommand.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Wibci.LogicCommand.dll": {}
+        }
+      },
+      "Wibcisoft.Xamarin.Forms.Converters/1.0.2": {
+        "dependencies": {
+          "Xamarin.Forms": "2.2.0.31"
+        },
+        "compile": {
+          "lib/uap10.0/Wibci.Xamarin.Forms.Converters.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Wibci.Xamarin.Forms.Converters.dll": {}
+        }
+      },
       "Xam.Plugin.Connectivity/2.3.0": {
         "compile": {
           "lib/UAP10/Plugin.Connectivity.Abstractions.dll": {},
@@ -10351,6 +10408,25 @@
         "runtime": {
           "lib/uap10.0/Toasts.Forms.Plugin.Abstractions.dll": {},
           "lib/uap10.0/Toasts.Forms.Plugin.UWP.dll": {}
+        }
+      },
+      "Wibci.LogicCommand/1.1.0": {
+        "compile": {
+          "lib/uap10.0/Wibci.LogicCommand.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Wibci.LogicCommand.dll": {}
+        }
+      },
+      "Wibcisoft.Xamarin.Forms.Converters/1.0.2": {
+        "dependencies": {
+          "Xamarin.Forms": "2.2.0.31"
+        },
+        "compile": {
+          "lib/uap10.0/Wibci.Xamarin.Forms.Converters.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Wibci.Xamarin.Forms.Converters.dll": {}
         }
       },
       "Xam.Plugin.Connectivity/2.3.0": {
@@ -12981,6 +13057,25 @@
           "lib/uap10.0/Toasts.Forms.Plugin.UWP.dll": {}
         }
       },
+      "Wibci.LogicCommand/1.1.0": {
+        "compile": {
+          "lib/uap10.0/Wibci.LogicCommand.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Wibci.LogicCommand.dll": {}
+        }
+      },
+      "Wibcisoft.Xamarin.Forms.Converters/1.0.2": {
+        "dependencies": {
+          "Xamarin.Forms": "2.2.0.31"
+        },
+        "compile": {
+          "lib/uap10.0/Wibci.Xamarin.Forms.Converters.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Wibci.Xamarin.Forms.Converters.dll": {}
+        }
+      },
       "Xam.Plugin.Connectivity/2.3.0": {
         "compile": {
           "lib/UAP10/Plugin.Connectivity.Abstractions.dll": {},
@@ -15568,6 +15663,25 @@
         "runtime": {
           "lib/uap10.0/Toasts.Forms.Plugin.Abstractions.dll": {},
           "lib/uap10.0/Toasts.Forms.Plugin.UWP.dll": {}
+        }
+      },
+      "Wibci.LogicCommand/1.1.0": {
+        "compile": {
+          "lib/uap10.0/Wibci.LogicCommand.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Wibci.LogicCommand.dll": {}
+        }
+      },
+      "Wibcisoft.Xamarin.Forms.Converters/1.0.2": {
+        "dependencies": {
+          "Xamarin.Forms": "2.2.0.31"
+        },
+        "compile": {
+          "lib/uap10.0/Wibci.Xamarin.Forms.Converters.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Wibci.Xamarin.Forms.Converters.dll": {}
         }
       },
       "Xam.Plugin.Connectivity/2.3.0": {
@@ -18196,6 +18310,25 @@
         "runtime": {
           "lib/uap10.0/Toasts.Forms.Plugin.Abstractions.dll": {},
           "lib/uap10.0/Toasts.Forms.Plugin.UWP.dll": {}
+        }
+      },
+      "Wibci.LogicCommand/1.1.0": {
+        "compile": {
+          "lib/uap10.0/Wibci.LogicCommand.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Wibci.LogicCommand.dll": {}
+        }
+      },
+      "Wibcisoft.Xamarin.Forms.Converters/1.0.2": {
+        "dependencies": {
+          "Xamarin.Forms": "2.2.0.31"
+        },
+        "compile": {
+          "lib/uap10.0/Wibci.Xamarin.Forms.Converters.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Wibci.Xamarin.Forms.Converters.dll": {}
         }
       },
       "Xam.Plugin.Connectivity/2.3.0": {
@@ -27390,6 +27523,30 @@
         "lib/uap10.0/Toasts.Forms.Plugin.UWP.pdb"
       ]
     },
+    "Wibci.LogicCommand/1.1.0": {
+      "sha512": "o1DTs327fg8A1+QCl6FfVdr8tuPgdaXzlJxaMVBf8IEHYxylsW/95rF0qlzVHzygQ6schlIsnVdGK9uhJ1AJ3g==",
+      "type": "package",
+      "path": "Wibci.LogicCommand/1.1.0",
+      "files": [
+        "Wibci.LogicCommand.1.1.0.nupkg.sha512",
+        "Wibci.LogicCommand.nuspec",
+        "lib/Wibci.LogicCommand.dll",
+        "lib/portable-net45+win8/Wibci.LogicCommand.dll",
+        "lib/uap10.0/Wibci.LogicCommand.dll"
+      ]
+    },
+    "Wibcisoft.Xamarin.Forms.Converters/1.0.2": {
+      "sha512": "tJewGauc03slsctx52uPDB2FHIlLMCKVM9BKQbwMgQz7xH3vvckMJ+VBYO7xfnxM3jLZxcKV51CxCmIEZ25/eQ==",
+      "type": "package",
+      "path": "Wibcisoft.Xamarin.Forms.Converters/1.0.2",
+      "files": [
+        "Wibcisoft.Xamarin.Forms.Converters.1.0.2.nupkg.sha512",
+        "Wibcisoft.Xamarin.Forms.Converters.nuspec",
+        "lib/Wibci.Xamarin.Forms.Converters.dll",
+        "lib/net45/Wibci.Xamarin.Forms.Converters.dll",
+        "lib/uap10.0/Wibci.Xamarin.Forms.Converters.dll"
+      ]
+    },
     "Xam.Plugin.Connectivity/2.3.0": {
       "sha512": "Lo9kX32BsI3t4Xsqgl2NPKp9INu577C1MH11tHUbw+kfV/1E+UKMgHjkDkDGO/bEzP/cXfCjAoPOVx1rIBO7uQ==",
       "type": "package",
@@ -27880,6 +28037,8 @@
       "Syncfusion.Xamarin.SfPdfViewer >= 15.2.0.43",
       "Syncfusion.Xamarin.SfSchedule >= 15.2.0.43",
       "Toasts.Forms.Plugin >= 3.2.0",
+      "Wibci.LogicCommand >= 1.1.0",
+      "Wibcisoft.Xamarin.Forms.Converters >= 1.0.2",
       "Xam.Plugin.Connectivity >= 2.3.0",
       "Xam.Plugin.ExternalMaps >= 3.0.10",
       "Xam.Plugin.Geolocator >= 3.0.4",
