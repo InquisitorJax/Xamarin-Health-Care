@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView x:Class="SampleApplication.Views.ProfileView"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ic="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
+             x:Name="profileCard"
+             BackgroundColor="White"
+             HeightRequest="120">
+    <ContentView.Content>
+        <Grid Padding="0,7,0,7">
+            <Grid.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding Command, Source={x:Reference profileCard}}" CommandParameter="{Binding CommandParameter, Source={x:Reference profileCard}}" />
+            </Grid.GestureRecognizers>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <AbsoluteLayout Padding="12,0,0,0">
+                <ic:CircleImage x:Name="ProfilePhoto"
+                                AbsoluteLayout.LayoutBounds="0.5, 0.5, AutoSize, AutoSize"
+                                AbsoluteLayout.LayoutFlags="PositionProportional"
+                                BorderColor="#2C92D1"
+                                BorderThickness="1"
+                                HeightRequest="90"
+                                Source="family.png"
+                                WidthRequest="90" />
+            </AbsoluteLayout>
+
+            <StackLayout Grid.Column="1" VerticalOptions="CenterAndExpand">
+                <Label Text="{Binding Value.Name, Source={x:Reference profileCard}}" />
+                <Label FontSize="Small"
+                       Text="{Binding Value.Description,
+                                      Source={x:Reference profileCard}}"
+                       TextColor="Silver" />
+            </StackLayout>
+            <AbsoluteLayout Grid.Column="1"
+                            HorizontalOptions="End"
+                            Padding="0,0,12,0"
+                            VerticalOptions="Start">
+                <Image HeightRequest="30"
+                       Source="logoAll"
+                       WidthRequest="30" />
+            </AbsoluteLayout>
+        </Grid>
+    </ContentView.Content>
+</ContentView>

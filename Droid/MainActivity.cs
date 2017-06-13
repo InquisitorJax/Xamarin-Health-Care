@@ -2,6 +2,7 @@
 using Android.Content;
 using Android.Content.PM;
 using Android.OS;
+using ImageCircle.Forms.Plugin.Droid;
 using Xamarin.Forms.Platform.Android;
 
 namespace SampleApplication
@@ -27,6 +28,7 @@ namespace SampleApplication
             _appContext = this;
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
+            ImageCircleRenderer.Init();
 
             LoadApplication(new App());
         }

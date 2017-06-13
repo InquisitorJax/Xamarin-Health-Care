@@ -119,7 +119,7 @@ namespace SampleApplication
             var result = await GetCurrentUserAsync();
             if (result.Model == null)
             {
-                var currentUser = new HealthCareUser { Id = _currentUserId };
+                var currentUser = new HealthCareUser { Id = _currentUserId, Name = "Jack Family", Description = "Dedicated to improving our health" };
                 await _database.InsertAsync(currentUser);
             }
         }

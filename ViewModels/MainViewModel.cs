@@ -13,6 +13,7 @@ namespace SampleApplication.ViewModels
     {
         private readonly IRepository _repository;
 
+        private HealthCareUser _currentUser;
         private bool _listRefreshing;
 
         private bool _mainMenuOpen;
@@ -34,9 +35,9 @@ namespace SampleApplication.ViewModels
             MainMenuItems = new List<MainMenuItem>();
             MainMenuItems.Add(new MainMenuItem
             {
-                Title = "Appointments",
-                IconSource = "calendar_dark.png",
-                ActionId = Constants.Navigation.AppointmentPage
+                Title = "Cliniko Health Providers",
+                IconSource = "circle_logo.png",
+                ActionId = Constants.Navigation.ProviderSearchPage
             });
             MainMenuItems.Add(new MainMenuItem
             {
@@ -54,6 +55,12 @@ namespace SampleApplication.ViewModels
         }
 
         public ICommand CreateSampleItemNavigationCommand { get; private set; }
+
+        public HealthCareUser CurrentUser
+        {
+            get { return _currentUser; }
+            set { SetProperty(ref _currentUser, value); }
+        }
 
         public ICommand FetchSampleItemsCommand { get; private set; }
 
@@ -97,12 +104,20 @@ namespace SampleApplication.ViewModels
         public override async Task InitializeAsync(System.Collections.Generic.Dictionary<string, string> args)
         {
             _modelUpdatedEventToken = CC.EventMessenger.GetEvent<ModelUpdatedMessageEvent<SampleItem>>().Subscribe(OnSampleItemUpdated);
+            await FetchCurrentUserAsync();
             await FetchSampleItemsAsync();
         }
 
         private async void CreateSampleItemNavigate()
         {
             await Navigation.NavigateAsync(Constants.Navigation.HealthCareProviderPage);
+        }
+
+        private async Task FetchCurrentUserAsync()
+        {
+            var fetchResult = await _repository.GetCurrentUserAsync();
+
+            CurrentUser = fetchResult.Model;
         }
 
         private async void FetchSampleItems()
@@ -138,11 +153,10 @@ namespace SampleApplication.ViewModels
 
         private async Task LogoutAsync()
         {
-            var userResult = await _repository.GetCurrentUserAsync();
-            if (userResult.Model != null)
+            if (CurrentUser != null)
             {
-                userResult.Model.IsLoggedIn = false;
-                await _repository.SaveCurrentUserAsync(userResult.Model);
+                CurrentUser.IsLoggedIn = false;
+                await _repository.SaveCurrentUserAsync(CurrentUser);
             }
             await CC.Navigation.NavigateAsync(Constants.Navigation.AuthPage, null, false, false, true);
         }
