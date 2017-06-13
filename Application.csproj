@@ -47,7 +47,7 @@
     <Compile Include="IocApplicationModule.cs" />
     <Compile Include="ViewModels\AuthViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
-    <Compile Include="ViewModels\ItemViewModel.cs" />
+    <Compile Include="ViewModels\AppointmentViewModel.cs" />
     <Compile Include="Views\AppointmentCard.xaml.cs">
       <DependentUpon>AppointmentCard.xaml</DependentUpon>
     </Compile>
@@ -66,8 +66,8 @@
     <Compile Include="Views\AppointmentListPage.xaml.cs">
       <DependentUpon>AppointmentListPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ItemPage.xaml.cs">
-      <DependentUpon>ItemPage.xaml</DependentUpon>
+    <Compile Include="Views\AppointmentPage.xaml.cs">
+      <DependentUpon>AppointmentPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\Appointment.cs" />
     <Compile Include="Repository\Repository.cs" />
@@ -90,7 +90,7 @@
     <EmbeddedResource Include="Views\AppointmentListPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\ItemPage.xaml">
+    <EmbeddedResource Include="Views\AppointmentPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

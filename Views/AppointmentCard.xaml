@@ -2,10 +2,57 @@
 <controls:CommandView x:Class="SampleApplication.Views.AppointmentCard"
                       xmlns="http://xamarin.com/schemas/2014/forms"
                       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-                      xmlns:controls="clr-namespace:Core.Controls;assembly=XForms.Shared">
+                      xmlns:controls="clr-namespace:Core.Controls;assembly=XForms.Shared"
+                      xmlns:ic="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
+                      x:Name="AppointmentCard">
     <ContentView.Content>
-        <StackLayout>
-            <Label Text="Hello Xamarin.Forms!" />
-        </StackLayout>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <!--  DOESN"T RENDER :( (only sometimes)  -->
+            <!--<ic:CircleImage Aspect="AspectFill"
+                            BorderColor="#2C92D1"
+                            BorderThickness="1"
+                            HeightRequest="90"
+                            Source="{Binding Value.ProviderImageName,
+                                             Source={x:Reference AppointmentCard}}"
+                            WidthRequest="90" />-->
+            <Image HeightRequest="100"
+                   HorizontalOptions="End"
+                   Source="{Binding Value.ProviderImageName,
+                                    Source={x:Reference AppointmentCard}}"
+                   WidthRequest="100" />
+
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Label Text="{Binding Value.Name, Source={x:Reference AppointmentCard}}" />
+                <Label Grid.Row="1"
+                       FontSize="Micro"
+                       Text="{Binding Value.Description,
+                                      Source={x:Reference AppointmentCard}}"
+                       TextColor="Silver" />
+                <Grid Grid.Row="2" HorizontalOptions="EndAndExpand">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Image HeightRequest="35"
+                           HorizontalOptions="End"
+                           Source="calendar"
+                           WidthRequest="35" />
+                    <Label Grid.Column="1"
+                           Text="{Binding Value.AppointmentDate,
+                                          StringFormat='{0:MMMM d, yyyy HH:mm}',
+                                          Source={x:Reference AppointmentCard}}"
+                           VerticalOptions="Center" />
+                </Grid>
+            </Grid>
+        </Grid>
     </ContentView.Content>
 </controls:CommandView>

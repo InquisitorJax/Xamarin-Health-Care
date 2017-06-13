@@ -20,12 +20,12 @@ namespace SampleApplication
             builder.RegisterType<AppointmentValidator>().As<IModelValidator<Appointment>>().AsSelf();
 
             builder.RegisterType<MainViewModel>().Named<IViewModel>(Constants.Navigation.MainPage);
-            builder.RegisterType<ItemViewModel>().Named<IViewModel>(Constants.Navigation.HealthCareProviderPage);
+            builder.RegisterType<AppointmentViewModel>().Named<IViewModel>(Constants.Navigation.AppointmentPage);
             builder.RegisterType<AuthViewModel>().Named<IViewModel>(Constants.Navigation.AuthPage);
 
             builder.RegisterType<MainPage>().Named<IView>(Constants.Navigation.MainPage);
             builder.RegisterType<AuthPage>().Named<IView>(Constants.Navigation.AuthPage);
-            builder.RegisterType(typeof(ItemPage)).Named(Constants.Navigation.HealthCareProviderPage, typeof(IView));
+            builder.RegisterType<AppointmentPage>().Named<IView>(Constants.Navigation.AppointmentPage);
         }
     }
 }

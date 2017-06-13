@@ -9,7 +9,7 @@ using System.Windows.Input;
 
 namespace SampleApplication.ViewModels
 {
-    public class ItemViewModel : ViewModelBase
+    public class AppointmentViewModel : ViewModelBase
     {
         private readonly IRepository _repository;
         private readonly IModelValidator<Appointment> _validator;
@@ -18,7 +18,7 @@ namespace SampleApplication.ViewModels
 
         private Appointment _model;
 
-        public ItemViewModel(IRepository repository, IModelValidator<Appointment> validator)
+        public AppointmentViewModel(IRepository repository, IModelValidator<Appointment> validator)
         {
             _repository = repository;
             _validator = validator;

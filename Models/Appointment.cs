@@ -11,6 +11,7 @@ namespace SampleApplication.Models
 
         private string _providerId;
 
+        private string _providerImageName;
         private string _userId;
 
         public DateTime? AppointmentDate
@@ -35,6 +36,12 @@ namespace SampleApplication.Models
         {
             get { return _providerId; }
             set { SetProperty(ref _providerId, value); }
+        }
+
+        public string ProviderImageName
+        {
+            get { return _providerImageName; }
+            set { SetProperty(ref _providerImageName, value); }
         }
 
         public string UserId

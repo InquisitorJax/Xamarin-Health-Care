@@ -25,7 +25,7 @@ namespace SampleApplication.ViewModels
         {
             _repository = repository;
             FetchAppointmentsCommand = new DelegateCommand(FetchAppointments);
-            OpenSelectedAppointmentCommand = new DelegateCommand(OpenSelectedAppointment);
+            OpenSelectedAppointmentCommand = new DelegateCommand<Appointment>(OpenSelectedAppointment);
             CreateAppointmentNavigationCommand = new DelegateCommand(CreateAppointmentNavigate);
             MainMenuItemClickCommand = new DelegateCommand<MainMenuItem>(MainMenuItemClick);
             Title = "Cliniko Care";
@@ -154,7 +154,7 @@ namespace SampleApplication.ViewModels
             if (CurrentUser != null)
             {
                 CurrentUser.IsLoggedIn = false;
-                await _repository.SaveCurrentUserAsync(CurrentUser);
+                await _repository.SaveCurrentUserAsync(CurrentUser, ModelUpdateEvent.Updated);
             }
             await CC.Navigation.NavigateAsync(Constants.Navigation.AuthPage, null, false, false, true);
         }
@@ -179,8 +179,9 @@ namespace SampleApplication.ViewModels
             Appointments.UpdateCollection(updateResult.UpdatedModel, updateResult.UpdateEvent);
         }
 
-        private async void OpenSelectedAppointment()
+        private async void OpenSelectedAppointment(Appointment appointment)
         {
+            SelectedAppointment = appointment;
             await OpenSelectedAppointmentAsync();
         }
 
@@ -193,7 +194,7 @@ namespace SampleApplication.ViewModels
                     {Constants.Parameters.Id, SelectedAppointment.Id}
                 };
 
-                await Navigation.NavigateAsync(Constants.Navigation.HealthCareProviderPage, args);
+                await Navigation.NavigateAsync(Constants.Navigation.AppointmentPage, args);
             }
         }
     }

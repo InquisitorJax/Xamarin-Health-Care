@@ -37,7 +37,7 @@ namespace SampleApplication.ViewModels
 
             user.Model.IsLoggedIn = true;
 
-            await _repo.SaveCurrentUserAsync(user.Model);
+            await _repo.SaveCurrentUserAsync(user.Model, ModelUpdateEvent.Updated);
 
             await CC.Navigation.NavigateAsync(Constants.Navigation.MainPage);
         }

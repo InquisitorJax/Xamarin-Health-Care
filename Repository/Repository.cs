@@ -21,7 +21,7 @@ namespace SampleApplication
 
         Task<Notification> SaveAppointmentAsync(Appointment item, ModelUpdateEvent updateEvent);
 
-        Task<Notification> SaveCurrentUserAsync(HealthCareUser user);
+        Task<Notification> SaveCurrentUserAsync(HealthCareUser user, ModelUpdateEvent updateEvent);
     }
 
     public class Repository : IRepository
@@ -124,9 +124,9 @@ namespace SampleApplication
             return await SaveItem(item, updateEvent);
         }
 
-        public async Task<Notification> SaveCurrentUserAsync(HealthCareUser item)
+        public async Task<Notification> SaveCurrentUserAsync(HealthCareUser item, ModelUpdateEvent updateEvent)
         {
-            return await SaveItem(item, ModelUpdateEvent.Created);
+            return await SaveItem(item, updateEvent);
         }
 
         public async Task<Notification> SaveProviderAsync(HealthCareProvider item, ModelUpdateEvent updateEvent)
@@ -192,8 +192,8 @@ namespace SampleApplication
 
                 if (fetchAppointmentsResult.IsValid() && fetchAppointmentsResult.ModelCollection.Count == 0)
                 {
-                    var appointment1 = new Appointment { Name = "Doctor Strange", AppointmentDate = DateTime.Now.AddDays(2), ProviderId = provider1.Id, UserId = currentUserId };
-                    var appointment2 = new Appointment { Name = "Doctor Manhattan", AppointmentDate = DateTime.Now.AddDays(4), ProviderId = provider2.Id, UserId = currentUserId };
+                    var appointment1 = new Appointment { Name = "Doctor Strange apt", Description = "Need some help with dormamu infection", AppointmentDate = DateTime.Now.AddDays(2), ProviderId = provider1.Id, UserId = currentUserId, ProviderImageName = "strange.png" };
+                    var appointment2 = new Appointment { Name = "Doctor Manhattan apt", Description = "Need diagnosis on infection effecting DC superheroes", AppointmentDate = DateTime.Now.AddDays(4), ProviderId = provider2.Id, UserId = currentUserId, ProviderImageName = "manhattan.png" };
                     await SaveAppointmentAsync(appointment1, ModelUpdateEvent.Created);
                     await SaveAppointmentAsync(appointment2, ModelUpdateEvent.Created);
                 }

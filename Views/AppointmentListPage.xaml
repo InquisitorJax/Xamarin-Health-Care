@@ -5,7 +5,8 @@
              xmlns:controls="clr-namespace:Core.Controls;assembly=XForms.Shared"
              xmlns:local="clr-namespace:SampleApplication"
              xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
-             xmlns:views="clr-namespace:SampleApplication.Views">
+             xmlns:views="clr-namespace:SampleApplication.Views"
+             BackgroundColor="#F5F5F5">
     <ContentPage.ToolbarItems>
         <ToolbarItem Command="{Binding CreateSampleItemNavigationCommand}"
                      Order="Primary"
@@ -22,15 +23,17 @@
     <ContentPage.Content>
         <Grid>
             <controls:SfListViewEx x:Name="_listView"
-                                   ItemSize="100"
-                                   ItemSpacing="5"
+                                   ItemSize="130"
+                                   ItemSpacing="5,2,5,2"
                                    ItemTappedCommand="{Binding OpenSelectedAppointmentCommand}"
                                    ItemsSource="{Binding Appointments}"
                                    SelectedItem="{Binding SelectedAppointment}"
-                                   SelectionMode="None">
+                                   SelectionMode="Single">
                 <controls:SfListViewEx.ItemTemplate>
                     <DataTemplate>
-                        <views:AppointmentCard Value="{Binding .}" />
+                        <Frame HasShadow="True">
+                            <views:AppointmentCard Value="{Binding .}" />
+                        </Frame>
                     </DataTemplate>
                 </controls:SfListViewEx.ItemTemplate>
             </controls:SfListViewEx>
