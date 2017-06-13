@@ -2,15 +2,17 @@
 <MasterDetailPage x:Class="SampleApplication.Views.MainPage"
                   xmlns="http://xamarin.com/schemas/2014/forms"
                   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-                  xmlns:local="clr-namespace:SampleApplication.Views;assembly=SampleApplication">
-  <MasterDetailPage.Master>
-    <local:MainMenuPage />
-  </MasterDetailPage.Master>
-  <MasterDetailPage.Detail>
-    <NavigationPage>
-      <x:Arguments>
-        <local:ItemListPage />
-      </x:Arguments>
-    </NavigationPage>
-  </MasterDetailPage.Detail>
+                  xmlns:local="clr-namespace:SampleApplication.Views;assembly=SampleApplication"
+                  IsPresented="{Binding MainMenuOpen,
+                                        Mode=TwoWay}">
+    <MasterDetailPage.Master>
+        <local:MainMenuPage />
+    </MasterDetailPage.Master>
+    <MasterDetailPage.Detail>
+        <NavigationPage>
+            <x:Arguments>
+                <local:ItemListPage />
+            </x:Arguments>
+        </NavigationPage>
+    </MasterDetailPage.Detail>
 </MasterDetailPage>

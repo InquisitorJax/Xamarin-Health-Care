@@ -3,8 +3,7 @@
              xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:Core.Controls;assembly=XForms.Shared"
-             Title="Menu"
-             Padding="0,40,0,0">
+             Title="Menu">
     <ContentPage.Icon>
         <OnPlatform x:TypeArguments="FileImageSource"
                     Android="ic_hamburger_dark.png"
@@ -12,9 +11,12 @@
                     iOS="ic_hamburger.png" />
     </ContentPage.Icon>
     <ContentPage.Content>
-        <controls:GradientView EndColor="White" StartColor="Blue">
+        <Grid>
+            <controls:GradientView EndColor="#49A4D8" StartColor="#2795D9" />
+
             <StackLayout VerticalOptions="FillAndExpand">
                 <controls:ListView x:Name="listView"
+                                   ItemClickCommand="{Binding MainMenuItemClickCommand}"
                                    ItemsSource="{Binding MainMenuItems}"
                                    SeparatorVisibility="None"
                                    VerticalOptions="FillAndExpand">
@@ -23,11 +25,14 @@
                     </controls:ListView.Header>
                     <controls:ListView.ItemTemplate>
                         <DataTemplate>
-                            <ImageCell ImageSource="{Binding IconSource}" Text="{Binding Title}" />
+
+                            <ImageCell ImageSource="{Binding IconSource}"
+                                       Text="{Binding Title}"
+                                       TextColor="White" />
                         </DataTemplate>
                     </controls:ListView.ItemTemplate>
                 </controls:ListView>
             </StackLayout>
-        </controls:GradientView>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

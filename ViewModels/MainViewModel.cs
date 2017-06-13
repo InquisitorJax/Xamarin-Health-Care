@@ -15,6 +15,7 @@ namespace SampleApplication.ViewModels
 
         private bool _listRefreshing;
 
+        private bool _mainMenuOpen;
         private SubscriptionToken _modelUpdatedEventToken;
 
         private ObservableCollection<SampleItem> _sampleItems;
@@ -27,13 +28,14 @@ namespace SampleApplication.ViewModels
             FetchSampleItemsCommand = new DelegateCommand(FetchSampleItems);
             OpenSelectedSampleItemCommand = new DelegateCommand(OpenSelectedSampleItem);
             CreateSampleItemNavigationCommand = new DelegateCommand(CreateSampleItemNavigate);
+            MainMenuItemClickCommand = new DelegateCommand<MainMenuItem>(MainMenuItemClick);
             Title = "Cliniko Care";
 
             MainMenuItems = new List<MainMenuItem>();
             MainMenuItems.Add(new MainMenuItem
             {
                 Title = "Appointments",
-                IconSource = "flash.png",
+                IconSource = "calendar_dark.png",
                 ActionId = Constants.Navigation.AppointmentPage
             });
             MainMenuItems.Add(new MainMenuItem
@@ -52,6 +54,7 @@ namespace SampleApplication.ViewModels
         }
 
         public ICommand CreateSampleItemNavigationCommand { get; private set; }
+
         public ICommand FetchSampleItemsCommand { get; private set; }
 
         public bool ListRefreshing
@@ -60,7 +63,16 @@ namespace SampleApplication.ViewModels
             set { SetProperty(ref _listRefreshing, value); }
         }
 
+        public ICommand MainMenuItemClickCommand { get; private set; }
+
         public IList<MainMenuItem> MainMenuItems { get; private set; }
+
+        public bool MainMenuOpen
+        {
+            get { return _mainMenuOpen; }
+            set { SetProperty(ref _mainMenuOpen, value); }
+        }
+
         public ICommand OpenSelectedSampleItemCommand { get; private set; }
 
         public ObservableCollection<SampleItem> SampleItems
@@ -121,6 +133,32 @@ namespace SampleApplication.ViewModels
             finally
             {
                 ListRefreshing = false;
+            }
+        }
+
+        private async Task LogoutAsync()
+        {
+            var userResult = await _repository.GetCurrentUserAsync();
+            if (userResult.Model != null)
+            {
+                userResult.Model.IsLoggedIn = false;
+                await _repository.SaveCurrentUserAsync(userResult.Model);
+            }
+            await CC.Navigation.NavigateAsync(Constants.Navigation.AuthPage, null, false, false, true);
+        }
+
+        private async void MainMenuItemClick(MainMenuItem menuItem)
+        {
+            MainMenuOpen = false;
+
+            if (menuItem != null)
+            {
+                switch (menuItem.ActionId)
+                {
+                    case Constants.Navigation.Logout:
+                        await LogoutAsync();
+                        break;
+                }
             }
         }
 

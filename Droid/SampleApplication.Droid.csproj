@@ -435,6 +435,11 @@
       <Link>Resources\drawable\cliniko_logo.png</Link>
     </AndroidResource>
   </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="..\Images\Icons\calendar_dark.png">
+      <Link>Resources\drawable\calendar_dark.png</Link>
+    </AndroidResource>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

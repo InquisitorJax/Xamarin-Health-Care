@@ -8,6 +8,11 @@ namespace Core
 {
     public class XFormsNavigationService : INavigationService
     {
+        //NOTE: Check out prism PageNavigationService class for sample XForms navigation samples https://github.com/PrismLibrary/Prism/tree/master/Source/Xamarin/Prism.Forms/Navigation
+        //... or https://github.com/XLabs/Xamarin-Forms-Labs/blob/master/src/Forms/XLabs.Forms/Services/NavigationService.cs
+        //... or https://github.com/jamesmontemagno/Hanselman.Forms/blob/master/Hanselman.Portable/Views/RootPage.cs
+        //TODO: Take into account NavigationPage / TabbedPage / CarouselPage / MasterDetailPage ??
+
         private Page _currentPage;
         private bool _isSuspended;
         private MasterDetailPage _masterDetailPage;
@@ -49,7 +54,7 @@ namespace Core
         {
             if (_isSuspended)
             {
-                //Logger().Info("Navigation.GoBack while suspended");
+                //GetType().GetLogger().Info("Navigation.GoBack while suspended");
                 return;
             }
 
@@ -58,11 +63,11 @@ namespace Core
                 _currentPage = (Page)_viewStack.Peek();
         }
 
-        public async Task NavigateAsync(string destination, Dictionary<string, string> args = null, bool modal = false, bool forgetCurrentPage = false)
+        public async Task NavigateAsync(string destination, Dictionary<string, string> args = null, bool modal = false, bool forgetCurrentPage = false, bool resetNavigation = false)
         {
             if (_isSuspended)
             {
-                //Logger().Info("Navigation.Navigate while suspended");
+                //GetType().GetLogger().Info("Navigation.Navigate while suspended");
                 return;
             }
             IView view = ResolveView(destination);
@@ -75,7 +80,7 @@ namespace Core
             view.ViewModel = viewModel;
             ((Page)view).BindingContext = viewModel;
 
-            await ShowViewAsync(view, modal, forgetCurrentPage);
+            await ShowViewAsync(view, modal, forgetCurrentPage, resetNavigation);
         }
 
         public async Task ResumeAsync()
@@ -115,7 +120,7 @@ namespace Core
         {
             if (_isSuspended)
             {
-                //Logger().Info("Navigation.Page_Disappearing while suspended - view not popped");
+                //GetType().GetLogger().Info("Navigation.Page_Disappearing while suspended - view not popped");
                 return;
             }
 
@@ -189,6 +194,28 @@ namespace Core
             return poppedView;
         }
 
+        private async Task ResetNavigation(Page newRootPage)
+        {
+            //NOTE: if _masterDetailPage is root, then _currentPage will be _masterDetailPage.Detail
+            if (CurrentPage != null && CurrentPage.Navigation.NavigationStack.Count > 0)
+            {
+                await CurrentPage.Navigation.PopToRootAsync();
+            }
+
+            _viewStack.Clear();
+            _pageInfoList.Clear();
+            _masterDetailPage = null;
+            _currentPage = null;
+
+            Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+            {
+                Application.Current.MainPage = new NavigationPage(newRootPage);
+            });
+
+            _viewStack.Push((IView)newRootPage);
+            _pageInfoList.Add(newRootPage, false);
+        }
+
         private IView ResolveView(string destination)
         {
             IView view = CC.IoC.ResolveNamed<IView>(destination);
@@ -203,8 +230,15 @@ namespace Core
             return Task.FromResult(viewModel);
         }
 
-        private async Task ShowViewAsync(IView view, bool modal, bool forgetCurrentPage)
+        private async Task ShowViewAsync(IView view, bool modal, bool forgetCurrentPage, bool resetNavigation)
         {
+            if (resetNavigation && CurrentPage != null) //NOTE: Check current page for existing stack. If currentpage is null, then navigation is already reset
+            {
+                await ResetNavigation((Page)view); //typically when auth has failed and app needs to start from auth page again
+                _currentPage = view as Page;
+                return;
+            }
+
             //NOTE: Add view to stack first, so disappearing when moving forward will not remove view from stack
             _viewStack.Push(view);
             _pageInfoList.Add((Page)view, modal);
@@ -237,6 +271,7 @@ namespace Core
                     if (forgetCurrentPage)
                     {
                         CurrentPage.Navigation.InsertPageBefore((Page)view, CurrentPage);
+
                         await PopCurrentPageAsync();
                     }
                     else

@@ -2,7 +2,6 @@
 using Core;
 using SampleApplication.Models;
 using SQLite;
-using System;
 using System.Threading.Tasks;
 
 namespace SampleApplication
@@ -26,7 +25,7 @@ namespace SampleApplication
     {
         #region IRepository implementation
 
-        private readonly string _currentUserId = Guid.NewGuid().ToString();
+        private readonly string _currentUserId = "e35fd1d9-6aaf-4c89-8d68-509505582f43";
         private SQLiteAsyncConnection _database;
 
         private bool _isInitialized = false;
