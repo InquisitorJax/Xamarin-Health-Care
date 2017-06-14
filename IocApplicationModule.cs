@@ -1,6 +1,7 @@
 ﻿using Autofac;
 using Core;
 using SampleApplication.AppServices;
+using SampleApplication.Commands;
 using SampleApplication.Models;
 using SampleApplication.ViewModels;
 using SampleApplication.Views;
@@ -16,6 +17,8 @@ namespace SampleApplication
             builder.RegisterType<Repository>().As<IRepository>().AsSelf().SingleInstance();
 
             builder.RegisterType<LandingPageNavigationService>().As<ILandingPageNavigationService>().AsSelf().SingleInstance();
+
+            builder.RegisterType<UpdateProviderLocationsCommand>().As<IUpdateProviderLocationsCommand>().AsSelf();
 
             //TODO: get rid of 2 kinds of bindings for validator
             builder.RegisterType<AppointmentValidator>().As<IModelValidator<Appointment>>().AsSelf();

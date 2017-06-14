@@ -40,9 +40,11 @@
     <Compile Include="Application.cs" />
     <Compile Include="AppServices\BootstrapperService.cs" />
     <Compile Include="AppServices\LandingPageNavigationService.cs" />
+    <Compile Include="Commands\UpdateProviderLocationsCommand.cs" />
     <Compile Include="Models\HealthCareProvider.cs" />
     <Compile Include="Models\MainMenuItem.cs" />
     <Compile Include="Models\HealthCareUser.cs" />
+    <Compile Include="PrivateTokens.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="IocApplicationModule.cs" />
     <Compile Include="ViewModels\AuthViewModel.cs" />
@@ -71,7 +73,7 @@
     </Compile>
     <Compile Include="Models\Appointment.cs" />
     <Compile Include="Repository\Repository.cs" />
-    <Compile Include="Models\SampleItemValidator.cs" />
+    <Compile Include="Models\AppointmentValidator.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="Views\ProfileView.xaml.cs">
       <DependentUpon>ProfileView.xaml</DependentUpon>
@@ -83,7 +85,6 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Commands\" />
     <Folder Include="Events\" />
   </ItemGroup>
   <ItemGroup>

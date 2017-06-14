@@ -28,7 +28,10 @@ namespace SampleApplication
             _appContext = this;
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
+
             ImageCircleRenderer.Init();
+            Xamarin.FormsMaps.Init(this, bundle);
+            //CrossMedia.Current.Initialize();
 
             LoadApplication(new App());
         }

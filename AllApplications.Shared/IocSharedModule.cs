@@ -1,5 +1,7 @@
 ﻿using Autofac;
 using Core.AppServices;
+using Plugin.Geolocator;
+using Plugin.Geolocator.Abstractions;
 using Prism.Events;
 
 namespace Core
@@ -16,6 +18,10 @@ namespace Core
 
             builder.RegisterType(typeof(XFormsUserNotifier)).As(typeof(IUserNotifier)).AsSelf();
             builder.RegisterType(typeof(Device)).As(typeof(IDevice)).AsSelf();
+            builder.RegisterType(typeof(LocationService)).As(typeof(ILocationService)).AsSelf();
+
+            //plugins
+            builder.RegisterInstance(CrossGeolocator.Current).As<IGeolocator>();
         }
     }
 }

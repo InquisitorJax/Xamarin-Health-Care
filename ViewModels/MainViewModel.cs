@@ -1,6 +1,7 @@
 ﻿using Core;
 using Prism.Commands;
 using Prism.Events;
+using SampleApplication.Commands;
 using SampleApplication.Models;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -12,6 +13,7 @@ namespace SampleApplication.ViewModels
     public class MainViewModel : ViewModelBase
     {
         private readonly IRepository _repository;
+        private readonly IUpdateProviderLocationsCommand _updateLocationsCommand;
 
         private ObservableCollection<Appointment> _appointments;
         private HealthCareUser _currentUser;
@@ -20,9 +22,11 @@ namespace SampleApplication.ViewModels
         private SubscriptionToken _modelUpdatedEventToken;
         private Appointment _selectedAppointment;
 
-        public MainViewModel(IRepository repository)
+        public MainViewModel(IRepository repository, IUpdateProviderLocationsCommand updateLocationsCommand)
         {
             _repository = repository;
+            _updateLocationsCommand = updateLocationsCommand;
+
             FetchAppointmentsCommand = new DelegateCommand(FetchAppointments);
             OpenSelectedAppointmentCommand = new DelegateCommand<Appointment>(OpenSelectedAppointment);
             CreateAppointmentNavigationCommand = new DelegateCommand(CreateAppointmentNavigate);
@@ -97,6 +101,7 @@ namespace SampleApplication.ViewModels
             _modelUpdatedEventToken = CC.EventMessenger.GetEvent<ModelUpdatedMessageEvent<Appointment>>().Subscribe(OnAppointmentUpdated);
             await FetchCurrentUserAsync();
             await FetchAppointmentsAsync();
+            await UpdateProviderLocationsAsync(); //generate locations around the device current location
         }
 
         private async void CreateAppointmentNavigate()
@@ -120,7 +125,7 @@ namespace SampleApplication.ViewModels
                 if (fetchResult.IsValid())
                 {
                     Appointments = fetchResult.ModelCollection.AsObservableCollection();
-                    await Task.Delay(3000); //simulate fetching online data
+                    //await Task.Delay(3000); //simulate fetching online data
                 }
                 else
                 {
@@ -188,6 +193,23 @@ namespace SampleApplication.ViewModels
 
                 await Navigation.NavigateAsync(Constants.Navigation.AppointmentPage, args);
             }
+        }
+
+        private async Task<Notification> UpdateProviderLocationsAsync()
+        {
+            var retResult = Notification.Success();
+            ShowBusy("fetching health records");
+
+            try
+            {
+                var updateResult = await _updateLocationsCommand.ExecuteAsync(null);
+            }
+            finally
+            {
+                NotBusy();
+            }
+
+            return retResult;
         }
     }
 }

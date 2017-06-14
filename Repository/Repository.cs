@@ -22,6 +22,8 @@ namespace SampleApplication
         Task<Notification> SaveAppointmentAsync(Appointment item, ModelUpdateEvent updateEvent);
 
         Task<Notification> SaveCurrentUserAsync(HealthCareUser user, ModelUpdateEvent updateEvent);
+
+        Task<Notification> SaveProviderAsync(HealthCareProvider item, ModelUpdateEvent updateEvent);
     }
 
     public class Repository : IRepository

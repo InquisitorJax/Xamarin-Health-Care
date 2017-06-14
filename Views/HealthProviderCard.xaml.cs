@@ -8,7 +8,7 @@ namespace SampleApplication.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class HealthProviderCard : CommandView
     {
-        public static readonly BindableProperty ValueProperty = BindableProperty.Create("Value", typeof(Appointment), typeof(HealthCareProvider), null);
+        public static readonly BindableProperty ValueProperty = BindableProperty.Create("Value", typeof(HealthCareProvider), typeof(HealthProviderCard), null);
 
         public HealthProviderCard()
         {

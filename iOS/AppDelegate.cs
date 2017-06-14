@@ -39,6 +39,7 @@ namespace SampleApplication.iOS
 
             SfListViewRenderer.Init();
             new SfBusyIndicatorRenderer();
+            Xamarin.FormsMaps.Init();
 
             BootstrapperService.Initialize(new IociOSModule()).GetAwaiter();
 

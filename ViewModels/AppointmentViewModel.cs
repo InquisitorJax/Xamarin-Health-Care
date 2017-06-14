@@ -1,9 +1,11 @@
 ﻿using Autofac;
 using Core;
+using Core.Controls;
 using Prism.Commands;
 using Prism.Events;
 using SampleApplication.Models;
 using System;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -17,6 +19,7 @@ namespace SampleApplication.ViewModels
 
         private bool _isNewModel;
 
+        private GeoLocation _location;
         private Appointment _model;
 
         private HealthCareProvider _provider;
@@ -25,8 +28,26 @@ namespace SampleApplication.ViewModels
         {
             _repository = repository;
             _validator = validator;
+
+            Locations = new ObservableCollection<GeoLocation>();
             SaveItemCommand = new DelegateCommand(SaveItem);
         }
+
+        public GeoLocation Location
+        {
+            get { return _location; }
+            set
+            {
+                SetProperty(ref _location, value);
+                Locations.Clear();
+                if (value != null)
+                {
+                    Locations.Add(value);
+                }
+            }
+        }
+
+        public ObservableCollection<GeoLocation> Locations { get; set; }
 
         public Appointment Model
         {
@@ -37,7 +58,14 @@ namespace SampleApplication.ViewModels
         public HealthCareProvider Provider
         {
             get { return _provider; }
-            set { SetProperty(ref _provider, value); }
+            set
+            {
+                SetProperty(ref _provider, value);
+                if (_provider != null)
+                {
+                    Location = GeoLocation.FromWellKnownText(_provider.Location);
+                }
+            }
         }
 
         public ICommand SaveItemCommand { get; private set; }

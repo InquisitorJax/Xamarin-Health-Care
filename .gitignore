@@ -40,3 +40,4 @@ Thumbs.db
 *.dotCover
 /.Docs/TODO.txt
 /Images/resources
+/PrivateTokens.cs

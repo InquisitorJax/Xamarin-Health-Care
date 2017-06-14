@@ -38,6 +38,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="AppServices\Device.cs" />
+    <Compile Include="AppServices\LocationServices.cs" />
     <Compile Include="CC.cs" />
     <Compile Include="Controls\ActivityIndicatorMessage.xaml.cs">
       <DependentUpon>ActivityIndicatorMessage.xaml</DependentUpon>
@@ -48,8 +49,13 @@
       <DependentUpon>EntryEx.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\EntryValidationBehavior.cs" />
+    <Compile Include="Controls\GeoLocation.cs" />
     <Compile Include="Controls\GradientView.cs" />
     <Compile Include="Controls\ListView.cs" />
+    <Compile Include="Controls\MapExtensions.cs" />
+    <Compile Include="Controls\MapView.xaml.cs">
+      <DependentUpon>MapView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\SfListViewEx.cs" />
     <Compile Include="Converters\BooleanToInvertedBooleanConverter.cs" />
     <Compile Include="Converters\ByteArrayToImageSourceConverter.cs" />
@@ -86,6 +92,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Controls\EntryEx.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Controls\MapView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

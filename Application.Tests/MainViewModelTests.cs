@@ -2,6 +2,7 @@
 using Moq;
 using NUnit.Framework;
 using SampleApplication;
+using SampleApplication.Commands;
 using SampleApplication.Models;
 using SampleApplication.ViewModels;
 using System.Collections.Generic;
@@ -13,6 +14,7 @@ namespace Application.Tests
     public class MainViewModelTests
     {
         private Mock<IRepository> _repoMock;
+        private Mock<IUpdateProviderLocationsCommand> _updateLocationsMock;
         private MainViewModel _viewModel;
 
         [Test]
@@ -37,7 +39,8 @@ namespace Application.Tests
         public void TestSetup()
         {
             _repoMock = new Mock<IRepository>();
-            _viewModel = new MainViewModel(_repoMock.Object);
+            _updateLocationsMock = new Mock<IUpdateProviderLocationsCommand>();
+            _viewModel = new MainViewModel(_repoMock.Object, _updateLocationsMock.Object);
         }
     }
 }

@@ -3,7 +3,9 @@
              xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:Core.Controls;assembly=XForms.Shared"
-             Title="{Binding Model.Name}">
+             xmlns:views="clr-namespace:SampleApplication.Views"
+             Title="{Binding Model.Name}"
+             BackgroundColor="{StaticResource WindowBackground}">
     <ContentPage.ToolbarItems>
         <ToolbarItem Command="{Binding SaveItemCommand}"
                      Order="Primary"
@@ -19,11 +21,25 @@
 
     <ContentPage.Content>
         <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
             <StackLayout Padding="{StaticResource FormPadding}">
+                <Frame HasShadow="True">
+                    <views:HealthProviderCard Value="{Binding Provider}" />
+                </Frame>
                 <controls:EntryEx EntryText="{Binding Model.Name}" LabelText="name" />
                 <Label Text="Description" />
-                <controls:EditorEx Text="{Binding Model.Description}" />
+                <controls:EditorEx MaxHeight="200" Text="{Binding Model.Description}" />
             </StackLayout>
+            <!--<Label Grid.Row="1"
+                   HorizontalOptions="Center"
+                   Text="MAP"
+                   VerticalOptions="Center" />-->
+            <controls:MapView Grid.Row="1"
+                              Locations="{Binding Locations}"
+                              MapCenter="{Binding Location}" />
         </Grid>
     </ContentPage.Content>
 </ContentPage>
