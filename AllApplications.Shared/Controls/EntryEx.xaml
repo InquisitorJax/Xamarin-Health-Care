@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView x:Class="Core.Controls.EntryEx"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:Core.Controls"
+             xmlns:converters="clr-namespace:Core.Converters"
+             x:Name="entry"
+             Margin="0,5,0,0">
+    <ContentView.Content>
+        <StackLayout>
+            <StackLayout.Resources>
+                <ResourceDictionary>
+                    <converters:BooleanToInvertedBooleanConverter x:Key="bob" />
+                    <converters:NullValueToBooleanConverter x:Key="nvb" />
+                </ResourceDictionary>
+            </StackLayout.Resources>
+            <Grid>
+                <Entry x:Name="_entry"
+                       Placeholder="{Binding LabelText,
+                                             Source={x:Reference entry}}"
+                       Text="{Binding EntryText,
+                                      Source={x:Reference entry}}">
+                    <Entry.Behaviors>
+                        <controls:EntryValidationBehaviour x:Name="TextValidationResult"
+                                                           ValidationPropertyName="{Binding ValidationPropertyName,
+                                                                                            Source={x:Reference entry}}"
+                                                           ValidationTypeName="{Binding ValidationTypeName,
+                                                                                        Source={x:Reference entry}}" />
+                    </Entry.Behaviors>
+                </Entry>
+                <Label x:Name="_label"
+                       Margin="2,5,0,0"
+                       FontSize="Micro"
+                       IsVisible="{Binding Text,
+                                           Source={x:Reference _entry},
+                                           Converter={StaticResource nvb},
+                                           ConverterParameter=switch}"
+                       Text="{Binding LabelText,
+                                      Source={x:Reference entry}}" />
+            </Grid>
+            <Grid BindingContext="{x:Reference TextValidationResult}"
+                  IsVisible="{Binding IsValid,
+                                      Converter={StaticResource bob}}"
+                  Padding="10,0,0,0">
+                <Label BindingContext="{x:Reference TextValidationResult}"
+                       FontSize="Small"
+                       Text="{Binding ValidationMessage}"
+                       TextColor="Red" />
+            </Grid>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

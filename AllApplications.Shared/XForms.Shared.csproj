@@ -39,11 +39,21 @@
   <ItemGroup>
     <Compile Include="AppServices\Device.cs" />
     <Compile Include="CC.cs" />
+    <Compile Include="Controls\ActivityIndicatorMessage.xaml.cs">
+      <DependentUpon>ActivityIndicatorMessage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\CommandView.cs" />
+    <Compile Include="Controls\EditorEx.cs" />
+    <Compile Include="Controls\EntryEx.xaml.cs">
+      <DependentUpon>EntryEx.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\EntryValidationBehavior.cs" />
     <Compile Include="Controls\GradientView.cs" />
     <Compile Include="Controls\ListView.cs" />
     <Compile Include="Controls\SfListViewEx.cs" />
+    <Compile Include="Converters\BooleanToInvertedBooleanConverter.cs" />
     <Compile Include="Converters\ByteArrayToImageSourceConverter.cs" />
+    <Compile Include="Converters\NullValueToBooleanConverter.cs" />
     <Compile Include="INavigationService.cs" />
     <Compile Include="IocSharedModule.cs" />
     <Compile Include="IPlatformExceptionManager.cs" />
@@ -67,6 +77,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="project.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Controls\ActivityIndicatorMessage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Controls\EntryEx.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

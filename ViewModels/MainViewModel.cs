@@ -15,7 +15,6 @@ namespace SampleApplication.ViewModels
 
         private ObservableCollection<Appointment> _appointments;
         private HealthCareUser _currentUser;
-        private bool _listRefreshing;
 
         private bool _mainMenuOpen;
         private SubscriptionToken _modelUpdatedEventToken;
@@ -68,12 +67,6 @@ namespace SampleApplication.ViewModels
 
         public ICommand FetchAppointmentsCommand { get; private set; }
 
-        public bool ListRefreshing
-        {
-            get { return _listRefreshing; }
-            set { SetProperty(ref _listRefreshing, value); }
-        }
-
         public ICommand MainMenuItemClickCommand { get; private set; }
 
         public IList<MainMenuItem> MainMenuItems { get; private set; }
@@ -118,7 +111,7 @@ namespace SampleApplication.ViewModels
 
         private async Task FetchAppointmentsAsync()
         {
-            ListRefreshing = true;
+            ShowBusy("fetching health records");
 
             try
             {
@@ -127,18 +120,17 @@ namespace SampleApplication.ViewModels
                 if (fetchResult.IsValid())
                 {
                     Appointments = fetchResult.ModelCollection.AsObservableCollection();
-
-                    ListRefreshing = false;
+                    await Task.Delay(3000); //simulate fetching online data
                 }
                 else
                 {
-                    ListRefreshing = false;
+                    NotBusy();
                     await CC.UserNotifier.ShowMessageAsync(fetchResult.Notification.ToString(), "Fetch Appointments Failed :(");
                 }
             }
             finally
             {
-                ListRefreshing = false;
+                NotBusy();
             }
         }
 

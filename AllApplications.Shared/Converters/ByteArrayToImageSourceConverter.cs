@@ -2,7 +2,7 @@
 using System.IO;
 using Xamarin.Forms;
 
-namespace Core
+namespace Core.Converters
 {
     public class ByteArrayToImageSourceConverter : IValueConverter
     {

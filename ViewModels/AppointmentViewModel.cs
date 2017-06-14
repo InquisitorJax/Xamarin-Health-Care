@@ -4,6 +4,7 @@ using Prism.Commands;
 using Prism.Events;
 using SampleApplication.Models;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
@@ -18,6 +19,8 @@ namespace SampleApplication.ViewModels
 
         private Appointment _model;
 
+        private HealthCareProvider _provider;
+
         public AppointmentViewModel(IRepository repository, IModelValidator<Appointment> validator)
         {
             _repository = repository;
@@ -31,6 +34,12 @@ namespace SampleApplication.ViewModels
             set { SetProperty(ref _model, value); }
         }
 
+        public HealthCareProvider Provider
+        {
+            get { return _provider; }
+            set { SetProperty(ref _provider, value); }
+        }
+
         public ICommand SaveItemCommand { get; private set; }
 
         public override async Task InitializeAsync(System.Collections.Generic.Dictionary<string, string> args)
@@ -42,6 +51,15 @@ namespace SampleApplication.ViewModels
                 if (fetchResult.IsValid())
                 {
                     Model = fetchResult.Model;
+
+                    if (Model != null)
+                    {
+                        var providerResult = await _repository.FetchProvidersAsync(Model.ProviderId);
+                        if (providerResult.IsValid() && providerResult.ModelCollection.Count > 0)
+                        {
+                            Provider = providerResult.ModelCollection.First();
+                        }
+                    }
                 }
                 else
                 {

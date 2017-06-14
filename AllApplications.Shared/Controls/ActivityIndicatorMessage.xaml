@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView x:Class="Core.Controls.ActivityIndicatorMessage"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:syncfusion="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
+             BackgroundColor="Transparent">
+    <ContentView.Content>
+        <Grid>
+            <BoxView BackgroundColor="#2C92D1" Opacity="0.8" />
+            <syncfusion:SfBusyIndicator x:Name="_busyIndicator"
+                                        Title="{Binding BusyMessage}"
+                                        AnimationType="Globe"
+                                        HorizontalOptions="CenterAndExpand"
+                                        IsBusy="True"
+                                        IsVisible="{Binding IsBusy}"
+                                        TextColor="White"
+                                        VerticalOptions="CenterAndExpand" />
+        </Grid>
+    </ContentView.Content>
+</ContentView>

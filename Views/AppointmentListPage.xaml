@@ -6,6 +6,7 @@
              xmlns:local="clr-namespace:SampleApplication"
              xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              xmlns:views="clr-namespace:SampleApplication.Views"
+             Title="cliniko care"
              BackgroundColor="#F5F5F5">
     <ContentPage.ToolbarItems>
         <ToolbarItem Command="{Binding CreateSampleItemNavigationCommand}"
@@ -37,21 +38,7 @@
                     </DataTemplate>
                 </controls:SfListViewEx.ItemTemplate>
             </controls:SfListViewEx>
-            <!--<controls:ListView x:Name="_listView"
-                               Grid.Row="1"
-                               IsPullToRefreshEnabled="True"
-                               IsRefreshing="{Binding ListRefreshing}"
-                               ItemClickCommand="{Binding OpenSelectedSampleItemCommand}"
-                               ItemsSource="{Binding SampleItems}"
-                               RefreshCommand="{Binding FetchSampleItemsCommand}"
-                               SelectedItem="{Binding SelectedSampleItem,
-                                                      Mode=TwoWay}">
-                <controls:ListView.ItemTemplate>
-                    <DataTemplate>
-                        <TextCell Detail="{Binding Description}" Text="{Binding Name}" />
-                    </DataTemplate>
-                </controls:ListView.ItemTemplate>
-            </controls:ListView>-->
+            <controls:ActivityIndicatorMessage IsVisible="{Binding IsBusy}" />
         </Grid>
     </ContentPage.Content>
 </ContentPage>

@@ -1,10 +1,14 @@
 ﻿using FluentValidation;
-using System;
 using System.Linq;
 
 namespace Core
 {
-    public interface IModelValidator<T>
+    public interface IModelValidator
+    {
+        NotificationItem ValidateProperty(object item, string propertyName);
+    }
+
+    public interface IModelValidator<T> : IModelValidator
     {
         Notification ValidateModel(T instance);
 
@@ -32,6 +36,11 @@ namespace Core
             }
 
             return result;
+        }
+
+        public NotificationItem ValidateProperty(object item, string propertyName)
+        {
+            return ValidateProperty(item, propertyName);
         }
 
         public NotificationItem ValidateProperty(T instance, string propertyName)

@@ -17,7 +17,9 @@ namespace SampleApplication
 
             builder.RegisterType<LandingPageNavigationService>().As<ILandingPageNavigationService>().AsSelf().SingleInstance();
 
+            //TODO: get rid of 2 kinds of bindings for validator
             builder.RegisterType<AppointmentValidator>().As<IModelValidator<Appointment>>().AsSelf();
+            builder.RegisterType<AppointmentValidator>().Named<IModelValidator>(nameof(Appointment)); //for generic entry
 
             builder.RegisterType<MainViewModel>().Named<IViewModel>(Constants.Navigation.MainPage);
             builder.RegisterType<AppointmentViewModel>().Named<IViewModel>(Constants.Navigation.AppointmentPage);

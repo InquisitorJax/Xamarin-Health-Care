@@ -1,6 +1,7 @@
 ﻿using Foundation;
 using SampleApplication.AppServices;
 using Syncfusion.ListView.XForms.iOS;
+using Syncfusion.SfBusyIndicator.XForms.iOS;
 using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
@@ -37,6 +38,7 @@ namespace SampleApplication.iOS
             Forms.Init();
 
             SfListViewRenderer.Init();
+            new SfBusyIndicatorRenderer();
 
             BootstrapperService.Initialize(new IociOSModule()).GetAwaiter();
 
