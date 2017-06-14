@@ -3,6 +3,7 @@ using Core;
 using Core.Controls;
 using Prism.Commands;
 using Prism.Events;
+using SampleApplication.Events;
 using SampleApplication.Models;
 using System;
 using System.Collections.ObjectModel;
@@ -23,6 +24,7 @@ namespace SampleApplication.ViewModels
         private Appointment _model;
 
         private HealthCareProvider _provider;
+        private SubscriptionToken _selectionToken;
 
         public AppointmentViewModel(IRepository repository, IModelValidator<Appointment> validator)
         {
@@ -31,6 +33,8 @@ namespace SampleApplication.ViewModels
 
             Locations = new ObservableCollection<GeoLocation>();
             SaveItemCommand = new DelegateCommand(SaveItem);
+            SelectAppointmentCommand = new DelegateCommand(SelectAppointment);
+            _selectionToken = CC.EventMessenger.GetEvent<AppointmentDateSelectionMessageEvent>().Subscribe(OnAppointmentDateSelected);
         }
 
         public GeoLocation Location
@@ -70,6 +74,14 @@ namespace SampleApplication.ViewModels
 
         public ICommand SaveItemCommand { get; private set; }
 
+        public ICommand SelectAppointmentCommand { get; private set; }
+
+        public override void Closing()
+        {
+            base.Closing();
+            CC.EventMessenger.GetEvent<AppointmentDateSelectionMessageEvent>().Unsubscribe(_selectionToken);
+        }
+
         public override async Task InitializeAsync(System.Collections.Generic.Dictionary<string, string> args)
         {
             if (args != null && args.ContainsKey(Constants.Parameters.Id))
@@ -104,6 +116,11 @@ namespace SampleApplication.ViewModels
             }
         }
 
+        private void OnAppointmentDateSelected(AppointmentDateMessageResult result)
+        {
+            Model.AppointmentDate = result.DateResult.SelectedDate;
+        }
+
         private async void SaveItem()
         {
             await SaveItemAsync();
@@ -133,6 +150,11 @@ namespace SampleApplication.ViewModels
             {
                 await UserNotifier.ShowMessageAsync(result.ToString(), "Save Failed");
             }
+        }
+
+        private async void SelectAppointment()
+        {
+            await CC.Navigation.NavigateAsync(Constants.Navigation.AppointmentSchedulePage);
         }
     }
 }

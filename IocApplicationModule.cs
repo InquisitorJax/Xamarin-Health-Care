@@ -27,10 +27,12 @@ namespace SampleApplication
             builder.RegisterType<MainViewModel>().Named<IViewModel>(Constants.Navigation.MainPage);
             builder.RegisterType<AppointmentViewModel>().Named<IViewModel>(Constants.Navigation.AppointmentPage);
             builder.RegisterType<AuthViewModel>().Named<IViewModel>(Constants.Navigation.AuthPage);
+            builder.RegisterType<AppointmentScheduleViewModel>().Named<IViewModel>(Constants.Navigation.AppointmentSchedulePage);
 
             builder.RegisterType<MainPage>().Named<IView>(Constants.Navigation.MainPage);
             builder.RegisterType<AuthPage>().Named<IView>(Constants.Navigation.AuthPage);
             builder.RegisterType<AppointmentPage>().Named<IView>(Constants.Navigation.AppointmentPage);
+            builder.RegisterType<AppointmentSchedulePage>().Named<IView>(Constants.Navigation.AppointmentSchedulePage);
         }
     }
 }

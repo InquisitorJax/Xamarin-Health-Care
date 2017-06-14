@@ -5,6 +5,7 @@
         public class Navigation
         {
             public const string AppointmentPage = "AppointmentPage";
+            public const string AppointmentSchedulePage = "AppointmentSchedulePage";
             public const string AppointmentsPage = "AppointmentsPage";
             public const string AuthPage = "AuthPage";
             public const string HealthCareProviderPage = "HealthCareProviderPage";

@@ -33,7 +33,7 @@ namespace SampleApplication.Commands
 
                 if (locationResult.IsValid())
                 {
-                    var randomPoints = _locationService.GenerateRandomLocations(locationResult.CurrentLocation, 500, providersResult.ModelCollection.Count);
+                    var randomPoints = _locationService.GenerateRandomLocations(locationResult.CurrentLocation, 5000, providersResult.ModelCollection.Count);
                     int index = 0;
                     foreach (var provider in providersResult.ModelCollection)
                     {

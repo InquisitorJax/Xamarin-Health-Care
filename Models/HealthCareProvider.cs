@@ -6,14 +6,30 @@ namespace SampleApplication.Models
     {
         private string _description;
 
+        private string _email;
+        private string _facebookUrl;
         private string _imageName;
         private string _location;
         private string _name;
+
+        private string _phoneNumber;
 
         public string Description
         {
             get { return _description; }
             set { SetProperty(ref _description, value); }
+        }
+
+        public string Email
+        {
+            get { return _email; }
+            set { SetProperty(ref _email, value); }
+        }
+
+        public string FacebookUrl
+        {
+            get { return _facebookUrl; }
+            set { SetProperty(ref _facebookUrl, value); }
         }
 
         public string ImageName
@@ -32,6 +48,12 @@ namespace SampleApplication.Models
         {
             get { return _name; }
             set { SetProperty(ref _name, value); }
+        }
+
+        public string PhoneNumber
+        {
+            get { return _phoneNumber; }
+            set { SetProperty(ref _phoneNumber, value); }
         }
     }
 }

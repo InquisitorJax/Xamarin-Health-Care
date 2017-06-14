@@ -3,6 +3,7 @@
              xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:Core.Controls;assembly=XForms.Shared"
+             xmlns:converters="clr-namespace:Core.Converters;assembly=XForms.Shared"
              xmlns:views="clr-namespace:SampleApplication.Views"
              Title="{Binding Model.Name}"
              BackgroundColor="{StaticResource WindowBackground}">
@@ -21,17 +22,32 @@
 
     <ContentPage.Content>
         <Grid>
+            <Grid.Resources>
+                <ResourceDictionary>
+                    <converters:NullValueToFillTextConverter x:Key="nvt" />
+                </ResourceDictionary>
+            </Grid.Resources>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <StackLayout Padding="{StaticResource FormPadding}">
-                <Frame HasShadow="True">
+                <Frame HasShadow="True" HeightRequest="60">
                     <views:HealthProviderCard Value="{Binding Provider}" />
                 </Frame>
                 <controls:EntryEx EntryText="{Binding Model.Name}" LabelText="name" />
+                <StackLayout Orientation="Horizontal">
+                    <Image HeightRequest="30"
+                           Source="calendar_select"
+                           WidthRequest="30">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding SelectAppointmentCommand}" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <Label Text="{Binding Model.AppointmentDate, Converter={StaticResource nvt}, ConverterParameter='select an appointment'}" VerticalOptions="Center" />
+                </StackLayout>
                 <Label Text="Description" />
-                <controls:EditorEx MaxHeight="200" Text="{Binding Model.Description}" />
+                <controls:EditorEx MaxHeight="70" Text="{Binding Model.Description}" />
             </StackLayout>
             <!--<Label Grid.Row="1"
                    HorizontalOptions="Center"

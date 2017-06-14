@@ -125,7 +125,7 @@ namespace SampleApplication.ViewModels
                 if (fetchResult.IsValid())
                 {
                     Appointments = fetchResult.ModelCollection.AsObservableCollection();
-                    //await Task.Delay(3000); //simulate fetching online data
+                    await Task.Delay(1000); //simulate fetching online data
                 }
                 else
                 {

@@ -1,4 +1,10 @@
-﻿using System;
+﻿#if !DEBUG
+using Syncfusion.SfSchedule.XForms.UWP;
+using System.Collections.Generic;
+using System.Reflection;
+#endif
+
+using System;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.UI.Xaml;
@@ -20,11 +26,6 @@ namespace SampleApplication.Windows
         {
             this.InitializeComponent();
             this.Suspending += OnSuspending;
-        }
-
-        private void CustomizeForXamarinForms(LaunchActivatedEventArgs e)
-        {
-            Xamarin.Forms.Forms.Init(e);
         }
 
         /// <summary>
@@ -72,6 +73,19 @@ namespace SampleApplication.Windows
             }
             // Ensure the current window is active
             Window.Current.Activate();
+        }
+
+        private void CustomizeForXamarinForms(LaunchActivatedEventArgs e)
+        {
+#if !DEBUG
+            List<Assembly> assembliesToInclude = new List<Assembly>();
+            assembliesToInclude.Add(typeof(SfScheduleRenderer).GetTypeInfo().Assembly);
+            //Now, add all the assemblies your app uses assembliesToInclude.Add(typeof(SfScheduleRenderer).GetTypeInfo().Assembly);
+            // replaces Xamarin.Forms.Forms.Init(e);
+            Xamarin.Forms.Forms.Init(e, assembliesToInclude);
+#else
+            Xamarin.Forms.Forms.Init(e);
+#endif
         }
 
         /// <summary>

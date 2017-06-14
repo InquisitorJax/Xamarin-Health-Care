@@ -37,13 +37,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="AppServices\ActionMessageResult.cs" />
     <Compile Include="AppServices\Device.cs" />
     <Compile Include="AppServices\LocationServices.cs" />
+    <Compile Include="AppServices\TaskResult.cs" />
     <Compile Include="CC.cs" />
     <Compile Include="Controls\ActivityIndicatorMessage.xaml.cs">
       <DependentUpon>ActivityIndicatorMessage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\CommandView.cs" />
+    <Compile Include="Controls\DateTimeResult.cs" />
     <Compile Include="Controls\EditorEx.cs" />
     <Compile Include="Controls\EntryEx.xaml.cs">
       <DependentUpon>EntryEx.xaml</DependentUpon>
@@ -56,9 +59,15 @@
     <Compile Include="Controls\MapView.xaml.cs">
       <DependentUpon>MapView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\NullableDatePicker.cs" />
+    <Compile Include="Controls\SchedulePickerView.xaml.cs">
+      <DependentUpon>SchedulePickerView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SchedulePickerViewModel.cs" />
     <Compile Include="Controls\SfListViewEx.cs" />
     <Compile Include="Converters\BooleanToInvertedBooleanConverter.cs" />
     <Compile Include="Converters\ByteArrayToImageSourceConverter.cs" />
+    <Compile Include="Converters\NullValueToFillTextConverter.cs" />
     <Compile Include="Converters\NullValueToBooleanConverter.cs" />
     <Compile Include="INavigationService.cs" />
     <Compile Include="IocSharedModule.cs" />
@@ -98,6 +107,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Controls\MapView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Controls\SchedulePickerView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

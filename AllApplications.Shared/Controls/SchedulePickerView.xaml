@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView x:Class="Core.Controls.SchedulePicker"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:syncfusion="clr-namespace:Syncfusion.SfSchedule.XForms;assembly=Syncfusion.SfSchedule.XForms"
+             x:Name="picker">
+    <ContentView.Content>
+        <Grid>
+            <syncfusion:SfSchedule x:Name="schedule"
+                                   DataSource="{Binding Appointments}"
+                                   ScheduleView="DayView">
+                <syncfusion:SfSchedule.HeaderStyle>
+                    <syncfusion:HeaderStyle BackgroundColor="#2C92D1"
+                                            TextColor="White"
+                                            TextStyle="20" />
+                </syncfusion:SfSchedule.HeaderStyle>
+                <syncfusion:SfSchedule.SelectionView>
+                    <Button BackgroundColor="#EE2B89"
+                            Text="New Appointment"
+                            TextColor="White" />
+                </syncfusion:SfSchedule.SelectionView>
+                <syncfusion:SfSchedule.AppointmentMapping>
+                    <syncfusion:ScheduleAppointmentMapping ColorMapping="Color"
+                                                           EndTimeMapping="EndDateTime"
+                                                           StartTimeMapping="StartDateTime"
+                                                           SubjectMapping="Name" />
+                </syncfusion:SfSchedule.AppointmentMapping>
+            </syncfusion:SfSchedule>
+        </Grid>
+    </ContentView.Content>
+</ContentView>

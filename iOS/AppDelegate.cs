@@ -2,6 +2,7 @@
 using SampleApplication.AppServices;
 using Syncfusion.ListView.XForms.iOS;
 using Syncfusion.SfBusyIndicator.XForms.iOS;
+using Syncfusion.SfSchedule.XForms.iOS;
 using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
@@ -39,6 +40,7 @@ namespace SampleApplication.iOS
 
             SfListViewRenderer.Init();
             new SfBusyIndicatorRenderer();
+            SfScheduleRenderer.Init();
             Xamarin.FormsMaps.Init();
 
             BootstrapperService.Initialize(new IociOSModule()).GetAwaiter();
