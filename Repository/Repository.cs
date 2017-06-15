@@ -188,9 +188,10 @@ namespace SampleApplication
 
             if (fetchProvidersResult.IsValid() && fetchProvidersResult.ModelCollection.Count == 0)
             {
-                var provider1 = new HealthCareProvider { Name = "Doctor Strange", Description = "For all your mystical needs", ImageName = "strange", PhoneNumber = "555 1234" };
-                var provider2 = new HealthCareProvider { Name = "Doctor Manhattan", Description = "For everything in the DC universe that needs fixing", ImageName = "manhattan", PhoneNumber = "555 1441" };
-                var provider3 = new HealthCareProvider { Name = "Doctor Fate", Description = "Don't pay attention to Strange - I am the true master!", ImageName = "fate", PhoneNumber = "555 7777" };
+                const string facebook = "https://www.facebook.com/cliniko";
+                var provider1 = new HealthCareProvider { Name = "Doctor Strange", Description = "For all your mystical needs", ImageName = "strange", PhoneNumber = "555 1234", FacebookUrl = facebook };
+                var provider2 = new HealthCareProvider { Name = "Doctor Manhattan", Description = "For everything in the DC universe that needs fixing", ImageName = "manhattan", PhoneNumber = "555 1441", FacebookUrl = facebook };
+                var provider3 = new HealthCareProvider { Name = "Doctor Fate", Description = "Don't pay attention to Strange - I am the true master!", ImageName = "fate", PhoneNumber = "555 7777", FacebookUrl = facebook };
                 await SaveProviderAsync(provider1, ModelUpdateEvent.Created);
                 await SaveProviderAsync(provider2, ModelUpdateEvent.Created);
                 await SaveProviderAsync(provider3, ModelUpdateEvent.Created);

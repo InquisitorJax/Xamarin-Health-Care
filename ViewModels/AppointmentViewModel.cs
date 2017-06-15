@@ -35,6 +35,7 @@ namespace SampleApplication.ViewModels
             SaveItemCommand = new DelegateCommand(SaveItem);
             SelectAppointmentCommand = new DelegateCommand(SelectAppointment);
             SelectProviderCommand = new DelegateCommand(SelectProvider);
+            ShareCommand = new DelegateCommand(Share);
 
             _selectionToken = CC.EventMessenger.GetEvent<AppointmentDateSelectionMessageEvent>().Subscribe(OnAppointmentDateSelected);
             _providerSelectionToken = CC.EventMessenger.GetEvent<ProviderSelectionMessageEvent>().Subscribe(OnProviderSelected);
@@ -82,6 +83,8 @@ namespace SampleApplication.ViewModels
         public ICommand SelectAppointmentCommand { get; private set; }
 
         public ICommand SelectProviderCommand { get; private set; }
+
+        public ICommand ShareCommand { get; private set; }
 
         public override void Closing()
         {
@@ -186,6 +189,14 @@ namespace SampleApplication.ViewModels
         private async void SelectProvider()
         {
             await CC.Navigation.NavigateAsync(Constants.Navigation.ProviderListPage);
+        }
+
+        private void Share()
+        {
+            string message = "@cliniko care is awesome! service from " + Provider.Name + " was fantastic!";
+            string title = "cliniko care";
+
+            CC.Device.Share(message, title, Provider.FacebookUrl);
         }
     }
 }

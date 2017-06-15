@@ -8,9 +8,20 @@
              Title="{Binding Model.Name}"
              BackgroundColor="{StaticResource WindowBackground}">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Command="{Binding SaveItemCommand}"
+
+        <ToolbarItem Command="{Binding ShareCommand}"
                      Order="Primary"
                      Priority="0">
+            <ToolbarItem.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource"
+                            Android="share_dark.png"
+                            WinPhone="Images/share_dark.png"
+                            iOS="share.png" />
+            </ToolbarItem.Icon>
+        </ToolbarItem>
+        <ToolbarItem Command="{Binding SaveItemCommand}"
+                     Order="Primary"
+                     Priority="1">
             <ToolbarItem.Icon>
                 <OnPlatform x:TypeArguments="FileImageSource"
                             Android="ic_submit_dark.png"
