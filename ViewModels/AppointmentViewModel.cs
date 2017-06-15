@@ -19,11 +19,10 @@ namespace SampleApplication.ViewModels
         private readonly IModelValidator<Appointment> _validator;
 
         private bool _isNewModel;
-
         private GeoLocation _location;
         private Appointment _model;
-
         private HealthCareProvider _provider;
+        private SubscriptionToken _providerSelectionToken;
         private SubscriptionToken _selectionToken;
 
         public AppointmentViewModel(IRepository repository, IModelValidator<Appointment> validator)
@@ -34,7 +33,10 @@ namespace SampleApplication.ViewModels
             Locations = new ObservableCollection<GeoLocation>();
             SaveItemCommand = new DelegateCommand(SaveItem);
             SelectAppointmentCommand = new DelegateCommand(SelectAppointment);
+            SelectProviderCommand = new DelegateCommand(SelectProvider);
+
             _selectionToken = CC.EventMessenger.GetEvent<AppointmentDateSelectionMessageEvent>().Subscribe(OnAppointmentDateSelected);
+            _providerSelectionToken = CC.EventMessenger.GetEvent<ProviderSelectionMessageEvent>().Subscribe(OnProviderSelected);
         }
 
         public GeoLocation Location
@@ -76,10 +78,14 @@ namespace SampleApplication.ViewModels
 
         public ICommand SelectAppointmentCommand { get; private set; }
 
+        public ICommand SelectProviderCommand { get; private set; }
+
         public override void Closing()
         {
-            base.Closing();
             CC.EventMessenger.GetEvent<AppointmentDateSelectionMessageEvent>().Unsubscribe(_selectionToken);
+            CC.EventMessenger.GetEvent<ProviderSelectionMessageEvent>().Unsubscribe(_providerSelectionToken);
+
+            base.Closing();
         }
 
         public override async Task InitializeAsync(System.Collections.Generic.Dictionary<string, string> args)
@@ -118,7 +124,19 @@ namespace SampleApplication.ViewModels
 
         private void OnAppointmentDateSelected(AppointmentDateMessageResult result)
         {
-            Model.AppointmentDate = result.DateResult.SelectedDate;
+            if (result.Result == Core.AppServices.TaskResult.Success)
+            {
+                Model.AppointmentDate = result.DateResult.SelectedDate;
+            }
+        }
+
+        private void OnProviderSelected(ProviderSelectionMessageResult result)
+        {
+            if (result.Result == Core.AppServices.TaskResult.Success)
+            {
+                Provider = result.SelectedProvider;
+                Model.ProviderImageName = Provider.ImageName;
+            }
         }
 
         private async void SaveItem()
@@ -155,6 +173,11 @@ namespace SampleApplication.ViewModels
         private async void SelectAppointment()
         {
             await CC.Navigation.NavigateAsync(Constants.Navigation.AppointmentSchedulePage);
+        }
+
+        private async void SelectProvider()
+        {
+            await CC.Navigation.NavigateAsync(Constants.Navigation.ProviderListPage);
         }
     }
 }

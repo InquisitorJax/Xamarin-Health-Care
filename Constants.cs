@@ -11,6 +11,7 @@
             public const string HealthCareProviderPage = "HealthCareProviderPage";
             public const string Logout = "Logout";
             public const string MainPage = "MainPage";
+            public const string ProviderListPage = "ProviderListPage";
             public const string ProviderSearchPage = "ProviderSearchPage";
         }
 

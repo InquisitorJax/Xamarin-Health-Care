@@ -92,6 +92,18 @@ namespace Core.Controls
                 && Math.Round(location1.Longitude, rounding) == Math.Round(location2.Longitude, rounding));
         }
 
+        public double DistanceFrom(GeoLocation location)
+        {
+            double distance = 0;
+
+            if (location != null)
+            {
+                distance = MapExtensions.CalculateDistance(Latitude, Longitude, location.Latitude, location.Longitude, 'M');
+            }
+
+            return distance;
+        }
+
         public bool IsInPolygon(IList<GeoLocation> polygonLocations)
         {
             //based in PIP: https://en.wikipedia.org/wiki/Point_in_polygon

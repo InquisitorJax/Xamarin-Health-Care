@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace SampleApplication.ViewModels
 {
@@ -70,13 +71,36 @@ namespace SampleApplication.ViewModels
 
             Appointment existingAppointment = new Appointment();
             DateTime currentDate = DateTime.Now;
-            DateTime startTime = new DateTime(currentDate.Year, currentDate.Month, currentDate.Day, 10, 0, 0);
+            DateTime startTime = new DateTime(currentDate.Year, currentDate.Month, currentDate.Day, 11, 0, 0);
             DateTime endTime = new DateTime(currentDate.Year, currentDate.Month, currentDate.Day, 12, 0, 0);
             existingAppointment.StartDateTime = startTime;
             existingAppointment.EndDateTime = endTime;
-            existingAppointment.Name = "blocked meeting";
+            existingAppointment.Color = Color.FromHex("#262626");
+            existingAppointment.Name = "existing provider appointment";
 
             Appointments.Add(existingAppointment);
+
+            Appointment otherProviderApt = new Appointment();
+            currentDate = DateTime.Now;
+            startTime = new DateTime(currentDate.Year, currentDate.Month, currentDate.Day, 9, 0, 0);
+            endTime = new DateTime(currentDate.Year, currentDate.Month, currentDate.Day, 10, 0, 0);
+            otherProviderApt.Color = Color.FromHex("#2286C4");
+            otherProviderApt.StartDateTime = startTime;
+            otherProviderApt.EndDateTime = endTime;
+            otherProviderApt.Name = "Jessica's Dentist Appointment";
+
+            Appointments.Add(otherProviderApt);
+
+            Appointment customerCalendarApt = new Appointment();
+            currentDate = DateTime.Now;
+            startTime = new DateTime(currentDate.Year, currentDate.Month, currentDate.Day, 13, 0, 0);
+            endTime = new DateTime(currentDate.Year, currentDate.Month, currentDate.Day, 14, 0, 0);
+            customerCalendarApt.Color = Color.FromHex("#249116");
+            customerCalendarApt.StartDateTime = startTime;
+            customerCalendarApt.EndDateTime = endTime;
+            customerCalendarApt.Name = "Lunch with David";
+
+            Appointments.Add(customerCalendarApt);
 
             return Task.FromResult(retResult);
         }

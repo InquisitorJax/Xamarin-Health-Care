@@ -17,6 +17,7 @@ namespace SampleApplication
             builder.RegisterType<Repository>().As<IRepository>().AsSelf().SingleInstance();
 
             builder.RegisterType<LandingPageNavigationService>().As<ILandingPageNavigationService>().AsSelf().SingleInstance();
+            builder.RegisterType<AppCache>().As<IAppCache>().AsSelf().SingleInstance();
 
             builder.RegisterType<UpdateProviderLocationsCommand>().As<IUpdateProviderLocationsCommand>().AsSelf();
 
@@ -27,10 +28,12 @@ namespace SampleApplication
             builder.RegisterType<MainViewModel>().Named<IViewModel>(Constants.Navigation.MainPage);
             builder.RegisterType<AppointmentViewModel>().Named<IViewModel>(Constants.Navigation.AppointmentPage);
             builder.RegisterType<AuthViewModel>().Named<IViewModel>(Constants.Navigation.AuthPage);
+            builder.RegisterType<ProviderListViewModel>().Named<IViewModel>(Constants.Navigation.ProviderListPage);
             builder.RegisterType<AppointmentScheduleViewModel>().Named<IViewModel>(Constants.Navigation.AppointmentSchedulePage);
 
             builder.RegisterType<MainPage>().Named<IView>(Constants.Navigation.MainPage);
             builder.RegisterType<AuthPage>().Named<IView>(Constants.Navigation.AuthPage);
+            builder.RegisterType<ProviderListPage>().Named<IView>(Constants.Navigation.ProviderListPage);
             builder.RegisterType<AppointmentPage>().Named<IView>(Constants.Navigation.AppointmentPage);
             builder.RegisterType<AppointmentSchedulePage>().Named<IView>(Constants.Navigation.AppointmentSchedulePage);
         }

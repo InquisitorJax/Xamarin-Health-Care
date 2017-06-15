@@ -25,6 +25,7 @@
             <Grid.Resources>
                 <ResourceDictionary>
                     <converters:NullValueToFillTextConverter x:Key="nvt" />
+                    <converters:NullValueToBooleanConverter x:Key="nvb" />
                 </ResourceDictionary>
             </Grid.Resources>
             <Grid.RowDefinitions>
@@ -32,14 +33,29 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <StackLayout Padding="{StaticResource FormPadding}">
-                <Frame HasShadow="True" HeightRequest="60">
-                    <views:HealthProviderCard Value="{Binding Provider}" />
-                </Frame>
+                <Grid HeightRequest="100" IsVisible="{Binding Provider, Converter={StaticResource nvb}, ConverterParameter=convert}">
+                    <Frame HasShadow="True">
+                        <views:HealthProviderCard Value="{Binding Provider}" />
+                    </Frame>
+
+                    <Image Margin="0,50,20,0"
+                           HeightRequest="40"
+                           HorizontalOptions="End"
+                           Source="action_phone"
+                           VerticalOptions="End"
+                           WidthRequest="40" />
+                </Grid>
+                <Grid IsVisible="{Binding Provider, Converter={StaticResource nvb}}">
+                    <Button BackgroundColor="{StaticResource Accent}"
+                            Command="{Binding SelectProviderCommand}"
+                            Text="select provider"
+                            TextColor="{StaticResource Text}" />
+                </Grid>
                 <controls:EntryEx EntryText="{Binding Model.Name}" LabelText="name" />
                 <StackLayout Orientation="Horizontal">
-                    <Image HeightRequest="30"
+                    <Image HeightRequest="50"
                            Source="calendar_select"
-                           WidthRequest="30">
+                           WidthRequest="50">
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding SelectAppointmentCommand}" />
                         </Image.GestureRecognizers>
@@ -49,11 +65,20 @@
                 <Label Text="Description" />
                 <controls:EditorEx MaxHeight="70" Text="{Binding Model.Description}" />
             </StackLayout>
-            <!--<Label Grid.Row="1"
-                   HorizontalOptions="Center"
-                   Text="MAP"
-                   VerticalOptions="Center" />-->
+            <Grid Grid.Row="1" IsVisible="{Binding Provider, Converter={StaticResource nvb}}">
+                <StackLayout HorizontalOptions="Center"
+                             Orientation="Horizontal"
+                             VerticalOptions="Center">
+                    <Image HeightRequest="30"
+                           Source="location"
+                           WidthRequest="30" />
+                    <Label Text="select a health provider" VerticalTextAlignment="Center" />
+                </StackLayout>
+            </Grid>
             <controls:MapView Grid.Row="1"
+                              IsVisible="{Binding Provider,
+                                                  Converter={StaticResource nvb},
+                                                  ConverterParameter=convert}"
                               Locations="{Binding Locations}"
                               MapCenter="{Binding Location}" />
         </Grid>

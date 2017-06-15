@@ -1,5 +1,6 @@
 ﻿using Core;
 using Core.AppServices;
+using SampleApplication.Models;
 using System.Threading.Tasks;
 
 namespace SampleApplication.Commands
@@ -10,13 +11,15 @@ namespace SampleApplication.Commands
 
     public class UpdateProviderLocationsCommand : AsyncLogicCommand<object, CommandResult>, IUpdateProviderLocationsCommand
     {
+        private readonly IAppCache _appCache;
         private readonly ILocationService _locationService;
         private readonly IRepository _repo;
 
-        public UpdateProviderLocationsCommand(IRepository repo, ILocationService locationService)
+        public UpdateProviderLocationsCommand(IRepository repo, ILocationService locationService, IAppCache appCache)
         {
             _repo = repo;
             _locationService = locationService;
+            _appCache = appCache;
         }
 
         public override async Task<CommandResult> ExecuteAsync(object request)
@@ -33,6 +36,7 @@ namespace SampleApplication.Commands
 
                 if (locationResult.IsValid())
                 {
+                    _appCache.CurrentLocation = locationResult.CurrentLocation;
                     var randomPoints = _locationService.GenerateRandomLocations(locationResult.CurrentLocation, 5000, providersResult.ModelCollection.Count);
                     int index = 0;
                     foreach (var provider in providersResult.ModelCollection)

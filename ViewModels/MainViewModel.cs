@@ -106,7 +106,7 @@ namespace SampleApplication.ViewModels
 
         private async void CreateAppointmentNavigate()
         {
-            await Navigation.NavigateAsync(Constants.Navigation.HealthCareProviderPage);
+            await Navigation.NavigateAsync(Constants.Navigation.AppointmentPage);
         }
 
         private async void FetchAppointments()

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
-<ContentPage x:Class="SampleApplication.Views.AppointmentListPage"
+<ContentPage x:Class="SampleApplication.Views.ProviderListPage"
              xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:Core.Controls;assembly=XForms.Shared"
@@ -8,32 +8,20 @@
              xmlns:views="clr-namespace:SampleApplication.Views"
              Title="cliniko care"
              BackgroundColor="#F5F5F5">
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Command="{Binding CreateAppointmentNavigationCommand}"
-                     Order="Primary"
-                     Priority="0">
-            <ToolbarItem.Icon>
-                <OnPlatform x:TypeArguments="FileImageSource"
-                            Android="ic_insert_dark.png"
-                            WinPhone="Images/ic_insert_dark.png"
-                            iOS="ic_insert.png" />
-            </ToolbarItem.Icon>
-        </ToolbarItem>
-    </ContentPage.ToolbarItems>
 
     <ContentPage.Content>
         <Grid>
             <controls:SfListViewEx x:Name="_listView"
                                    ItemSize="130"
                                    ItemSpacing="5,2,5,2"
-                                   ItemTappedCommand="{Binding OpenSelectedAppointmentCommand}"
-                                   ItemsSource="{Binding Appointments}"
-                                   SelectedItem="{Binding SelectedAppointment}"
+                                   ItemTappedCommand="{Binding SelectProviderCommand}"
+                                   ItemsSource="{Binding Providers}"
+                                   SelectedItem="{Binding SelectedProvider}"
                                    SelectionMode="Single">
                 <controls:SfListViewEx.ItemTemplate>
                     <DataTemplate>
                         <Frame HasShadow="True">
-                            <views:AppointmentCard Value="{Binding .}" />
+                            <views:HealthProviderCardTemp Value="{Binding .}" />
                         </Frame>
                     </DataTemplate>
                 </controls:SfListViewEx.ItemTemplate>

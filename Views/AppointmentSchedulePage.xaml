@@ -2,7 +2,8 @@
 <ContentPage x:Class="SampleApplication.Views.AppointmentSchedulePage"
              xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:controls="clr-namespace:Core.Controls;assembly=XForms.Shared">
+             xmlns:controls="clr-namespace:Core.Controls;assembly=XForms.Shared"
+             Title="choose appointment">
     <ContentPage.Content>
         <Grid>
             <controls:SchedulePicker Command="{Binding AddNewAppointmentTimeCommand}" />

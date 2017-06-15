@@ -1,4 +1,5 @@
 ﻿using Core;
+using SQLite;
 
 namespace SampleApplication.Models
 {
@@ -6,6 +7,7 @@ namespace SampleApplication.Models
     {
         private string _description;
 
+        private double _distanceFromCurrentLocation;
         private string _email;
         private string _facebookUrl;
         private string _imageName;
@@ -18,6 +20,13 @@ namespace SampleApplication.Models
         {
             get { return _description; }
             set { SetProperty(ref _description, value); }
+        }
+
+        [Ignore]
+        public double DistanceFromCurrentLocation
+        {
+            get { return _distanceFromCurrentLocation; }
+            set { SetProperty(ref _distanceFromCurrentLocation, value); }
         }
 
         public string Email

@@ -16,7 +16,7 @@
                 </syncfusion:SfSchedule.HeaderStyle>
                 <syncfusion:SfSchedule.SelectionView>
                     <Button BackgroundColor="#EE2B89"
-                            Text="New Appointment"
+                            Text="tap for new appointment"
                             TextColor="White" />
                 </syncfusion:SfSchedule.SelectionView>
                 <syncfusion:SfSchedule.AppointmentMapping>

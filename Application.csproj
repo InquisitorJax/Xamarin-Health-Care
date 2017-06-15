@@ -41,7 +41,9 @@
     <Compile Include="AppServices\BootstrapperService.cs" />
     <Compile Include="AppServices\LandingPageNavigationService.cs" />
     <Compile Include="Commands\UpdateProviderLocationsCommand.cs" />
+    <Compile Include="Events\ProviderSelectedEvent.cs" />
     <Compile Include="Events\AppointmentDateSelectedEvent.cs" />
+    <Compile Include="Models\AppSettings.cs" />
     <Compile Include="Models\HealthCareProvider.cs" />
     <Compile Include="Models\MainMenuItem.cs" />
     <Compile Include="Models\HealthCareUser.cs" />
@@ -52,8 +54,15 @@
     <Compile Include="ViewModels\AuthViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\AppointmentViewModel.cs" />
+    <Compile Include="ViewModels\ProviderListViewModel.cs" />
     <Compile Include="Views\AppointmentCard.xaml.cs">
       <DependentUpon>AppointmentCard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\HealthProviderCardTemp.xaml.cs">
+      <DependentUpon>HealthProviderCardTemp.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProviderListPage.xaml.cs">
+      <DependentUpon>ProviderListPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\AppointmentSchedulePage.xaml.cs">
       <DependentUpon>AppointmentSchedulePage.xaml</DependentUpon>
@@ -89,7 +98,13 @@
     <None Include=".Docs\TODO.txt" />
     <None Include="project.json" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Views\ProviderListPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>
+      </SubType>
+    </EmbeddedResource>
+  </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\AppointmentListPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
@@ -149,6 +164,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\AppointmentSchedulePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\HealthProviderCardTemp.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

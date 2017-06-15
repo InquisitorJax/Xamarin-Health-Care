@@ -9,6 +9,7 @@ namespace SampleApplication.Models
     public class Appointment : ModelBase, IScheduleAppointment
     {
         private DateTime? _appointmentDate;
+
         private Color _color;
         private string _description;
         private DateTime? _from;
@@ -19,6 +20,11 @@ namespace SampleApplication.Models
         private string _providerImageName;
         private DateTime? _to;
         private string _userId;
+
+        public Appointment()
+        {
+            Color = Color.FromHex("#2C92D1");
+        }
 
         public DateTime? AppointmentDate
         {
@@ -37,7 +43,8 @@ namespace SampleApplication.Models
         [Ignore]
         public Color Color
         {
-            get { return Color.FromHex("#2C92D1"); }
+            get { return _color; }
+            set { SetProperty(ref _color, value); }
         }
 
         public string Description

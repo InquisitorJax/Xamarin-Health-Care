@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<controls:CommandView x:Class="SampleApplication.Views.HealthProviderCardTemp"
+                      xmlns="http://xamarin.com/schemas/2014/forms"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                      xmlns:controls="clr-namespace:Core.Controls;assembly=XForms.Shared"
+                      xmlns:ic="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
+                      x:Name="HealthProviderCard">
+  <ContentView.Content>
+    <Grid>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="Auto" />
+        <ColumnDefinition Width="*" />
+      </Grid.ColumnDefinitions>
+      <Image HeightRequest="90"
+             Source="{Binding Value.ImageName,
+                                    Source={x:Reference HealthProviderCard}}"
+             WidthRequest="90" />
+
+      <!--  ImageCircle BUG: Does not render in a list view template  -->
+      <!--<ic:CircleImage Aspect="AspectFill"
+                            BorderColor="#2C92D1"
+                            BorderThickness="1"
+                            HeightRequest="90"
+                            Source="{Binding Value.ImageName,
+                                             Source={x:Reference HealthProviderCard}}"
+                            WidthRequest="90" />-->
+
+      <Grid Grid.Column="1">
+        <Grid.RowDefinitions>
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Label Text="{Binding Value.Name, Source={x:Reference HealthProviderCard}}" />
+        <Label Grid.Row="1"
+               FontSize="Small"
+               Text="{Binding Value.Description,
+                                      Source={x:Reference HealthProviderCard}}"
+               TextColor="Silver" />
+      </Grid>
+    </Grid>
+  </ContentView.Content>
+</controls:CommandView>
