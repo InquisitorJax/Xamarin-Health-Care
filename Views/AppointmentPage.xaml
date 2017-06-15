@@ -19,9 +19,20 @@
                             iOS="share.png" />
             </ToolbarItem.Icon>
         </ToolbarItem>
-        <ToolbarItem Command="{Binding SaveItemCommand}"
+        <ToolbarItem Command="{Binding SelectPatientCommand}"
                      Order="Primary"
                      Priority="1">
+            <ToolbarItem.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource"
+                            Android="add_patient_dark.png"
+                            WinPhone="Images/add_patient_dark.png"
+                            iOS="add_patient.png" />
+            </ToolbarItem.Icon>
+        </ToolbarItem>
+
+        <ToolbarItem Command="{Binding SaveItemCommand}"
+                     Order="Primary"
+                     Priority="2">
             <ToolbarItem.Icon>
                 <OnPlatform x:TypeArguments="FileImageSource"
                             Android="ic_submit_dark.png"

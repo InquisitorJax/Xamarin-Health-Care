@@ -35,6 +35,7 @@ namespace SampleApplication.ViewModels
             SaveItemCommand = new DelegateCommand(SaveItem);
             SelectAppointmentCommand = new DelegateCommand(SelectAppointment);
             SelectProviderCommand = new DelegateCommand(SelectProvider);
+            SelectPatientCommand = new DelegateCommand(SelectPatient);
             ShareCommand = new DelegateCommand(Share);
 
             _selectionToken = CC.EventMessenger.GetEvent<AppointmentDateSelectionMessageEvent>().Subscribe(OnAppointmentDateSelected);
@@ -81,6 +82,8 @@ namespace SampleApplication.ViewModels
         public ICommand SaveItemCommand { get; private set; }
 
         public ICommand SelectAppointmentCommand { get; private set; }
+
+        public ICommand SelectPatientCommand { get; private set; }
 
         public ICommand SelectProviderCommand { get; private set; }
 
@@ -184,6 +187,11 @@ namespace SampleApplication.ViewModels
         private async void SelectAppointment()
         {
             await CC.Navigation.NavigateAsync(Constants.Navigation.AppointmentSchedulePage);
+        }
+
+        private async void SelectPatient()
+        {
+            await CC.UserNotifier.ShowMessageAsync("TODO: select a family member for the appointment", "under construction");
         }
 
         private async void SelectProvider()
