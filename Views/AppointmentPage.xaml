@@ -43,7 +43,11 @@
                            HorizontalOptions="End"
                            Source="action_phone"
                            VerticalOptions="End"
-                           WidthRequest="40" />
+                           WidthRequest="40">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding PhoneProviderCommand}" />
+                        </Image.GestureRecognizers>
+                    </Image>
                 </Grid>
                 <Grid IsVisible="{Binding Provider, Converter={StaticResource nvb}}">
                     <Button BackgroundColor="{StaticResource Accent}"

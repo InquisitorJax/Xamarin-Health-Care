@@ -31,6 +31,7 @@ namespace SampleApplication.ViewModels
             _validator = validator;
 
             Locations = new ObservableCollection<GeoLocation>();
+            PhoneProviderCommand = new DelegateCommand(PhoneProvider);
             SaveItemCommand = new DelegateCommand(SaveItem);
             SelectAppointmentCommand = new DelegateCommand(SelectAppointment);
             SelectProviderCommand = new DelegateCommand(SelectProvider);
@@ -60,6 +61,8 @@ namespace SampleApplication.ViewModels
             get { return _model; }
             set { SetProperty(ref _model, value); }
         }
+
+        public ICommand PhoneProviderCommand { get; private set; }
 
         public HealthCareProvider Provider
         {
@@ -137,6 +140,11 @@ namespace SampleApplication.ViewModels
                 Provider = result.SelectedProvider;
                 Model.ProviderImageName = Provider.ImageName;
             }
+        }
+
+        private void PhoneProvider()
+        {
+            CC.Device.OpenUri(new Uri(String.Format("tel:{0}", Provider.PhoneNumber)));
         }
 
         private async void SaveItem()
