@@ -1,5 +1,4 @@
 ﻿using Core;
-using SQLite;
 
 namespace SampleApplication.Models
 {
@@ -29,7 +28,6 @@ namespace SampleApplication.Models
             set { SetProperty(ref _description, value); }
         }
 
-        [Ignore]
         public double DistanceFromCurrentLocation
         {
             get { return _distanceFromCurrentLocation; }

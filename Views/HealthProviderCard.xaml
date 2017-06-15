@@ -23,6 +23,7 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
                 <Label Text="{Binding Value.Name, Source={x:Reference HealthProviderCard}}" />
                 <Label Grid.Row="1"
@@ -30,6 +31,17 @@
                        Text="{Binding Value.Description,
                                       Source={x:Reference HealthProviderCard}}"
                        TextColor="Silver" />
+                <Grid Grid.Row="2" HorizontalOptions="EndAndExpand">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Label Text="{Binding Value.DistanceFromCurrentLocation, Source={x:Reference HealthProviderCard}, StringFormat='{0:F2} kilometers'}}" />
+                    <Image Grid.Column="1"
+                           HeightRequest="20"
+                           Source="location"
+                           WidthRequest="20" />
+                </Grid>
             </Grid>
         </Grid>
     </ContentView.Content>

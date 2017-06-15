@@ -1,5 +1,4 @@
 ﻿using Core;
-using Core.Controls;
 using Prism.Commands;
 using SampleApplication.Events;
 using SampleApplication.Models;
@@ -83,23 +82,25 @@ namespace SampleApplication.ViewModels
                 if (providersResult.IsValid())
                 {
                     var providers = providersResult.ModelCollection;
-                    if (_appCache.CurrentLocation != null)
-                    {
-                        //calculate distances from current location
-                        var currentLocation = _appCache.CurrentLocation;
+                    providers = providers.OrderBy(x => x.DistanceFromCurrentLocation).ToList();
 
-                        //sort by said distance
-                        foreach (var provider in providers)
-                        {
-                            if (!string.IsNullOrEmpty(provider.Location))
-                            {
-                                var providerLocation = GeoLocation.FromWellKnownText(provider.Location);
-                                provider.DistanceFromCurrentLocation = providerLocation.DistanceFrom(currentLocation);
-                            }
-                        }
+                    //if (_appCache.CurrentLocation != null)
+                    //{
+                    //    //calculate distances from current location
+                    //    var currentLocation = _appCache.CurrentLocation;
 
-                        providers = providers.OrderBy(x => x.DistanceFromCurrentLocation).ToList();
-                    }
+                    //    //sort by said distance
+                    //    foreach (var provider in providers)
+                    //    {
+                    //        if (!string.IsNullOrEmpty(provider.Location))
+                    //        {
+                    //            var providerLocation = GeoLocation.FromWellKnownText(provider.Location);
+                    //            provider.DistanceFromCurrentLocation = providerLocation.DistanceFrom(currentLocation);
+                    //        }
+                    //    }
+
+                    //    providers = providers.OrderBy(x => x.DistanceFromCurrentLocation).ToList();
+                    //}
 
                     Providers = providers.AsObservableCollection();
                 }

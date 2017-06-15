@@ -44,6 +44,7 @@ namespace SampleApplication.Commands
                         var location = randomPoints[index];
 
                         provider.Location = location.ToWellKnownText();
+                        provider.DistanceFromCurrentLocation = location.DistanceFrom(_appCache.CurrentLocation);
                         await _repo.SaveProviderAsync(provider, ModelUpdateEvent.Updated);
 
                         index++;

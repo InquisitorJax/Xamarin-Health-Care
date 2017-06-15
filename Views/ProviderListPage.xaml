@@ -19,7 +19,8 @@
         <controls:ToolbarItemEx Command="{Binding NewAppointmentCommand}"
                                 Icon="add_appointment_dark"
                                 IsVisible="{Binding IsForSelection,
-                                                    Converter={StaticResource bob}}"
+                                                    Converter={StaticResource bob},
+                                                    Mode=OneWay}"
                                 Order="Primary"
                                 Priority="1" />
     </ContentPage.ToolbarItems>
