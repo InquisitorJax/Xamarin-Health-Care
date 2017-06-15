@@ -1,4 +1,5 @@
-﻿using Plugin.Share;
+﻿using Autofac;
+using Plugin.Share;
 using Plugin.Share.Abstractions;
 using System;
 
@@ -6,6 +7,8 @@ namespace Core.AppServices
 {
     public interface IDevice
     {
+        IMapService MapService { get; }
+
         void OpenUri(Uri uri);
 
         void Share(string shareMessage, string title = null, string url = null);
@@ -13,6 +16,11 @@ namespace Core.AppServices
 
     public class Device : IDevice
     {
+        public IMapService MapService
+        {
+            get { return CC.IoC.Resolve<IMapService>(); }
+        }
+
         public void OpenUri(Uri uri)
         {
             Xamarin.Forms.Device.OpenUri(uri);

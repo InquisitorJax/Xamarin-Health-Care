@@ -19,9 +19,20 @@
                             iOS="share.png" />
             </ToolbarItem.Icon>
         </ToolbarItem>
-        <ToolbarItem Command="{Binding SelectPatientCommand}"
+        <ToolbarItem Command="{Binding SetReminderCommand}"
                      Order="Primary"
                      Priority="1">
+            <ToolbarItem.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource"
+                            Android="alarm_dark.png"
+                            WinPhone="Images/alarm_dark.png"
+                            iOS="alarm.png" />
+            </ToolbarItem.Icon>
+        </ToolbarItem>
+
+        <ToolbarItem Command="{Binding SelectPatientCommand}"
+                     Order="Primary"
+                     Priority="2">
             <ToolbarItem.Icon>
                 <OnPlatform x:TypeArguments="FileImageSource"
                             Android="add_patient_dark.png"
@@ -32,7 +43,7 @@
 
         <ToolbarItem Command="{Binding SaveItemCommand}"
                      Order="Primary"
-                     Priority="2">
+                     Priority="3">
             <ToolbarItem.Icon>
                 <OnPlatform x:TypeArguments="FileImageSource"
                             Android="ic_submit_dark.png"
@@ -55,12 +66,17 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <StackLayout Padding="{StaticResource FormPadding}">
-                <Grid HeightRequest="100" IsVisible="{Binding Provider, Converter={StaticResource nvb}, ConverterParameter=convert}">
+                <Grid HeightRequest="120" IsVisible="{Binding Provider, Converter={StaticResource nvb}, ConverterParameter=convert}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="13" />
+                    </Grid.RowDefinitions>
                     <Frame HasShadow="True">
                         <views:HealthProviderCard Value="{Binding Provider}" />
                     </Frame>
 
-                    <Image Margin="0,50,20,0"
+                    <Image Grid.RowSpan="2"
+                           Margin="0,0,20,0"
                            HeightRequest="40"
                            HorizontalOptions="End"
                            Source="action_phone"
@@ -77,7 +93,7 @@
                             Text="select provider"
                             TextColor="{StaticResource Text}" />
                 </Grid>
-                <controls:EntryEx EntryText="{Binding Model.Name}" LabelText="name" />
+                <controls:EntryEx EntryText="{Binding Model.Name}" LabelText="appointment title" />
                 <StackLayout Orientation="Horizontal">
                     <Image HeightRequest="50"
                            Source="calendar_select"
@@ -88,7 +104,7 @@
                     </Image>
                     <Label Text="{Binding Model.AppointmentDate, Converter={StaticResource nvt}, ConverterParameter='select an appointment'}" VerticalOptions="Center" />
                 </StackLayout>
-                <Label Text="Description" />
+                <Label Text="appointment notes" />
                 <controls:EditorEx MaxHeight="70" Text="{Binding Model.Description}" />
             </StackLayout>
             <Grid Grid.Row="1" IsVisible="{Binding Provider, Converter={StaticResource nvb}}">
@@ -101,12 +117,26 @@
                     <Label Text="select a health provider" VerticalTextAlignment="Center" />
                 </StackLayout>
             </Grid>
-            <controls:MapView Grid.Row="1"
-                              IsVisible="{Binding Provider,
-                                                  Converter={StaticResource nvb},
-                                                  ConverterParameter=convert}"
-                              Locations="{Binding Locations}"
-                              MapCenter="{Binding Location}" />
+            <Grid Grid.Row="1" IsVisible="{Binding Provider, Converter={StaticResource nvb}, ConverterParameter=convert}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="15" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <controls:MapView Grid.Row="1"
+                                  Locations="{Binding Locations}"
+                                  MapCenter="{Binding Location}" />
+                <Image Grid.RowSpan="2"
+                       Margin="17,0,0,0"
+                       HeightRequest="40"
+                       HorizontalOptions="Start"
+                       Source="action_directions"
+                       VerticalOptions="Start"
+                       WidthRequest="40">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ProviderDirectionsCommand}" />
+                    </Image.GestureRecognizers>
+                </Image>
+            </Grid>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

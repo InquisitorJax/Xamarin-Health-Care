@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using Core;
+using Core.AppServices;
 using Core.Controls;
 using Prism.Commands;
 using Prism.Events;
@@ -32,11 +33,13 @@ namespace SampleApplication.ViewModels
 
             Locations = new ObservableCollection<GeoLocation>();
             PhoneProviderCommand = new DelegateCommand(PhoneProvider);
+            ProviderDirectionsCommand = new DelegateCommand(ProviderDirections);
             SaveItemCommand = new DelegateCommand(SaveItem);
             SelectAppointmentCommand = new DelegateCommand(SelectAppointment);
             SelectProviderCommand = new DelegateCommand(SelectProvider);
             SelectPatientCommand = new DelegateCommand(SelectPatient);
             ShareCommand = new DelegateCommand(Share);
+            SetReminderCommand = new DelegateCommand(SetReminder);
 
             _selectionToken = CC.EventMessenger.GetEvent<AppointmentDateSelectionMessageEvent>().Subscribe(OnAppointmentDateSelected);
             _providerSelectionToken = CC.EventMessenger.GetEvent<ProviderSelectionMessageEvent>().Subscribe(OnProviderSelected);
@@ -79,6 +82,8 @@ namespace SampleApplication.ViewModels
             }
         }
 
+        public ICommand ProviderDirectionsCommand { get; private set; }
+
         public ICommand SaveItemCommand { get; private set; }
 
         public ICommand SelectAppointmentCommand { get; private set; }
@@ -86,6 +91,8 @@ namespace SampleApplication.ViewModels
         public ICommand SelectPatientCommand { get; private set; }
 
         public ICommand SelectProviderCommand { get; private set; }
+
+        public ICommand SetReminderCommand { get; private set; }
 
         public ICommand ShareCommand { get; private set; }
 
@@ -153,6 +160,18 @@ namespace SampleApplication.ViewModels
             CC.Device.OpenUri(new Uri(String.Format("tel:{0}", Provider.PhoneNumber)));
         }
 
+        private void ProviderDirections()
+        {
+            var place = new Place
+            {
+                Location = GeoLocation.FromWellKnownText(Provider.Location),
+                Name = Provider.Name,
+                Address = Provider.Address
+            };
+
+            CC.Device.MapService.LaunchNativeMap(place);
+        }
+
         private async void SaveItem()
         {
             await SaveItemAsync();
@@ -197,6 +216,11 @@ namespace SampleApplication.ViewModels
         private async void SelectProvider()
         {
             await CC.Navigation.NavigateAsync(Constants.Navigation.ProviderListPage);
+        }
+
+        private async void SetReminder()
+        {
+            await CC.UserNotifier.ShowMessageAsync("TODO: Set device reminder alarm", "under construction");
         }
 
         private void Share()

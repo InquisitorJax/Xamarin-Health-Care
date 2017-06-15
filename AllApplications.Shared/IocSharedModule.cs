@@ -19,6 +19,7 @@ namespace Core
             builder.RegisterType(typeof(XFormsUserNotifier)).As(typeof(IUserNotifier)).AsSelf();
             builder.RegisterType(typeof(Device)).As(typeof(IDevice)).AsSelf();
             builder.RegisterType(typeof(LocationService)).As(typeof(ILocationService)).AsSelf();
+            builder.RegisterType(typeof(MapService)).As(typeof(IMapService)).AsSelf();
 
             //plugins
             builder.RegisterInstance(CrossGeolocator.Current).As<IGeolocator>();

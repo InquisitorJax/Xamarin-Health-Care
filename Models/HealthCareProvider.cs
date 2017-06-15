@@ -5,6 +5,7 @@ namespace SampleApplication.Models
 {
     public class HealthCareProvider : ModelBase
     {
+        private string _address;
         private string _description;
 
         private double _distanceFromCurrentLocation;
@@ -15,6 +16,12 @@ namespace SampleApplication.Models
         private string _name;
 
         private string _phoneNumber;
+
+        public string Address
+        {
+            get { return _address; }
+            set { SetProperty(ref _address, value); }
+        }
 
         public string Description
         {

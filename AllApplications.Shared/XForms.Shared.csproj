@@ -40,6 +40,8 @@
     <Compile Include="AppServices\ActionMessageResult.cs" />
     <Compile Include="AppServices\Device.cs" />
     <Compile Include="AppServices\LocationServices.cs" />
+    <Compile Include="AppServices\MapService.cs" />
+    <Compile Include="AppServices\Platforms.cs" />
     <Compile Include="AppServices\TaskResult.cs" />
     <Compile Include="CC.cs" />
     <Compile Include="Controls\ActivityIndicatorMessage.xaml.cs">
