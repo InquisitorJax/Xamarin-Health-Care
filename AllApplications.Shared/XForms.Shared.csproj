@@ -67,6 +67,7 @@
     </Compile>
     <Compile Include="Controls\SchedulePickerViewModel.cs" />
     <Compile Include="Controls\SfListViewEx.cs" />
+    <Compile Include="Controls\ToolbarItemEx.cs" />
     <Compile Include="Converters\BooleanToInvertedBooleanConverter.cs" />
     <Compile Include="Converters\ByteArrayToImageSourceConverter.cs" />
     <Compile Include="Converters\NullValueToFillTextConverter.cs" />

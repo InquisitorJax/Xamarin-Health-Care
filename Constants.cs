@@ -12,12 +12,13 @@
             public const string Logout = "Logout";
             public const string MainPage = "MainPage";
             public const string ProviderListPage = "ProviderListPage";
-            public const string ProviderSearchPage = "ProviderSearchPage";
         }
 
         public class Parameters
         {
+            public const string ForSelection = "ForSelection";
             public const string Id = "Id";
+            public const string ProviderId = "ProviderId";
         }
     }
 }

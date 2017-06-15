@@ -38,7 +38,7 @@ namespace SampleApplication.ViewModels
             {
                 Title = "Cliniko Health Providers",
                 IconSource = "circle_logo.png",
-                ActionId = Constants.Navigation.ProviderSearchPage
+                ActionId = Constants.Navigation.ProviderListPage
             });
             MainMenuItems.Add(new MainMenuItem
             {
@@ -167,8 +167,18 @@ namespace SampleApplication.ViewModels
                     case Constants.Navigation.Logout:
                         await LogoutAsync();
                         break;
+
+                    case Constants.Navigation.ProviderListPage:
+                        await NavigateToProviderListAsync();
+
+                        break;
                 }
             }
+        }
+
+        private async Task NavigateToProviderListAsync()
+        {
+            await CC.Navigation.NavigateAsync(Constants.Navigation.ProviderListPage);
         }
 
         private void OnAppointmentUpdated(ModelUpdatedMessageResult<Appointment> updateResult)

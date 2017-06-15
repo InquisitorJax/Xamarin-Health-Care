@@ -7,6 +7,7 @@ using Prism.Events;
 using SampleApplication.Events;
 using SampleApplication.Models;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
@@ -104,7 +105,7 @@ namespace SampleApplication.ViewModels
             base.Closing();
         }
 
-        public override async Task InitializeAsync(System.Collections.Generic.Dictionary<string, string> args)
+        public override async Task InitializeAsync(Dictionary<string, string> args)
         {
             if (args != null && args.ContainsKey(Constants.Parameters.Id))
             {
@@ -135,6 +136,21 @@ namespace SampleApplication.ViewModels
                     Id = Guid.NewGuid().ToString()
                 };
                 _isNewModel = true;
+
+                if (args != null && args.ContainsKey(Constants.Parameters.ProviderId))
+                {
+                    await FetchProviderAsync(args[Constants.Parameters.ProviderId]);
+                }
+            }
+        }
+
+        private async Task FetchProviderAsync(string providerId)
+        {
+            var providerResult = await _repository.FetchProvidersAsync(providerId);
+
+            if (providerResult.IsValid())
+            {
+                Provider = providerResult.ModelCollection.FirstOrDefault();
             }
         }
 
@@ -215,7 +231,12 @@ namespace SampleApplication.ViewModels
 
         private async void SelectProvider()
         {
-            await CC.Navigation.NavigateAsync(Constants.Navigation.ProviderListPage);
+            var args = new Dictionary<string, string>
+            {
+                { Constants.Parameters.ForSelection, "True" }
+            };
+
+            await CC.Navigation.NavigateAsync(Constants.Navigation.ProviderListPage, args);
         }
 
         private async void SetReminder()

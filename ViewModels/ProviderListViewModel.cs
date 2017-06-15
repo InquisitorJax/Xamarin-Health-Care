@@ -16,6 +16,7 @@ namespace SampleApplication.ViewModels
         private readonly IAppCache _appCache;
         private readonly IRepository _repo;
 
+        private bool _isForSelection;
         private ObservableCollection<HealthCareProvider> _providers;
 
         private HealthCareProvider _selectedProvider;
@@ -26,7 +27,16 @@ namespace SampleApplication.ViewModels
             _appCache = appCache;
 
             SelectProviderCommand = new DelegateCommand<HealthCareProvider>(SelectProvider);
+            NewAppointmentCommand = new DelegateCommand(CreateNewAppointment);
         }
+
+        public bool IsForSelection
+        {
+            get { return _isForSelection; }
+            set { SetProperty(ref _isForSelection, value); }
+        }
+
+        public ICommand NewAppointmentCommand { get; private set; }
 
         public ObservableCollection<HealthCareProvider> Providers
         {
@@ -46,7 +56,19 @@ namespace SampleApplication.ViewModels
         {
             await base.InitializeAsync(args);
 
+            _isForSelection = args != null && args.ContainsKey(Constants.Parameters.ForSelection);
+
             await FetchProvidersAsync();
+        }
+
+        private async void CreateNewAppointment()
+        {
+            var args = new Dictionary<string, string>();
+            if (SelectedProvider != null)
+            {
+                args.Add(Constants.Parameters.ProviderId, SelectedProvider.Id);
+            }
+            await CC.Navigation.NavigateAsync(Constants.Navigation.AppointmentPage, args, false, true);
         }
 
         private async Task<Notification> FetchProvidersAsync()
@@ -92,9 +114,12 @@ namespace SampleApplication.ViewModels
 
         private async void SelectProvider(HealthCareProvider provider)
         {
-            ProviderSelectionMessageEvent.Publish(Core.AppServices.TaskResult.Success, provider);
+            if (_isForSelection)
+            {
+                ProviderSelectionMessageEvent.Publish(Core.AppServices.TaskResult.Success, provider);
 
-            await Close();
+                await Close();
+            }
         }
     }
 }
