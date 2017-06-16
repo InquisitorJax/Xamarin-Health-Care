@@ -26,7 +26,7 @@
                 <OnPlatform x:TypeArguments="FileImageSource"
                             Android="share_dark.png"
                             WinPhone="Images/share_dark.png"
-                            iOS="share_dark.png" />
+                            iOS="share.png" />
             </controls:ToolbarItemEx.Icon>
         </controls:ToolbarItemEx>
         <controls:ToolbarItemEx Command="{Binding SetReminderCommand}"
@@ -71,52 +71,9 @@
                 <OnPlatform x:TypeArguments="FileImageSource"
                             Android="ic_submit_dark.png"
                             WinPhone="Images/ic_submit_dark.png"
-                            iOS="ic_submit_dark.png" />
+                            iOS="ic_submit.png" />
             </controls:ToolbarItemEx.Icon>
         </controls:ToolbarItemEx>
-
-        <!--<ToolbarItem Command="{Binding ShareCommand}"
-                     Order="Primary"
-                     Priority="0">
-            <ToolbarItem.Icon>
-                <OnPlatform x:TypeArguments="FileImageSource"
-                            Android="share_dark.png"
-                            WinPhone="Images/share_dark.png"
-                            iOS="share.png" />
-            </ToolbarItem.Icon>
-        </ToolbarItem>-->
-        <!--<ToolbarItem Command="{Binding SetReminderCommand}"
-                     Order="Primary"
-                     Priority="1">
-            <ToolbarItem.Icon>
-                <OnPlatform x:TypeArguments="FileImageSource"
-                            Android="alarm_dark.png"
-                            WinPhone="Images/alarm_dark.png"
-                            iOS="alarm.png" />
-            </ToolbarItem.Icon>
-        </ToolbarItem>-->
-
-        <!--<ToolbarItem Command="{Binding SelectPatientCommand}"
-                     Order="Primary"
-                     Priority="2">
-            <ToolbarItem.Icon>
-                <OnPlatform x:TypeArguments="FileImageSource"
-                            Android="add_patient_dark.png"
-                            WinPhone="Images/add_patient_dark.png"
-                            iOS="add_patient.png" />
-            </ToolbarItem.Icon>
-        </ToolbarItem>-->
-
-        <!--<ToolbarItem Command="{Binding SaveItemCommand}"
-                     Order="Primary"
-                     Priority="3">
-            <ToolbarItem.Icon>
-                <OnPlatform x:TypeArguments="FileImageSource"
-                            Android="ic_submit_dark.png"
-                            WinPhone="Images/ic_submit_dark.png"
-                            iOS="ic_submit.png" />
-            </ToolbarItem.Icon>
-        </ToolbarItem>-->
     </ContentPage.ToolbarItems>
 
     <ContentPage.Content>
@@ -174,7 +131,8 @@
                 <Button BackgroundColor="{StaticResource Accent}"
                         Command="{Binding SelectProviderCommand}"
                         Text="select provider"
-                        TextColor="{StaticResource Text}" />
+                        TextColor="{StaticResource Text}"
+                        WidthRequest="200" />
             </Grid>
 
             <Grid Grid.Row="1"

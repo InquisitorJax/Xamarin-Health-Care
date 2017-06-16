@@ -1,4 +1,5 @@
 ﻿using Foundation;
+using ImageCircle.Forms.Plugin.iOS;
 using SampleApplication.AppServices;
 using Syncfusion.ListView.XForms.iOS;
 using Syncfusion.SfBusyIndicator.XForms.iOS;
@@ -31,7 +32,7 @@ namespace SampleApplication.iOS
         public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
         {
             // create a new window instance based on the screen size
-            Window = new UIWindow(UIScreen.MainScreen.Bounds);
+            //Window = new UIWindow(UIScreen.MainScreen.Bounds);
 
             // If you have defined a root view controller, set it here:
             // Window.RootViewController = myViewController;
@@ -42,13 +43,14 @@ namespace SampleApplication.iOS
             new SfBusyIndicatorRenderer();
             SfScheduleRenderer.Init();
             Xamarin.FormsMaps.Init();
+            ImageCircleRenderer.Init();
 
             BootstrapperService.Initialize(new IociOSModule()).GetAwaiter();
 
             LoadApplication(new App());
 
             // make the window visible
-            Window.MakeKeyAndVisible();
+            //Window.MakeKeyAndVisible();
 
             return base.FinishedLaunching(application, launchOptions);
         }

@@ -43,6 +43,7 @@ namespace Core.Controls
 
         private void SelectionButton_Clicked(object sender, EventArgs e)
         {
+            //TODO: Click event doesn't fire for iOS
             //TODO: How to get start AND end time from selection?
             var result = new DateTimeResult { SelectedDate = _selectedDateTime };
             Command.Execute(result);

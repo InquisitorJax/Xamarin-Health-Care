@@ -43,11 +43,12 @@
                                    ItemSpacing="5,2,5,2"
                                    ItemTappedCommand="{Binding SelectProviderCommand}"
                                    ItemsSource="{Binding Providers}"
-                                   LeftSwipeCommand="{Binding PinProviderCommand}"
+                                   RightSwipeCommand="{Binding PinProviderCommand}"
                                    SelectedItem="{Binding SelectedProvider}"
                                    SelectionMode="Single"
                                    SwipeOffset="200">
-                <syncfusion:SfListView.LeftSwipeTemplate>
+                <!--  NOTE: Don't use left swipe template: iOS masterDetail page opens menu on left swipe  -->
+                <syncfusion:SfListView.RightSwipeTemplate>
                     <DataTemplate>
 
                         <Grid BackgroundColor="{Binding IsPinned,
@@ -62,7 +63,7 @@
                                    WidthRequest="45" />
                         </Grid>
                     </DataTemplate>
-                </syncfusion:SfListView.LeftSwipeTemplate>
+                </syncfusion:SfListView.RightSwipeTemplate>
 
                 <controls:SfListViewEx.ItemTemplate>
                     <DataTemplate>

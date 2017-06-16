@@ -1,4 +1,5 @@
 ﻿using Core;
+using Core.AppServices;
 using System.Threading.Tasks;
 
 namespace SampleApplication.AppServices
@@ -21,15 +22,23 @@ namespace SampleApplication.AppServices
 
         public async Task NavigateAsync()
         {
-            var currentUserResult = await _repo.GetCurrentUserAsync();
-
-            if (currentUserResult.Model != null && currentUserResult.Model.IsLoggedIn)
+            if (CC.Device.Platform == Platforms.iOS)
             {
                 await _navService.NavigateAsync(Constants.Navigation.MainPage);
+                //BUG: iOS current hangs on repo call when below code enabled
             }
             else
             {
-                await _navService.NavigateAsync(Constants.Navigation.AuthPage);
+                var currentUserResult = await _repo.GetCurrentUserAsync();
+
+                if (currentUserResult.Model != null && currentUserResult.Model.IsLoggedIn)
+                {
+                    await _navService.NavigateAsync(Constants.Navigation.MainPage);
+                }
+                else
+                {
+                    await _navService.NavigateAsync(Constants.Navigation.AuthPage);
+                }
             }
         }
     }

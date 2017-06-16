@@ -93,12 +93,49 @@
     <Compile Include="AppDelegate.cs" />
     <BundleResource Include="Resources\ic_insert.png" />
     <BundleResource Include="Resources\ic_submit.png" />
+    <BundleResource Include="Resources\add_appointment.png" />
+    <BundleResource Include="Resources\add_patient.png" />
+    <BundleResource Include="Resources\alarm.png" />
+    <BundleResource Include="Resources\calendar.png" />
+    <BundleResource Include="Resources\cancel_appointment.png" />
+    <BundleResource Include="Resources\share.png" />
+    <BundleResource Include="Resources\location.png" />
+    <BundleResource Include="Resources\pinned.png" />
+    <BundleResource Include="Resources\pin_dark.png" />
+    <BundleResource Include="Resources\unpin_dark.png" />
+    <BundleResource Include="Resources\cancel_appointment_dark.png" />
     <None Include="GettingStarted.Xamarin" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <InterfaceDefinition Include="Resources\LaunchScreen.xib" />
+    <BundleResource Include="..\Images\splash_logo.png">
+      <Link>Resources\splash_logo.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\Images\Icons\action_directions.png">
+      <Link>Resources\action_directions.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\Images\Icons\action_phone.png">
+      <Link>Resources\action_phone.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\Images\Icons\calendar_select.png">
+      <Link>Resources\calendar_select.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\Images\circle_logo.png">
+      <Link>Resources\circle_logo.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\Images\family.png">
+      <Link>Resources\family.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\Images\fate.png">
+      <Link>Resources\fate.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\Images\manhattan.png">
+      <Link>Resources\manhattan.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\Images\strange.png">
+      <Link>Resources\strange.png</Link>
+    </BundleResource>
     <Content Include="Entitlements.plist" />
-    <InterfaceDefinition Include="LaunchScreen.storyboard" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -342,6 +379,14 @@
       <Project>{26E89A3B-9852-4A18-96CC-1D5881FADAA1}</Project>
       <Name>Application</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ImageAsset Include="Resources\Media.xcassets\AppIcons.appiconset\Contents.json">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Media.xcassets\LaunchImages.launchimage\Contents.json">
+      <InProject>false</InProject>
+    </ImageAsset>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.2.3.4.247\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.3.4.247\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />

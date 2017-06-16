@@ -2,13 +2,21 @@
 <ContentView x:Class="Core.Controls.ActivityIndicatorMessage"
              xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="clr-namespace:Core.Converters"
              xmlns:syncfusion="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
              BackgroundColor="Transparent">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <converters:NullValueToFillTextConverter x:Key="nvt" />
+        </ResourceDictionary>
+    </ContentView.Resources>
     <ContentView.Content>
         <Grid>
             <BoxView BackgroundColor="#2C92D1" Opacity="0.8" />
             <syncfusion:SfBusyIndicator x:Name="_busyIndicator"
-                                        Title="{Binding BusyMessage}"
+                                        Title="{Binding BusyMessage,
+                                                        Converter={StaticResource nvt},
+                                                        ConverterParameter=''}"
                                         AnimationType="Globe"
                                         HorizontalOptions="CenterAndExpand"
                                         IsBusy="True"

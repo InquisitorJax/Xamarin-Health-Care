@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using Core.AppServices;
+using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace Core.Controls
@@ -81,7 +82,8 @@ namespace Core.Controls
             var entry = (EntryEx)bindable;
             if (!string.IsNullOrEmpty((string)newValue))
             {
-                await entry._label.TranslateTo(-2, -15);
+                int y = Xamarin.Forms.Device.RuntimePlatform == Platforms.Android ? -15 : -20;
+                await entry._label.TranslateTo(-2, y);
             }
             else
             {

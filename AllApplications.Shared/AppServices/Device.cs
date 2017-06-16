@@ -9,6 +9,8 @@ namespace Core.AppServices
     {
         IMapService MapService { get; }
 
+        string Platform { get; }
+
         void OpenUri(Uri uri);
 
         void Share(string shareMessage, string title = null, string url = null);
@@ -19,6 +21,11 @@ namespace Core.AppServices
         public IMapService MapService
         {
             get { return CC.IoC.Resolve<IMapService>(); }
+        }
+
+        public string Platform
+        {
+            get { return Xamarin.Forms.Device.RuntimePlatform; }
         }
 
         public void OpenUri(Uri uri)
