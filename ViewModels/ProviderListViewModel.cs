@@ -89,7 +89,7 @@ namespace SampleApplication.ViewModels
                 if (providersResult.IsValid())
                 {
                     var providers = providersResult.ModelCollection;
-                    providers = providers.OrderBy(x => x.IsPinned).ThenBy(y => y.DistanceFromCurrentLocation).ToList();
+                    providers = providers.OrderByDescending(x => x.IsPinned).ThenBy(y => y.DistanceFromCurrentLocation).ToList();
 
                     Providers = providers.AsObservableCollection();
                 }
@@ -107,6 +107,8 @@ namespace SampleApplication.ViewModels
             if (provider != null)
             {
                 provider.IsPinned = !provider.IsPinned;
+                Providers = Providers.OrderByDescending(x => x.IsPinned).ThenBy(y => y.DistanceFromCurrentLocation).ToList().AsObservableCollection();
+                _repo.SaveProviderAsync(provider, ModelUpdateEvent.Updated);
             }
         }
 

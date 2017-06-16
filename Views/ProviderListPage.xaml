@@ -25,7 +25,14 @@
                                                     Converter={StaticResource bob},
                                                     Mode=OneWay}"
                                 Order="Primary"
-                                Priority="1" />
+                                Priority="1">
+            <controls:ToolbarItemEx.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource"
+                            Android="add_appointment_dark.png"
+                            WinPhone="Images/add_appointment_dark.png"
+                            iOS="add_appointment.png" />
+            </controls:ToolbarItemEx.Icon>
+        </controls:ToolbarItemEx>
     </ContentPage.ToolbarItems>
 
     <ContentPage.Content>
@@ -60,7 +67,7 @@
                 <controls:SfListViewEx.ItemTemplate>
                     <DataTemplate>
                         <Frame HasShadow="True">
-                            <views:HealthProviderCardTemp Value="{Binding .}" />
+                            <views:HealthProviderCardTemp IsForSelection="True" Value="{Binding .}" />
                         </Frame>
                     </DataTemplate>
                 </controls:SfListViewEx.ItemTemplate>

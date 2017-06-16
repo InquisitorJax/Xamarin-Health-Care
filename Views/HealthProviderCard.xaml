@@ -12,10 +12,12 @@
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <BoxView BackgroundColor="{StaticResource Accent}"
-                     IsVisible="{Binding Value.IsSelected,
-                                         Source={x:Reference HealthProviderCard}}"
-                     WidthRequest="5" />
+            <Grid IsVisible="{Binding IsForSelection, Source={x:Reference HealthProviderCard}}">
+                <BoxView BackgroundColor="{StaticResource Accent}"
+                         IsVisible="{Binding Value.IsSelected,
+                                             Source={x:Reference HealthProviderCard}}"
+                         WidthRequest="5" />
+            </Grid>
             <ic:CircleImage Grid.Column="1"
                             Aspect="AspectFill"
                             BorderColor="#2C92D1"
@@ -49,6 +51,14 @@
                            WidthRequest="20" />
                 </Grid>
             </Grid>
+            <Image Grid.Column="2"
+                   HeightRequest="25"
+                   HorizontalOptions="End"
+                   IsVisible="{Binding Value.IsPinned,
+                                       Source={x:Reference HealthProviderCard}}"
+                   Source="pinned"
+                   VerticalOptions="Start"
+                   WidthRequest="25" />
         </Grid>
     </ContentView.Content>
 </controls:CommandView>

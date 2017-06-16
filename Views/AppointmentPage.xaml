@@ -7,9 +7,75 @@
              xmlns:views="clr-namespace:SampleApplication.Views"
              Title="{Binding Model.Name}"
              BackgroundColor="{StaticResource WindowBackground}">
-    <ContentPage.ToolbarItems>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:NullValueToBooleanConverter x:Key="nvb" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
 
-        <ToolbarItem Command="{Binding ShareCommand}"
+    <ContentPage.ToolbarItems>
+        <controls:ToolbarItemEx Command="{Binding ShareCommand}"
+                                Icon="add_appointment_dark"
+                                IsVisible="{Binding Provider,
+                                                    Converter={StaticResource nvb},
+                                                    ConverterParameter=convert,
+                                                    Mode=OneWay}"
+                                Order="Primary"
+                                Priority="0">
+            <controls:ToolbarItemEx.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource"
+                            Android="share_dark.png"
+                            WinPhone="Images/share_dark.png"
+                            iOS="share_dark.png" />
+            </controls:ToolbarItemEx.Icon>
+        </controls:ToolbarItemEx>
+        <controls:ToolbarItemEx Command="{Binding SetReminderCommand}"
+                                Icon="add_appointment_dark"
+                                IsVisible="{Binding Provider,
+                                                    Converter={StaticResource nvb},
+                                                    ConverterParameter=convert,
+                                                    Mode=OneWay}"
+                                Order="Primary"
+                                Priority="1">
+            <controls:ToolbarItemEx.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource"
+                            Android="alarm_dark.png"
+                            WinPhone="Images/alarm_dark.png"
+                            iOS="alarm.png" />
+            </controls:ToolbarItemEx.Icon>
+        </controls:ToolbarItemEx>
+        <controls:ToolbarItemEx Command="{Binding SelectPatientCommand}"
+                                Icon="add_appointment_dark"
+                                IsVisible="{Binding Provider,
+                                                    Converter={StaticResource nvb},
+                                                    ConverterParameter=convert,
+                                                    Mode=OneWay}"
+                                Order="Primary"
+                                Priority="2">
+            <controls:ToolbarItemEx.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource"
+                            Android="add_patient_dark.png"
+                            WinPhone="Images/add_patient_dark.png"
+                            iOS="add_patient.png" />
+            </controls:ToolbarItemEx.Icon>
+        </controls:ToolbarItemEx>
+        <controls:ToolbarItemEx Command="{Binding SaveItemCommand}"
+                                Icon="add_appointment_dark"
+                                IsVisible="{Binding Provider,
+                                                    Converter={StaticResource nvb},
+                                                    ConverterParameter=convert,
+                                                    Mode=OneWay}"
+                                Order="Primary"
+                                Priority="3">
+            <controls:ToolbarItemEx.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource"
+                            Android="ic_submit_dark.png"
+                            WinPhone="Images/ic_submit_dark.png"
+                            iOS="ic_submit_dark.png" />
+            </controls:ToolbarItemEx.Icon>
+        </controls:ToolbarItemEx>
+
+        <!--<ToolbarItem Command="{Binding ShareCommand}"
                      Order="Primary"
                      Priority="0">
             <ToolbarItem.Icon>
@@ -18,8 +84,8 @@
                             WinPhone="Images/share_dark.png"
                             iOS="share.png" />
             </ToolbarItem.Icon>
-        </ToolbarItem>
-        <ToolbarItem Command="{Binding SetReminderCommand}"
+        </ToolbarItem>-->
+        <!--<ToolbarItem Command="{Binding SetReminderCommand}"
                      Order="Primary"
                      Priority="1">
             <ToolbarItem.Icon>
@@ -28,9 +94,9 @@
                             WinPhone="Images/alarm_dark.png"
                             iOS="alarm.png" />
             </ToolbarItem.Icon>
-        </ToolbarItem>
+        </ToolbarItem>-->
 
-        <ToolbarItem Command="{Binding SelectPatientCommand}"
+        <!--<ToolbarItem Command="{Binding SelectPatientCommand}"
                      Order="Primary"
                      Priority="2">
             <ToolbarItem.Icon>
@@ -39,9 +105,9 @@
                             WinPhone="Images/add_patient_dark.png"
                             iOS="add_patient.png" />
             </ToolbarItem.Icon>
-        </ToolbarItem>
+        </ToolbarItem>-->
 
-        <ToolbarItem Command="{Binding SaveItemCommand}"
+        <!--<ToolbarItem Command="{Binding SaveItemCommand}"
                      Order="Primary"
                      Priority="3">
             <ToolbarItem.Icon>
@@ -50,7 +116,7 @@
                             WinPhone="Images/ic_submit_dark.png"
                             iOS="ic_submit.png" />
             </ToolbarItem.Icon>
-        </ToolbarItem>
+        </ToolbarItem>-->
     </ContentPage.ToolbarItems>
 
     <ContentPage.Content>
@@ -58,15 +124,14 @@
             <Grid.Resources>
                 <ResourceDictionary>
                     <converters:NullValueToFillTextConverter x:Key="nvt" />
-                    <converters:NullValueToBooleanConverter x:Key="nvb" />
                 </ResourceDictionary>
             </Grid.Resources>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <StackLayout Padding="{StaticResource FormPadding}">
-                <Grid HeightRequest="150" IsVisible="{Binding Provider, Converter={StaticResource nvb}, ConverterParameter=convert}">
+            <StackLayout IsVisible="{Binding Provider, Converter={StaticResource nvb}, ConverterParameter=convert}" Padding="{StaticResource FormPadding}">
+                <Grid HeightRequest="150">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*" />
                         <RowDefinition Height="13" />
@@ -87,12 +152,6 @@
                         </Image.GestureRecognizers>
                     </Image>
                 </Grid>
-                <Grid IsVisible="{Binding Provider, Converter={StaticResource nvb}}">
-                    <Button BackgroundColor="{StaticResource Accent}"
-                            Command="{Binding SelectProviderCommand}"
-                            Text="select provider"
-                            TextColor="{StaticResource Text}" />
-                </Grid>
                 <controls:EntryEx EntryText="{Binding Model.Name}" LabelText="appointment title" />
                 <StackLayout Orientation="Horizontal">
                     <Image HeightRequest="50"
@@ -107,16 +166,17 @@
                 <Label Text="appointment notes" />
                 <controls:EditorEx MaxHeight="70" Text="{Binding Model.Description}" />
             </StackLayout>
-            <Grid Grid.Row="1" IsVisible="{Binding Provider, Converter={StaticResource nvb}}">
-                <StackLayout HorizontalOptions="Center"
-                             Orientation="Horizontal"
-                             VerticalOptions="Center">
-                    <Image HeightRequest="30"
-                           Source="location"
-                           WidthRequest="30" />
-                    <Label Text="select a health provider" VerticalTextAlignment="Center" />
-                </StackLayout>
+            <Grid Grid.RowSpan="2"
+                  HorizontalOptions="Center"
+                  IsVisible="{Binding Provider,
+                                      Converter={StaticResource nvb}}"
+                  VerticalOptions="Center">
+                <Button BackgroundColor="{StaticResource Accent}"
+                        Command="{Binding SelectProviderCommand}"
+                        Text="select provider"
+                        TextColor="{StaticResource Text}" />
             </Grid>
+
             <Grid Grid.Row="1"
                   HeightRequest="250"
                   IsVisible="{Binding Provider,
