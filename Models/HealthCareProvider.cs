@@ -11,6 +11,7 @@ namespace SampleApplication.Models
         private string _email;
         private string _facebookUrl;
         private string _imageName;
+        private bool _isPinned;
         private string _location;
         private string _name;
 
@@ -50,6 +51,12 @@ namespace SampleApplication.Models
         {
             get { return _imageName; }
             set { SetProperty(ref _imageName, value); }
+        }
+
+        public bool IsPinned
+        {
+            get { return _isPinned; }
+            set { SetProperty(ref _isPinned, value); }
         }
 
         public string Location

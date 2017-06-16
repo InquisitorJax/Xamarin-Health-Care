@@ -2,6 +2,7 @@
 <ContentPage x:Class="SampleApplication.Views.ProviderListPage"
              xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:appConverters="clr-namespace:SampleApplication.Converters"
              xmlns:controls="clr-namespace:Core.Controls;assembly=XForms.Shared"
              xmlns:converters="clr-namespace:Core.Converters;assembly=XForms.Shared"
              xmlns:local="clr-namespace:SampleApplication"
@@ -12,6 +13,8 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <converters:BooleanToInvertedBooleanConverter x:Key="bob" />
+            <appConverters:PinToColorConverter x:Key="pcc" />
+            <appConverters:PinToImageSourceConverter x:Key="pic" />
         </ResourceDictionary>
     </ContentPage.Resources>
 
@@ -28,12 +31,32 @@
     <ContentPage.Content>
         <Grid>
             <controls:SfListViewEx x:Name="_listView"
+                                   AllowSwiping="True"
                                    ItemSize="130"
                                    ItemSpacing="5,2,5,2"
                                    ItemTappedCommand="{Binding SelectProviderCommand}"
                                    ItemsSource="{Binding Providers}"
+                                   LeftSwipeCommand="{Binding PinProviderCommand}"
                                    SelectedItem="{Binding SelectedProvider}"
-                                   SelectionMode="Single">
+                                   SelectionMode="Single"
+                                   SwipeOffset="200">
+                <syncfusion:SfListView.LeftSwipeTemplate>
+                    <DataTemplate>
+
+                        <Grid BackgroundColor="{Binding IsPinned,
+                                                        Converter={StaticResource pcc}}"
+                              HorizontalOptions="Fill"
+                              VerticalOptions="Fill">
+                            <Image HeightRequest="45"
+                                   HorizontalOptions="Center"
+                                   Source="{Binding IsPinned,
+                                                    Converter={StaticResource pic}}"
+                                   VerticalOptions="Center"
+                                   WidthRequest="45" />
+                        </Grid>
+                    </DataTemplate>
+                </syncfusion:SfListView.LeftSwipeTemplate>
+
                 <controls:SfListViewEx.ItemTemplate>
                     <DataTemplate>
                         <Frame HasShadow="True">

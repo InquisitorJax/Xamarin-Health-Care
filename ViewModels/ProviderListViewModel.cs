@@ -26,6 +26,7 @@ namespace SampleApplication.ViewModels
             _appCache = appCache;
 
             SelectProviderCommand = new DelegateCommand<HealthCareProvider>(SelectProvider);
+            PinProviderCommand = new DelegateCommand<HealthCareProvider>(PinProvider);
             NewAppointmentCommand = new DelegateCommand(CreateNewAppointment);
         }
 
@@ -36,6 +37,8 @@ namespace SampleApplication.ViewModels
         }
 
         public ICommand NewAppointmentCommand { get; private set; }
+
+        public ICommand PinProviderCommand { get; private set; }
 
         public ObservableCollection<HealthCareProvider> Providers
         {
@@ -86,25 +89,7 @@ namespace SampleApplication.ViewModels
                 if (providersResult.IsValid())
                 {
                     var providers = providersResult.ModelCollection;
-                    providers = providers.OrderBy(x => x.DistanceFromCurrentLocation).ToList();
-
-                    //if (_appCache.CurrentLocation != null)
-                    //{
-                    //    //calculate distances from current location
-                    //    var currentLocation = _appCache.CurrentLocation;
-
-                    //    //sort by said distance
-                    //    foreach (var provider in providers)
-                    //    {
-                    //        if (!string.IsNullOrEmpty(provider.Location))
-                    //        {
-                    //            var providerLocation = GeoLocation.FromWellKnownText(provider.Location);
-                    //            provider.DistanceFromCurrentLocation = providerLocation.DistanceFrom(currentLocation);
-                    //        }
-                    //    }
-
-                    //    providers = providers.OrderBy(x => x.DistanceFromCurrentLocation).ToList();
-                    //}
+                    providers = providers.OrderBy(x => x.IsPinned).ThenBy(y => y.DistanceFromCurrentLocation).ToList();
 
                     Providers = providers.AsObservableCollection();
                 }
@@ -115,6 +100,14 @@ namespace SampleApplication.ViewModels
             }
 
             return retResult;
+        }
+
+        private void PinProvider(HealthCareProvider provider)
+        {
+            if (provider != null)
+            {
+                provider.IsPinned = !provider.IsPinned;
+            }
         }
 
         private async void SelectProvider(HealthCareProvider provider)

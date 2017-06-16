@@ -64,6 +64,7 @@
             <Color x:Key="PrimaryText">#212121</Color>
             <Color x:Key="SecondaryText">#727272</Color>
             <Color x:Key="Divider">#B6B6B6</Color>
+            <Color x:Key="Alarm">#DC595F</Color>
 
             <Thickness x:Key="FormPadding">12,5,12,0</Thickness>
 

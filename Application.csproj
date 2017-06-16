@@ -41,6 +41,8 @@
     <Compile Include="AppServices\BootstrapperService.cs" />
     <Compile Include="AppServices\LandingPageNavigationService.cs" />
     <Compile Include="Commands\UpdateProviderLocationsCommand.cs" />
+    <Compile Include="Converters\PinToColorConverter.cs" />
+    <Compile Include="Converters\PinToImageSourceConverter.cs" />
     <Compile Include="Events\ProviderSelectedEvent.cs" />
     <Compile Include="Events\AppointmentDateSelectedEvent.cs" />
     <Compile Include="Models\AppSettings.cs" />

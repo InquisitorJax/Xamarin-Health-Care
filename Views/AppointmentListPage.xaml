@@ -24,12 +24,27 @@
     <ContentPage.Content>
         <Grid>
             <controls:SfListViewEx x:Name="_listView"
+                                   AllowSwiping="True"
                                    ItemSize="130"
                                    ItemSpacing="5,2,5,2"
                                    ItemTappedCommand="{Binding OpenSelectedAppointmentCommand}"
                                    ItemsSource="{Binding Appointments}"
                                    SelectedItem="{Binding SelectedAppointment}"
-                                   SelectionMode="Single">
+                                   SelectionMode="Single"
+                                   SwipeOffset="200">
+                <syncfusion:SfListView.RightSwipeTemplate>
+                    <DataTemplate>
+                        <Grid BackgroundColor="#DC595F"
+                              HorizontalOptions="Fill"
+                              VerticalOptions="Fill">
+                            <Image HeightRequest="45"
+                                   HorizontalOptions="Center"
+                                   Source="cancel_appointment_dark"
+                                   VerticalOptions="Center"
+                                   WidthRequest="45" />
+                        </Grid>
+                    </DataTemplate>
+                </syncfusion:SfListView.RightSwipeTemplate>
                 <controls:SfListViewEx.ItemTemplate>
                     <DataTemplate>
                         <Frame HasShadow="True">

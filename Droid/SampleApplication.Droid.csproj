@@ -517,6 +517,26 @@
       <Link>Resources\drawable\add_appointment_dark.png</Link>
     </AndroidResource>
   </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="..\Images\Icons\cancel_appointment_dark.png">
+      <Link>Resources\drawable\cancel_appointment_dark.png</Link>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="..\Images\Icons\pin_dark.png">
+      <Link>Resources\drawable\pin_dark.png</Link>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="..\Images\Icons\pinned.png">
+      <Link>Resources\drawable\pinned.png</Link>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="..\Images\Icons\unpin_dark.png">
+      <Link>Resources\drawable\unpin_dark.png</Link>
+    </AndroidResource>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
