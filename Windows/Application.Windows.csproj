@@ -110,7 +110,36 @@
     <None Include="Application.Windows_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="..\Images\circle_logo.png">
+      <Link>Images\circle_logo.png</Link>
+    </Content>
+    <Content Include="..\Images\family.png">
+      <Link>Images\family.png</Link>
+    </Content>
+    <Content Include="..\Images\fate.png">
+      <Link>Images\fate.png</Link>
+    </Content>
+    <Content Include="..\Images\manhattan.png">
+      <Link>Images\manhattan.png</Link>
+    </Content>
+    <Content Include="..\Images\splash_logo.png">
+      <Link>Images\splash_logo.png</Link>
+    </Content>
+    <Content Include="..\Images\strange.png">
+      <Link>Images\strange.png</Link>
+    </Content>
     <Content Include=".Docs\UWP_Issues.txt" />
+    <Content Include="Images\action_directions.png" />
+    <Content Include="Images\action_phone.png" />
+    <Content Include="Images\add_appointment_dark.png" />
+    <Content Include="Images\add_patient_dark.png" />
+    <Content Include="Images\alarm_dark.png" />
+    <Content Include="Images\calendar_dark.png" />
+    <Content Include="Images\cancel_appointment_dark.png" />
+    <Content Include="Images\logout_dark.png" />
+    <Content Include="Images\pin_dark.png" />
+    <Content Include="Images\share_dark.png" />
+    <Content Include="Images\unpin_dark.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
