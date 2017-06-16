@@ -78,6 +78,10 @@ namespace SampleApplication.ViewModels
                 SetProperty(ref _provider, value);
                 if (_provider != null)
                 {
+                    if (Model != null)
+                    {
+                        Model.ProviderImageName = Provider.ImageName;
+                    }
                     Location = GeoLocation.FromWellKnownText(_provider.Location);
                 }
             }
