@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Core.AppServices;
+using System;
 using System.Windows.Input;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -37,7 +38,16 @@ namespace Core.Controls
 
             if (_selectionButton != null)
             {
-                _selectionButton.Clicked += SelectionButton_Clicked;
+                if (CC.Device.Platform == Platforms.iOS)
+                {
+                    //BUG: Click event not firing on iOS
+                    var result = new DateTimeResult { SelectedDate = _selectedDateTime };
+                    Command.Execute(result);
+                }
+                else
+                {
+                    _selectionButton.Clicked += SelectionButton_Clicked;
+                }
             }
         }
 
