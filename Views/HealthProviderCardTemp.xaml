@@ -9,9 +9,16 @@
     <Grid>
       <Grid.ColumnDefinitions>
         <ColumnDefinition Width="Auto" />
+        <ColumnDefinition Width="Auto" />
         <ColumnDefinition Width="*" />
       </Grid.ColumnDefinitions>
-      <Image HeightRequest="90"
+      <BoxView BackgroundColor="{StaticResource Accent}"
+               IsVisible="{Binding Value.IsSelected,
+                                         Source={x:Reference HealthProviderCard}}"
+               WidthRequest="5" />
+
+      <Image Grid.Column="1"
+             HeightRequest="90"
              Source="{Binding Value.ImageName,
                                     Source={x:Reference HealthProviderCard}}"
              WidthRequest="90" />
@@ -25,7 +32,7 @@
                                              Source={x:Reference HealthProviderCard}}"
                             WidthRequest="90" />-->
 
-      <Grid Grid.Column="1">
+      <Grid Grid.Column="2">
         <Grid.RowDefinitions>
           <RowDefinition Height="Auto" />
           <RowDefinition Height="*" />

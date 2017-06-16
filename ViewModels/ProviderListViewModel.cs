@@ -46,7 +46,11 @@ namespace SampleApplication.ViewModels
         public HealthCareProvider SelectedProvider
         {
             get { return _selectedProvider; }
-            set { SetProperty(ref _selectedProvider, value); }
+            set
+            {
+                SetProperty(ref _selectedProvider, value);
+                UpdateSelection();
+            }
         }
 
         public ICommand SelectProviderCommand { get; private set; }
@@ -120,6 +124,17 @@ namespace SampleApplication.ViewModels
                 ProviderSelectionMessageEvent.Publish(Core.AppServices.TaskResult.Success, provider);
 
                 await Close();
+            }
+        }
+
+        private void UpdateSelection()
+        {
+            if (Providers != null)
+            {
+                foreach (var provider in Providers)
+                {
+                    provider.IsSelected = provider == SelectedProvider;
+                }
             }
         }
     }

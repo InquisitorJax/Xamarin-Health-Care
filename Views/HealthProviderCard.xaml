@@ -9,9 +9,15 @@
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <ic:CircleImage Aspect="AspectFill"
+            <BoxView BackgroundColor="{StaticResource Accent}"
+                     IsVisible="{Binding Value.IsSelected,
+                                         Source={x:Reference HealthProviderCard}}"
+                     WidthRequest="5" />
+            <ic:CircleImage Grid.Column="1"
+                            Aspect="AspectFill"
                             BorderColor="#2C92D1"
                             BorderThickness="1"
                             HeightRequest="90"
