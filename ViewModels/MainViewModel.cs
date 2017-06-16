@@ -31,6 +31,7 @@ namespace SampleApplication.ViewModels
             OpenSelectedAppointmentCommand = new DelegateCommand<Appointment>(OpenSelectedAppointment);
             CreateAppointmentNavigationCommand = new DelegateCommand(CreateAppointmentNavigate);
             MainMenuItemClickCommand = new DelegateCommand<MainMenuItem>(MainMenuItemClick);
+            CancelAppointmentCommand = new DelegateCommand<Appointment>(CancelAppointment);
             Title = "Cliniko Care";
 
             MainMenuItems = new List<MainMenuItem>();
@@ -60,6 +61,8 @@ namespace SampleApplication.ViewModels
             get { return _appointments; }
             set { SetProperty(ref _appointments, value); }
         }
+
+        public ICommand CancelAppointmentCommand { get; private set; }
 
         public ICommand CreateAppointmentNavigationCommand { get; private set; }
 
@@ -102,6 +105,15 @@ namespace SampleApplication.ViewModels
             await FetchCurrentUserAsync();
             await FetchAppointmentsAsync();
             await UpdateProviderLocationsAsync(); //generate locations around the device current location
+        }
+
+        private async void CancelAppointment(Appointment appointment)
+        {
+            if (appointment != null)
+            {
+                await _repository.DeleteAppointmentAsync(appointment);
+                Appointments.Remove(appointment);
+            }
         }
 
         private async void CreateAppointmentNavigate()

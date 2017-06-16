@@ -9,6 +9,8 @@ namespace SampleApplication
 {
     public interface IRepository
     {
+        Task<CommandResult> DeleteAppointmentAsync(Appointment appointment);
+
         Task<FetchModelResult<Appointment>> FetchAppointmentAsync(string id);
 
         Task<FetchModelCollectionResult<Appointment>> FetchAppointmentsAsync(string userId, string providerId);
@@ -34,6 +36,25 @@ namespace SampleApplication
         private SQLiteAsyncConnection _database;
 
         private bool _isInitialized = false;
+
+        public async Task<CommandResult> DeleteAppointmentAsync(Appointment appointment)
+        {
+            var retResult = new CommandResult();
+
+            if (appointment != null)
+            {
+                try
+                {
+                    await _database.DeleteAsync(appointment);
+                }
+                catch (Exception)
+                {
+                    retResult.Notification.Add("delete failed!");
+                }
+            }
+
+            return retResult;
+        }
 
         public async Task<FetchModelResult<Appointment>> FetchAppointmentAsync(string id)
         {

@@ -10,9 +10,12 @@ namespace Core.Controls
         public static BindableProperty LeftSwipeCommandProperty = BindableProperty.Create(nameof(LeftSwipeCommand), typeof(ICommand), typeof(SfListViewEx), null);
         public static BindableProperty RightSwipeCommandProperty = BindableProperty.Create(nameof(RightSwipeCommand), typeof(ICommand), typeof(SfListViewEx), null);
 
+        private bool _isSwiping;
+
         public SfListViewEx()
         {
             this.ItemTapped += this.OnItemTappped;
+            this.SwipeStarted += SfListViewEx_SwipeStarted;
             this.SwipeEnded += SfListViewEx_SwipeEnded;
         }
 
@@ -36,9 +39,12 @@ namespace Core.Controls
 
         private void OnItemTappped(object sender, Syncfusion.ListView.XForms.ItemTappedEventArgs e)
         {
-            if (e.ItemData != null && this.ItemTappedCommand != null && this.ItemTappedCommand.CanExecute(e.ItemData))
+            if (!_isSwiping)
             {
-                this.ItemTappedCommand.Execute(e.ItemData);
+                if (e.ItemData != null && this.ItemTappedCommand != null && this.ItemTappedCommand.CanExecute(e.ItemData))
+                {
+                    this.ItemTappedCommand.Execute(e.ItemData);
+                }
             }
         }
 
@@ -50,13 +56,24 @@ namespace Core.Controls
                 {
                     RightSwipeCommand.Execute(e.ItemData);
                     ResetSwipe();
+                    e.SwipeOffset = 0; //BUG in ResetSwipe() see: https://www.syncfusion.com/forums/129974/resetswipe-method-doesn39t-hide-swipetemplate
                 }
                 else if (e.SwipeDirection == SwipeDirection.Right && LeftSwipeCommand != null && LeftSwipeCommand.CanExecute(e.ItemData))
                 {
                     LeftSwipeCommand.Execute(e.ItemData);
                     ResetSwipe();
+                    e.SwipeOffset = 0;
                 }
             }
+            System.Threading.Tasks.Task.Delay(500).ContinueWith((task) =>
+            {
+                _isSwiping = false;
+            });
+        }
+
+        private void SfListViewEx_SwipeStarted(object sender, SwipeStartedEventArgs e)
+        {
+            _isSwiping = true;
         }
     }
 }

@@ -29,6 +29,7 @@
                                    ItemSpacing="5,2,5,2"
                                    ItemTappedCommand="{Binding OpenSelectedAppointmentCommand}"
                                    ItemsSource="{Binding Appointments}"
+                                   RightSwipeCommand="{Binding CancelAppointmentCommand}"
                                    SelectedItem="{Binding SelectedAppointment}"
                                    SelectionMode="Single"
                                    SwipeOffset="200">
