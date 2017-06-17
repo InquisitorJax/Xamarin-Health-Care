@@ -80,6 +80,7 @@ namespace SampleApplication.ViewModels
                 {
                     if (Model != null)
                     {
+                        Model.ProviderId = Provider.Id;
                         Model.ProviderImageName = Provider.ImageName;
                     }
                     Location = GeoLocation.FromWellKnownText(_provider.Location);
