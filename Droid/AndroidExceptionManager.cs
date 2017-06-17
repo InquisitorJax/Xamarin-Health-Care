@@ -23,8 +23,9 @@ namespace SampleApplication.Droid
             //TODO: report crash to analytics service
 #if DEBUG
             ShowCrashReportDebug();
-            return Task.FromResult(default(int));
+
 #endif
+            return Task.FromResult(default(int));
         }
 
         private void CurrentDomainOnUnhandledException(object sender, UnhandledExceptionEventArgs e)
