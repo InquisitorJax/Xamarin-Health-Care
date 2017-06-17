@@ -12,11 +12,13 @@
                     iOS="ic_hamburger.png" />
     </ContentPage.Icon>
     <ContentPage.Content>
-        <Grid>
-            <controls:GradientView EndColor="#49A4D8" StartColor="#2795D9" />
+        <Grid BackgroundColor="#2795D9">
+            <!--  TODO: Not rendering on iOS  -->
+            <!--<controls:GradientView EndColor="#49A4D8" StartColor="#2795D9" />-->
 
             <StackLayout VerticalOptions="FillAndExpand">
                 <controls:ListView x:Name="listView"
+                                   BackgroundColor="#2795D9"
                                    ItemClickCommand="{Binding MainMenuItemClickCommand}"
                                    ItemsSource="{Binding MainMenuItems}"
                                    SeparatorVisibility="None"
@@ -28,7 +30,8 @@
                     </controls:ListView.Header>
                     <controls:ListView.ItemTemplate>
                         <DataTemplate>
-                            <ImageCell ImageSource="{Binding IconSource}"
+                            <ImageCell Height="50"
+                                       ImageSource="{Binding IconSource}"
                                        Text="{Binding Title}"
                                        TextColor="White" />
                         </DataTemplate>

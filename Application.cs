@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using Core;
+using Core.AppServices;
 using SampleApplication.AppServices;
 using System;
 using System.Threading.Tasks;
@@ -12,11 +13,18 @@ namespace SampleApplication
         {
             var landingPageNavigationService = CC.IoC.Resolve<ILandingPageNavigationService>();
 
-            Func<Task> task = async () =>
+            if (CC.Device.Platform == Platforms.iOS)
             {
-                await landingPageNavigationService.NavigateAsync().ConfigureAwait(false);
-            };
-            task().Wait();
+                Func<Task> task = async () =>
+                {
+                    await landingPageNavigationService.NavigateAsync().ConfigureAwait(false);
+                };
+                task().Wait();
+            }
+            else
+            {
+                landingPageNavigationService.NavigateAsync().ConfigureAwait(true);
+            }
 
             InitializeComponent();
         }

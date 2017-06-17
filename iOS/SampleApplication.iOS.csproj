@@ -104,6 +104,8 @@
     <BundleResource Include="Resources\pin_dark.png" />
     <BundleResource Include="Resources\unpin_dark.png" />
     <BundleResource Include="Resources\cancel_appointment_dark.png" />
+    <BundleResource Include="Resources\ic_hamburger.png" />
+    <BundleResource Include="Resources\logout_dark.png" />
     <None Include="GettingStarted.Xamarin" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
