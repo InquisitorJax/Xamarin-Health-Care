@@ -93,9 +93,8 @@
                         <RowDefinition Height="*" />
                         <RowDefinition Height="13" />
                     </Grid.RowDefinitions>
-                    <Frame HasShadow="True">
-                        <views:HealthProviderCard Value="{Binding Provider}" />
-                    </Frame>
+
+                    <views:HealthProviderCard Value="{Binding Provider}" />
 
                     <Image Grid.RowSpan="2"
                            Margin="0,0,20,0"
