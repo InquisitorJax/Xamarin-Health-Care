@@ -3,6 +3,7 @@ using Android.Content;
 using Android.Content.PM;
 using Android.OS;
 using ImageCircle.Forms.Plugin.Droid;
+using SampleApplication.Droid;
 using Xamarin.Forms.Platform.Android;
 
 namespace SampleApplication
@@ -34,6 +35,12 @@ namespace SampleApplication
             //CrossMedia.Current.Initialize();
 
             LoadApplication(new App());
+        }
+
+        protected override void OnResume()
+        {
+            base.OnResume();
+            HockeyApp.Android.CrashManager.Register(this, PrivateConstants.HockeyApp_AppId);
         }
     }
 }

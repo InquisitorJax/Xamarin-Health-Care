@@ -26,6 +26,14 @@
           "lib/netstandard1.0/FluentValidation.dll": {}
         }
       },
+      "HockeySDK.Xamarin/4.1.4": {
+        "compile": {
+          "lib/portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10/HockeySDK.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10/HockeySDK.dll": {}
+        }
+      },
       "Microsoft.NETCore.Jit/1.0.2": {},
       "Microsoft.NETCore.Platforms/1.1.0": {
         "compile": {
@@ -1244,6 +1252,20 @@
         "lib/net45/FluentValidation.xml",
         "lib/netstandard1.0/FluentValidation.dll",
         "lib/netstandard1.0/FluentValidation.xml"
+      ]
+    },
+    "HockeySDK.Xamarin/4.1.4": {
+      "sha512": "x8FJpyyINr9TO3tFn8RX+R0ZASDR34ozvozS1chRVdVQhvlKaKzC5AAiiev1mkP9erLIMlqzF/GKsIOcyHwT6A==",
+      "type": "package",
+      "path": "HockeySDK.Xamarin/4.1.4",
+      "files": [
+        "HockeySDK.Xamarin.4.1.4.nupkg.sha512",
+        "HockeySDK.Xamarin.nuspec",
+        "lib/MonoAndroid403/HockeySDK.AndroidBindings.dll",
+        "lib/MonoAndroid403/HockeySDK.dll",
+        "lib/Xamarin.iOS10/HockeySDK.dll",
+        "lib/Xamarin.iOS10/HockeySDK.iOSBindings.dll",
+        "lib/portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10/HockeySDK.dll"
       ]
     },
     "Microsoft.NETCore.Jit/1.0.2": {
@@ -5234,6 +5256,7 @@
     "": [
       "Autofac >= 4.6.0",
       "FluentValidation >= 7.0.3",
+      "HockeySDK.Xamarin >= 4.1.4",
       "Microsoft.NETCore.Portable.Compatibility >= 1.0.1",
       "NETStandard.Library >= 1.6.1",
       "Plugin.Share >= 5.0.0",
