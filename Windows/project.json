@@ -3,7 +3,7 @@
     "Autofac": "4.6.0",
     "FluentValidation": "7.0.3",
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.3.3",
-    "Plugin.Share": "5.0.0",
+    "Plugin.Share": "6.1.0.19-beta",
     "Prism.Core": "6.3.0",
     "SkiaSharp.Views.Forms": "1.58.0",
     "sqlite-net-pcl": "1.3.3",

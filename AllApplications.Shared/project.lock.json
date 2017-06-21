@@ -154,15 +154,15 @@
           "System.Xml.XDocument": "4.3.0"
         }
       },
-      "Plugin.Share/5.0.0": {
+      "Plugin.Share/6.1.0.19-beta": {
         "type": "package",
         "compile": {
-          "lib/portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10/Plugin.Share.Abstractions.dll": {},
-          "lib/portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10/Plugin.Share.dll": {}
+          "lib/portable-net45+wp80+win8+wpa81/Plugin.Share.Abstractions.dll": {},
+          "lib/portable-net45+wp80+win8+wpa81/Plugin.Share.dll": {}
         },
         "runtime": {
-          "lib/portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10/Plugin.Share.Abstractions.dll": {},
-          "lib/portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10/Plugin.Share.dll": {}
+          "lib/portable-net45+wp80+win8+wpa81/Plugin.Share.Abstractions.dll": {},
+          "lib/portable-net45+wp80+win8+wpa81/Plugin.Share.dll": {}
         }
       },
       "Prism.Core/6.3.0": {
@@ -1530,19 +1530,19 @@
         "dotnet_library_license.txt"
       ]
     },
-    "Plugin.Share/5.0.0": {
-      "sha512": "zJ372zj0jLlffXHRVE+NfgoSlpi730/RHOsihqKm6hX7Llcd1XYX+LjBCXA6OmGfXcOnmcYpAGJV1SPEamhP3A==",
+    "Plugin.Share/6.1.0.19-beta": {
+      "sha512": "6GhS9JzG4S05FmBcLtXp+89m171LURPPrEWElbZOJGlsgp1aerGdkUxvz8s6CxWyHLVoUgPMbji+3HqR5u+vWg==",
       "type": "package",
-      "path": "Plugin.Share/5.0.0",
+      "path": "Plugin.Share/6.1.0.19-beta",
       "files": [
-        "Plugin.Share.5.0.0.nupkg.sha512",
+        "Plugin.Share.6.1.0.19-beta.nupkg.sha512",
         "Plugin.Share.nuspec",
-        "lib/MonoAndroid10/Plugin.Share.Abstractions.dll",
-        "lib/MonoAndroid10/Plugin.Share.Abstractions.pdb",
-        "lib/MonoAndroid10/Plugin.Share.Abstractions.xml",
-        "lib/MonoAndroid10/Plugin.Share.dll",
-        "lib/MonoAndroid10/Plugin.Share.pdb",
-        "lib/MonoAndroid10/Plugin.Share.xml",
+        "lib/MonoAndroid70/Plugin.Share.Abstractions.dll",
+        "lib/MonoAndroid70/Plugin.Share.Abstractions.pdb",
+        "lib/MonoAndroid70/Plugin.Share.Abstractions.xml",
+        "lib/MonoAndroid70/Plugin.Share.dll",
+        "lib/MonoAndroid70/Plugin.Share.pdb",
+        "lib/MonoAndroid70/Plugin.Share.xml",
         "lib/UAP10/Plugin.Share.Abstractions.dll",
         "lib/UAP10/Plugin.Share.Abstractions.pdb",
         "lib/UAP10/Plugin.Share.Abstractions.xml",
@@ -1553,12 +1553,12 @@
         "lib/Xamarin.iOS10/Plugin.Share.Abstractions.xml",
         "lib/Xamarin.iOS10/Plugin.Share.dll",
         "lib/Xamarin.iOS10/Plugin.Share.xml",
-        "lib/portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10/Plugin.Share.Abstractions.dll",
-        "lib/portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10/Plugin.Share.Abstractions.pdb",
-        "lib/portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10/Plugin.Share.Abstractions.xml",
-        "lib/portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10/Plugin.Share.dll",
-        "lib/portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10/Plugin.Share.pdb",
-        "lib/portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10/Plugin.Share.xml",
+        "lib/portable-net45+wp80+win8+wpa81/Plugin.Share.Abstractions.dll",
+        "lib/portable-net45+wp80+win8+wpa81/Plugin.Share.Abstractions.pdb",
+        "lib/portable-net45+wp80+win8+wpa81/Plugin.Share.Abstractions.xml",
+        "lib/portable-net45+wp80+win8+wpa81/Plugin.Share.dll",
+        "lib/portable-net45+wp80+win8+wpa81/Plugin.Share.pdb",
+        "lib/portable-net45+wp80+win8+wpa81/Plugin.Share.xml",
         "lib/win8/Plugin.Share.Abstractions.dll",
         "lib/win8/Plugin.Share.Abstractions.pdb",
         "lib/win8/Plugin.Share.Abstractions.xml",
@@ -5329,7 +5329,7 @@
       "FluentValidation >= 7.0.3",
       "Microsoft.NETCore.Portable.Compatibility >= 1.0.1",
       "NETStandard.Library >= 1.6.1",
-      "Plugin.Share >= 5.0.0",
+      "Plugin.Share >= 6.1.0.19-beta",
       "Prism.Core >= 6.3.0",
       "SkiaSharp.Views.Forms >= 1.58.0",
       "Syncfusion.Xamarin.Pdf >= 15.2.0.43",
