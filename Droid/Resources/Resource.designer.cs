@@ -7233,26 +7233,8 @@ namespace SampleApplication.Droid
 			// aapt resource value: 0x7f020058
 			public const int avd_hide_password = 2130837592;
 			
-			// aapt resource value: 0x7f020144
-			public const int avd_hide_password_1 = 2130837828;
-			
-			// aapt resource value: 0x7f020145
-			public const int avd_hide_password_2 = 2130837829;
-			
-			// aapt resource value: 0x7f020146
-			public const int avd_hide_password_3 = 2130837830;
-			
 			// aapt resource value: 0x7f020059
 			public const int avd_show_password = 2130837593;
-			
-			// aapt resource value: 0x7f020147
-			public const int avd_show_password_1 = 2130837831;
-			
-			// aapt resource value: 0x7f020148
-			public const int avd_show_password_2 = 2130837832;
-			
-			// aapt resource value: 0x7f020149
-			public const int avd_show_password_3 = 2130837833;
 			
 			// aapt resource value: 0x7f02005a
 			public const int calendar = 2130837594;
