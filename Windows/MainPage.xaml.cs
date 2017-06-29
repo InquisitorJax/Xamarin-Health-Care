@@ -20,7 +20,7 @@ namespace SampleApplication.Windows
             Xamarin.FormsMaps.Init(PrivateTokens.UWPMapsToken);
 
             BootstrapperService.Initialize(new IocWindowsModule()).GetAwaiter();
-
+            
             LoadApplication(new SampleApplication.App());
         }
     }

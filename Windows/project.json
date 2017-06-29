@@ -1,7 +1,7 @@
 ﻿{
   "dependencies": {
     "Autofac": "4.6.0",
-    "FluentValidation": "7.0.3",
+    "FluentValidation": "7.1.0",
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.3.3",
     "Plugin.Share": "6.1.0.19-beta",
     "Prism.Core": "6.3.0",

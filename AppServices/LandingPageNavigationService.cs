@@ -22,10 +22,10 @@ namespace SampleApplication.AppServices
 
         public async Task NavigateAsync()
         {
-            if (CC.Device.Platform == Platforms.iOS)
+            if (CC.Device.Platform == Platforms.iOS || CC.Device.Platform == Platforms.Windows)
             {
                 await _navService.NavigateAsync(Constants.Navigation.MainPage);
-                //BUG: iOS current hangs on repo call when below code enabled
+                //BUG: iOS && Windows current hangs on repo call when below code enabled
             }
             else
             {

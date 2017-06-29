@@ -13,7 +13,7 @@ namespace SampleApplication
         {
             var landingPageNavigationService = CC.IoC.Resolve<ILandingPageNavigationService>();
 
-            if (CC.Device.Platform == Platforms.iOS)
+            if (CC.Device.Platform == Platforms.iOS || CC.Device.Platform == Platforms.Windows)
             {
                 Func<Task> task = async () =>
                 {
