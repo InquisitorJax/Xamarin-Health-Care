@@ -15,7 +15,7 @@
           "lib/netstandard1.1/Autofac.dll": {}
         }
       },
-      "FluentValidation/7.0.3": {
+      "FluentValidation/7.1.0": {
         "type": "package",
         "dependencies": {
           "NETStandard.Library": "1.6.1"
@@ -1328,12 +1328,12 @@
         "lib/netstandard1.1/Autofac.xml"
       ]
     },
-    "FluentValidation/7.0.3": {
-      "sha512": "QN9vi57t4y6eDxZbamTbf0oWjayCigbU6siL0YGK6Zpak+3Q+c5KDZd3mTG4eM6FJJYxdxjeR/3BICOt1OoBkQ==",
+    "FluentValidation/7.1.0": {
+      "sha512": "4pqUpvGlEwPn8cJmtdIDBjP3/gHvTQx5s5PP+PSamXyynEiZ5X9m/9V1EoxDa+ML/mNUuxgfnyygTK4sys51Gg==",
       "type": "package",
-      "path": "fluentvalidation/7.0.3",
+      "path": "fluentvalidation/7.1.0",
       "files": [
-        "fluentvalidation.7.0.3.nupkg.sha512",
+        "fluentvalidation.7.1.0.nupkg.sha512",
         "fluentvalidation.nuspec",
         "lib/net45/FluentValidation.dll",
         "lib/net45/FluentValidation.xml",
@@ -1833,10 +1833,12 @@
       ]
     },
     "SQLitePCLRaw.bundle_green/1.1.5": {
-      "sha512": "0kPRjo46J5cmbF3gJ2wzqj8nVT6IPyA0AeupBKInYoexG6dTed5NPXhSe3hxqKopEzfsYUsdA/BhdECQmLOldw==",
+      "sha512": "rz+SPgp57CAWkEfCJmWqHXMd+fSqhgYmzOdjkSbCQ3OEG0I3+vUlycElvy5zTi0GAYg5pVrmRqbquotS0985CQ==",
       "type": "package",
       "path": "sqlitepclraw.bundle_green/1.1.5",
       "files": [
+        "SQLitePCLRaw.bundle_green.1.1.5.nupkg.sha512",
+        "SQLitePCLRaw.bundle_green.nuspec",
         "build/wp8/SQLitePCLRaw.bundle_green.targets",
         "build/wp80/arm/SQLitePCLRaw.batteries_green.dll",
         "build/wp80/arm/SQLitePCLRaw.batteries_v2.dll",
@@ -1872,16 +1874,16 @@
         "lib/win81/SQLitePCLRaw.batteries_v2.dll",
         "lib/wp8/_._",
         "lib/wpa81/SQLitePCLRaw.batteries_green.dll",
-        "lib/wpa81/SQLitePCLRaw.batteries_v2.dll",
-        "sqlitepclraw.bundle_green.1.1.5.nupkg.sha512",
-        "sqlitepclraw.bundle_green.nuspec"
+        "lib/wpa81/SQLitePCLRaw.batteries_v2.dll"
       ]
     },
     "SQLitePCLRaw.core/1.1.5": {
-      "sha512": "P+HUHmGyt7OW1Wu0EGCjrdqYwRMTl2G1Zqryp1MzYAOYzUskZqzk+ykvOX7KXgU74t2HVMQH9U/PKotJuUJ8zw==",
+      "sha512": "NViT1KDYnPAQo7yoYmkAMWzT15ZjqbLTSZp9iTVwZDz7fBC5fQ9TYebOFUIxYxrD/RvBpYB8m9PtcL8x/QbKNg==",
       "type": "package",
       "path": "sqlitepclraw.core/1.1.5",
       "files": [
+        "SQLitePCLRaw.core.1.1.5.nupkg.sha512",
+        "SQLitePCLRaw.core.nuspec",
         "lib/MonoAndroid/SQLitePCLRaw.core.dll",
         "lib/Xamarin.Mac20/SQLitePCLRaw.core.dll",
         "lib/Xamarin.iOS10/SQLitePCLRaw.core.dll",
@@ -1896,9 +1898,7 @@
         "lib/uap10.0/SQLitePCLRaw.core.dll",
         "lib/win8/SQLitePCLRaw.core.dll",
         "lib/win81/SQLitePCLRaw.core.dll",
-        "lib/wpa81/SQLitePCLRaw.core.dll",
-        "sqlitepclraw.core.1.1.5.nupkg.sha512",
-        "sqlitepclraw.core.nuspec"
+        "lib/wpa81/SQLitePCLRaw.core.dll"
       ]
     },
     "Syncfusion.Xamarin.Compression/15.2.0.43": {
@@ -5328,7 +5328,7 @@
   "projectFileDependencyGroups": {
     "": [
       "Autofac >= 4.6.0",
-      "FluentValidation >= 7.0.3",
+      "FluentValidation >= 7.1.0",
       "Microsoft.NETCore.Portable.Compatibility >= 1.0.2",
       "NETStandard.Library >= 1.6.1",
       "Plugin.Share >= 6.1.0.19-beta",
@@ -5353,19 +5353,19 @@
     ".NETStandard,Version=v1.4": []
   },
   "packageFolders": {
-    "C:\\Users\\MalcolmJ\\.nuget\\packages\\": {}
+    "C:\\Users\\Jax\\.nuget\\packages\\": {}
   },
   "project": {
     "restore": {
-      "projectUniqueName": "D:\\@D3V\\GitJax\\Xamarin-Health-Care\\AllApplications.Shared\\XForms.Shared.csproj",
+      "projectUniqueName": "C:\\D3V\\Git\\Xamarin-Health-Care\\AllApplications.Shared\\XForms.Shared.csproj",
       "projectName": "XForms.Shared",
-      "projectPath": "D:\\@D3V\\GitJax\\Xamarin-Health-Care\\AllApplications.Shared\\XForms.Shared.csproj",
-      "projectJsonPath": "D:\\@D3V\\GitJax\\Xamarin-Health-Care\\AllApplications.Shared\\project.json",
+      "projectPath": "C:\\D3V\\Git\\Xamarin-Health-Care\\AllApplications.Shared\\XForms.Shared.csproj",
+      "projectJsonPath": "C:\\D3V\\Git\\Xamarin-Health-Care\\AllApplications.Shared\\project.json",
       "projectStyle": "ProjectJson"
     },
     "dependencies": {
       "Autofac": "4.6.0",
-      "FluentValidation": "7.0.3",
+      "FluentValidation": "[7.1.0, )",
       "Microsoft.NETCore.Portable.Compatibility": "1.0.2",
       "NETStandard.Library": "1.6.1",
       "Plugin.Share": "6.1.0.19-beta",

@@ -2,7 +2,7 @@
   "supports": {},
   "dependencies": {
     "Autofac": "4.6.0",
-    "FluentValidation": "7.0.3",
+    "FluentValidation": "7.1.0",
     "Microsoft.NETCore.Portable.Compatibility": "1.0.2",
     "NETStandard.Library": "1.6.1",
     "Plugin.Share": "6.1.0.19-beta",
