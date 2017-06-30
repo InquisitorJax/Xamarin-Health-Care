@@ -32,12 +32,12 @@ namespace SampleApplication.ViewModels
             CreateAppointmentNavigationCommand = new DelegateCommand(CreateAppointmentNavigate);
             MainMenuItemClickCommand = new DelegateCommand<MainMenuItem>(MainMenuItemClick);
             CancelAppointmentCommand = new DelegateCommand<Appointment>(CancelAppointment);
-            Title = "Cliniko Care";
+            Title = "Clinic 'O Care";
 
             MainMenuItems = new List<MainMenuItem>();
             MainMenuItems.Add(new MainMenuItem
             {
-                Title = "Cliniko Health Providers",
+                Title = "Health Providers",
                 IconSource = "circle_logo.png",
                 ActionId = Constants.Navigation.ProviderListPage
             });

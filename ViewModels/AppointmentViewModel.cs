@@ -251,8 +251,8 @@ namespace SampleApplication.ViewModels
 
         private void Share()
         {
-            string message = "@cliniko care is awesome! service from " + Provider.Name + " was fantastic!";
-            string title = "cliniko care";
+            string message = "@clinicocare care is awesome! service from " + Provider.Name + " was fantastic!";
+            string title = "clinic 'o care";
 
             CC.Device.Share(message, title, Provider.FacebookUrl);
         }

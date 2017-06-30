@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace SampleApplication
 {
-    [Activity(Theme = "@style/MyTheme.Splash", MainLauncher = true, Icon = "@drawable/icon", NoHistory = true, Label = "Cliniko Care")]
+    [Activity(Theme = "@style/MyTheme.Splash", MainLauncher = true, Icon = "@drawable/icon", NoHistory = true, Label = "Clinic 'O Care")]
     public class SplashActivity : AppCompatActivity
     {
         private static readonly string TAG = "X:" + typeof(SplashActivity).Name;

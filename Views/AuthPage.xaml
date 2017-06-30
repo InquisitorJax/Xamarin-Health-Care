@@ -12,7 +12,7 @@
 
             <Label HeightRequest="200"
                    HorizontalOptions="CenterAndExpand"
-                   Text="Welcome to clinko care!"
+                   Text="Welcome to Clinic 'O Care!"
                    TextColor="White" />
 
             <Frame Grid.Row="1"

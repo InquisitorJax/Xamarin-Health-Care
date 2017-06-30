@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:SampleApplication"
              xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              xmlns:views="clr-namespace:SampleApplication.Views"
-             Title="cliniko care"
+             Title="clinic 'o care"
              BackgroundColor="#F5F5F5">
     <ContentPage.ToolbarItems>
         <ToolbarItem Command="{Binding CreateAppointmentNavigationCommand}"
