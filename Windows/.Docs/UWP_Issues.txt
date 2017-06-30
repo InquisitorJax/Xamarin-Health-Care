@@ -3,9 +3,5 @@
  - ListView:
 	- CacheStrategy property throws exception
 
-	links:
-	Splash: and load bootstrapping async with  await Windows.ApplicationModel.Core.CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal,() =>            {
-	https://docs.microsoft.com/en-us/windows/uwp/launch-resume/create-a-customized-splash-screen
-
 	https://docs.microsoft.com/en-us/windows/uwp/debug-test-perf/best-practices-for-your-app-s-startup-performance
 	https://docs.microsoft.com/en-us/windows/uwp/launch-resume/add-a-splash-screen

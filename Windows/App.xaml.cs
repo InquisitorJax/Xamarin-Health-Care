@@ -61,7 +61,14 @@ namespace SampleApplication.Windows
                 }
 
                 // Place the frame in the current Window
-                Window.Current.Content = rootFrame;
+                //  Display an extended splash screen if app was not previously running.
+                if (e.PreviousExecutionState != ApplicationExecutionState.Running)
+                {
+                    bool loadState = (e.PreviousExecutionState == ApplicationExecutionState.Terminated);
+                    SplashPage extendedSplash = new SplashPage(e.SplashScreen, loadState);
+                    rootFrame.Content = extendedSplash;
+                    Window.Current.Content = rootFrame;
+                }
             }
 
             if (rootFrame.Content == null)

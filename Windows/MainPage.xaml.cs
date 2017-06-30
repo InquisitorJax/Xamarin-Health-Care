@@ -17,9 +17,7 @@ namespace SampleApplication.Windows
             this.InitializeComponent();
 
             SfListViewRenderer.Init();
-            Xamarin.FormsMaps.Init(PrivateTokens.UWPMapsToken);
-
-            BootstrapperService.Initialize(new IocWindowsModule()).GetAwaiter();
+            Xamarin.FormsMaps.Init(PrivateTokens.UWPMapsToken);            
             
             LoadApplication(new SampleApplication.App());
         }

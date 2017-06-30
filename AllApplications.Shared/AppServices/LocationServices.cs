@@ -8,6 +8,9 @@ namespace Core.AppServices
 {
     public interface ILocationService
     {
+
+        bool HasGpsPermissions { get; set; }
+
         Task<FetchCurrentLocationResult> FetchCurrentLocationAsync();
 
         List<GeoLocation> GenerateRandomLocations(GeoLocation fromLocation, int radiusInMeters, int numberOfLocations = 1);
@@ -21,6 +24,8 @@ namespace Core.AppServices
     public class LocationService : ILocationService
     {
         private readonly IGeolocator _locationService;
+
+        public bool HasGpsPermissions { get; set; }
 
         public LocationService(IGeolocator locationService)
         {
@@ -47,21 +52,37 @@ namespace Core.AppServices
             {
                 try
                 {
-                    GeoLocation location = new GeoLocation();
+                    GeoLocation location = new GeoLocation();                    
 
                     //TODO: make part of request
                     _locationService.DesiredAccuracy = 25;
                     int timeout = 10000;
 
-                    Position position = await _locationService.GetPositionAsync(timeout);
-
-                    if (position != null)
+                    //if (_locationService.IsGeolocationAvailable)
+                    if (HasGpsPermissions)
                     {
+                        Position position = await _locationService.GetPositionAsync(timeout);
+
+                        if (position != null)
+                        {
+                            location = new GeoLocation
+                            {
+                                Latitude = position.Latitude,
+                                Longitude = position.Longitude,
+                                TimeStamp = position.Timestamp,
+                                Description = "Current Location"
+                            };
+                        }
+                    }
+                    else
+                    {
+                        //TODO: device doesn't have Gps - or location detection denied - allow user to select location from map and store in settings
+                        //dummy code:
                         location = new GeoLocation
                         {
-                            Latitude = position.Latitude,
-                            Longitude = position.Longitude,
-                            TimeStamp = position.Timestamp,
+                            Latitude = 23.3,
+                            Longitude = 23.3,
+                            TimeStamp = DateTimeOffset.Now,
                             Description = "Current Location"
                         };
                     }
