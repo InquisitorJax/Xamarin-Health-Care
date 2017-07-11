@@ -4,8 +4,6 @@ namespace Core.Controls
 {
     public class EditorEx : Editor
     {
-        //public static readonly BindableProperty MaxHeightProperty = BindableProperty.Create(nameof(MaxHeight), typeof(double), typeof(EditorEx), double.MaxValue, BindingMode.TwoWay);
-
         //see: http://forums.xamarin.com/discussion/21951/allow-the-editor-control-to-grow-as-content-lines-are-added#latest
         public EditorEx()
         {
@@ -15,12 +13,6 @@ namespace Core.Controls
         }
 
         public double MaxHeight { get; set; }
-
-        //public double MaxHeight
-        //{
-        //    get { return (double)GetValue(MaxHeightProperty); }
-        //    set { SetValue(MaxHeightProperty, value); }
-        //}
 
         protected override SizeRequest OnMeasure(double widthConstraint, double heightConstraint)
         {
