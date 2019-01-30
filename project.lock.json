@@ -1,9 +1,9 @@
 {
-  "locked": false,
-  "version": 1,
+  "version": 3,
   "targets": {
     ".NETStandard,Version=v1.4": {
       "Autofac/4.6.0": {
+        "type": "package",
         "dependencies": {
           "NETStandard.Library": "1.6.0",
           "System.ComponentModel": "4.0.1"
@@ -16,6 +16,7 @@
         }
       },
       "FluentValidation/7.1.0": {
+        "type": "package",
         "dependencies": {
           "NETStandard.Library": "1.6.1"
         },
@@ -27,6 +28,7 @@
         }
       },
       "HockeySDK.Xamarin/4.1.5": {
+        "type": "package",
         "compile": {
           "lib/portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10/HockeySDK.dll": {}
         },
@@ -34,8 +36,11 @@
           "lib/portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10/HockeySDK.dll": {}
         }
       },
-      "Microsoft.NETCore.Jit/1.0.2": {},
+      "Microsoft.NETCore.Jit/1.0.2": {
+        "type": "package"
+      },
       "Microsoft.NETCore.Platforms/1.1.0": {
+        "type": "package",
         "compile": {
           "lib/netstandard1.0/_._": {}
         },
@@ -44,6 +49,7 @@
         }
       },
       "Microsoft.NETCore.Portable.Compatibility/1.0.2": {
+        "type": "package",
         "dependencies": {
           "Microsoft.NETCore.Runtime.CoreCLR": "1.0.2"
         },
@@ -78,12 +84,14 @@
         }
       },
       "Microsoft.NETCore.Runtime.CoreCLR/1.0.2": {
+        "type": "package",
         "dependencies": {
           "Microsoft.NETCore.Jit": "1.0.2",
           "Microsoft.NETCore.Windows.ApiSets": "1.0.1"
         }
       },
       "Microsoft.NETCore.Targets/1.1.0": {
+        "type": "package",
         "compile": {
           "lib/netstandard1.0/_._": {}
         },
@@ -91,8 +99,11 @@
           "lib/netstandard1.0/_._": {}
         }
       },
-      "Microsoft.NETCore.Windows.ApiSets/1.0.1": {},
+      "Microsoft.NETCore.Windows.ApiSets/1.0.1": {
+        "type": "package"
+      },
       "Microsoft.Win32.Primitives/4.3.0": {
+        "type": "package",
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.1.0",
           "Microsoft.NETCore.Targets": "1.1.0",
@@ -103,6 +114,7 @@
         }
       },
       "NETStandard.Library/1.6.1": {
+        "type": "package",
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.1.0",
           "Microsoft.Win32.Primitives": "4.3.0",
@@ -151,6 +163,7 @@
         }
       },
       "Plugin.Share/6.1.0.19-beta": {
+        "type": "package",
         "compile": {
           "lib/portable-net45+wp80+win8+wpa81/Plugin.Share.Abstractions.dll": {},
           "lib/portable-net45+wp80+win8+wpa81/Plugin.Share.dll": {}
@@ -161,6 +174,7 @@
         }
       },
       "Prism.Core/6.3.0": {
+        "type": "package",
         "compile": {
           "lib/portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/Prism.dll": {}
         },
@@ -169,6 +183,7 @@
         }
       },
       "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
+        "type": "package",
         "runtimeTargets": {
           "runtimes/debian.8-x64/native/System.Security.Cryptography.Native.OpenSsl.so": {
             "assetType": "native",
@@ -177,6 +192,7 @@
         }
       },
       "runtime.fedora.23-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
+        "type": "package",
         "runtimeTargets": {
           "runtimes/fedora.23-x64/native/System.Security.Cryptography.Native.OpenSsl.so": {
             "assetType": "native",
@@ -185,6 +201,7 @@
         }
       },
       "runtime.fedora.24-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
+        "type": "package",
         "runtimeTargets": {
           "runtimes/fedora.24-x64/native/System.Security.Cryptography.Native.OpenSsl.so": {
             "assetType": "native",
@@ -193,6 +210,7 @@
         }
       },
       "runtime.native.System/4.3.0": {
+        "type": "package",
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.1.0",
           "Microsoft.NETCore.Targets": "1.1.0"
@@ -205,6 +223,7 @@
         }
       },
       "runtime.native.System.IO.Compression/4.3.0": {
+        "type": "package",
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.1.0",
           "Microsoft.NETCore.Targets": "1.1.0"
@@ -217,6 +236,7 @@
         }
       },
       "runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
+        "type": "package",
         "dependencies": {
           "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl": "4.3.0",
           "runtime.fedora.23-x64.runtime.native.System.Security.Cryptography.OpenSsl": "4.3.0",
@@ -237,6 +257,7 @@
         }
       },
       "runtime.opensuse.13.2-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
+        "type": "package",
         "runtimeTargets": {
           "runtimes/opensuse.13.2-x64/native/System.Security.Cryptography.Native.OpenSsl.so": {
             "assetType": "native",
@@ -245,6 +266,7 @@
         }
       },
       "runtime.opensuse.42.1-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
+        "type": "package",
         "runtimeTargets": {
           "runtimes/opensuse.42.1-x64/native/System.Security.Cryptography.Native.OpenSsl.so": {
             "assetType": "native",
@@ -253,6 +275,7 @@
         }
       },
       "runtime.osx.10.10-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
+        "type": "package",
         "runtimeTargets": {
           "runtimes/osx.10.10-x64/native/System.Security.Cryptography.Native.OpenSsl.dylib": {
             "assetType": "native",
@@ -261,6 +284,7 @@
         }
       },
       "runtime.rhel.7-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
+        "type": "package",
         "runtimeTargets": {
           "runtimes/rhel.7-x64/native/System.Security.Cryptography.Native.OpenSsl.so": {
             "assetType": "native",
@@ -269,6 +293,7 @@
         }
       },
       "runtime.ubuntu.14.04-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
+        "type": "package",
         "runtimeTargets": {
           "runtimes/ubuntu.14.04-x64/native/System.Security.Cryptography.Native.OpenSsl.so": {
             "assetType": "native",
@@ -277,6 +302,7 @@
         }
       },
       "runtime.ubuntu.16.04-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
+        "type": "package",
         "runtimeTargets": {
           "runtimes/ubuntu.16.04-x64/native/System.Security.Cryptography.Native.OpenSsl.so": {
             "assetType": "native",
@@ -285,6 +311,7 @@
         }
       },
       "runtime.ubuntu.16.10-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
+        "type": "package",
         "runtimeTargets": {
           "runtimes/ubuntu.16.10-x64/native/System.Security.Cryptography.Native.OpenSsl.so": {
             "assetType": "native",
@@ -293,6 +320,7 @@
         }
       },
       "sqlite-net-pcl/1.3.3": {
+        "type": "package",
         "dependencies": {
           "NETStandard.Library": "1.6.0",
           "SQLitePCLRaw.bundle_green": "1.1.5"
@@ -305,6 +333,7 @@
         }
       },
       "SQLitePCLRaw.bundle_green/1.1.5": {
+        "type": "package",
         "dependencies": {
           "NETStandard.Library": "1.6.0",
           "SQLitePCLRaw.core": "1.1.5"
@@ -319,6 +348,7 @@
         }
       },
       "SQLitePCLRaw.core/1.1.5": {
+        "type": "package",
         "dependencies": {
           "NETStandard.Library": "1.6.0"
         },
@@ -330,6 +360,7 @@
         }
       },
       "Syncfusion.Xamarin.Compression/15.2.0.43": {
+        "type": "package",
         "dependencies": {
           "Xamarin.Forms": "2.3.3.180"
         },
@@ -341,6 +372,7 @@
         }
       },
       "Syncfusion.Xamarin.Pdf/15.2.0.43": {
+        "type": "package",
         "dependencies": {
           "Syncfusion.Xamarin.Compression": "15.2.0.43",
           "Xamarin.Forms": "2.3.3.180"
@@ -355,6 +387,7 @@
         }
       },
       "Syncfusion.Xamarin.SfBusyIndicator/15.2.0.43": {
+        "type": "package",
         "dependencies": {
           "Xamarin.Forms": "2.3.3.180"
         },
@@ -366,6 +399,7 @@
         }
       },
       "Syncfusion.Xamarin.SfCalendar/15.2.0.43": {
+        "type": "package",
         "dependencies": {
           "Xamarin.Forms": "2.3.3.180"
         },
@@ -377,6 +411,7 @@
         }
       },
       "Syncfusion.Xamarin.SfListView/15.2.0.43": {
+        "type": "package",
         "dependencies": {
           "Xamarin.Forms": "2.3.3.180"
         },
@@ -394,6 +429,7 @@
         }
       },
       "Syncfusion.Xamarin.SfPdfViewer/15.2.0.43": {
+        "type": "package",
         "dependencies": {
           "Xamarin.Forms": "2.3.3.180"
         },
@@ -409,6 +445,7 @@
         }
       },
       "Syncfusion.Xamarin.SfSchedule/15.2.0.43": {
+        "type": "package",
         "dependencies": {
           "Xamarin.Forms": "2.3.3.180"
         },
@@ -420,6 +457,7 @@
         }
       },
       "System.AppContext/4.3.0": {
+        "type": "package",
         "dependencies": {
           "System.Runtime": "4.3.0"
         },
@@ -428,6 +466,7 @@
         }
       },
       "System.Buffers/4.3.0": {
+        "type": "package",
         "dependencies": {
           "System.Diagnostics.Debug": "4.3.0",
           "System.Diagnostics.Tracing": "4.3.0",
@@ -443,6 +482,7 @@
         }
       },
       "System.Collections/4.3.0": {
+        "type": "package",
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.1.0",
           "Microsoft.NETCore.Targets": "1.1.0",
@@ -456,6 +496,7 @@
         }
       },
       "System.Collections.Concurrent/4.3.0": {
+        "type": "package",
         "dependencies": {
           "System.Collections": "4.3.0",
           "System.Diagnostics.Debug": "4.3.0",
@@ -476,6 +517,7 @@
         }
       },
       "System.ComponentModel/4.0.1": {
+        "type": "package",
         "dependencies": {
           "System.Runtime": "4.1.0"
         },
@@ -487,6 +529,7 @@
         }
       },
       "System.Console/4.3.0": {
+        "type": "package",
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.1.0",
           "Microsoft.NETCore.Targets": "1.1.0",
@@ -499,6 +542,7 @@
         }
       },
       "System.Diagnostics.Debug/4.3.0": {
+        "type": "package",
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.1.0",
           "Microsoft.NETCore.Targets": "1.1.0",
@@ -512,6 +556,7 @@
         }
       },
       "System.Diagnostics.DiagnosticSource/4.3.0": {
+        "type": "package",
         "dependencies": {
           "System.Collections": "4.3.0",
           "System.Diagnostics.Tracing": "4.3.0",
@@ -527,6 +572,7 @@
         }
       },
       "System.Diagnostics.Tools/4.3.0": {
+        "type": "package",
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.1.0",
           "Microsoft.NETCore.Targets": "1.1.0",
@@ -540,6 +586,7 @@
         }
       },
       "System.Diagnostics.Tracing/4.3.0": {
+        "type": "package",
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.1.0",
           "Microsoft.NETCore.Targets": "1.1.0",
@@ -550,6 +597,7 @@
         }
       },
       "System.Globalization/4.3.0": {
+        "type": "package",
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.1.0",
           "Microsoft.NETCore.Targets": "1.1.0",
@@ -563,6 +611,7 @@
         }
       },
       "System.Globalization.Calendars/4.3.0": {
+        "type": "package",
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.1.0",
           "Microsoft.NETCore.Targets": "1.1.0",
@@ -574,6 +623,7 @@
         }
       },
       "System.IO/4.3.0": {
+        "type": "package",
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.1.0",
           "Microsoft.NETCore.Targets": "1.1.0",
@@ -589,6 +639,7 @@
         }
       },
       "System.IO.Compression/4.3.0": {
+        "type": "package",
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.1.0",
           "System.Buffers": "4.3.0",
@@ -621,6 +672,7 @@
         }
       },
       "System.IO.Compression.ZipFile/4.3.0": {
+        "type": "package",
         "dependencies": {
           "System.Buffers": "4.3.0",
           "System.IO": "4.3.0",
@@ -640,6 +692,7 @@
         }
       },
       "System.IO.FileSystem/4.3.0": {
+        "type": "package",
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.1.0",
           "Microsoft.NETCore.Targets": "1.1.0",
@@ -655,6 +708,7 @@
         }
       },
       "System.IO.FileSystem.Primitives/4.3.0": {
+        "type": "package",
         "dependencies": {
           "System.Runtime": "4.3.0"
         },
@@ -666,6 +720,7 @@
         }
       },
       "System.Linq/4.3.0": {
+        "type": "package",
         "dependencies": {
           "System.Collections": "4.3.0",
           "System.Runtime": "4.3.0"
@@ -678,6 +733,7 @@
         }
       },
       "System.Linq.Expressions/4.3.0": {
+        "type": "package",
         "dependencies": {
           "System.Reflection": "4.3.0",
           "System.Runtime": "4.3.0"
@@ -690,6 +746,7 @@
         }
       },
       "System.Net.Http/4.3.0": {
+        "type": "package",
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.1.0",
           "Microsoft.Win32.Primitives": "4.3.0",
@@ -722,6 +779,7 @@
         }
       },
       "System.Net.Primitives/4.3.0": {
+        "type": "package",
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.1.0",
           "Microsoft.NETCore.Targets": "1.1.0",
@@ -736,6 +794,7 @@
         }
       },
       "System.Net.Sockets/4.3.0": {
+        "type": "package",
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.1.0",
           "Microsoft.NETCore.Targets": "1.1.0",
@@ -749,6 +808,7 @@
         }
       },
       "System.ObjectModel/4.3.0": {
+        "type": "package",
         "dependencies": {
           "System.Collections": "4.3.0",
           "System.Diagnostics.Debug": "4.3.0",
@@ -764,6 +824,7 @@
         }
       },
       "System.Reflection/4.3.0": {
+        "type": "package",
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.1.0",
           "Microsoft.NETCore.Targets": "1.1.0",
@@ -779,6 +840,7 @@
         }
       },
       "System.Reflection.Extensions/4.3.0": {
+        "type": "package",
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.1.0",
           "Microsoft.NETCore.Targets": "1.1.0",
@@ -793,6 +855,7 @@
         }
       },
       "System.Reflection.Primitives/4.3.0": {
+        "type": "package",
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.1.0",
           "Microsoft.NETCore.Targets": "1.1.0",
@@ -806,6 +869,7 @@
         }
       },
       "System.Resources.ResourceManager/4.3.0": {
+        "type": "package",
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.1.0",
           "Microsoft.NETCore.Targets": "1.1.0",
@@ -821,6 +885,7 @@
         }
       },
       "System.Runtime/4.3.0": {
+        "type": "package",
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.1.0",
           "Microsoft.NETCore.Targets": "1.1.0"
@@ -833,6 +898,7 @@
         }
       },
       "System.Runtime.Extensions/4.3.0": {
+        "type": "package",
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.1.0",
           "Microsoft.NETCore.Targets": "1.1.0",
@@ -846,6 +912,7 @@
         }
       },
       "System.Runtime.Handles/4.3.0": {
+        "type": "package",
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.1.0",
           "Microsoft.NETCore.Targets": "1.1.0",
@@ -856,6 +923,7 @@
         }
       },
       "System.Runtime.InteropServices/4.3.0": {
+        "type": "package",
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.1.0",
           "Microsoft.NETCore.Targets": "1.1.0",
@@ -869,6 +937,7 @@
         }
       },
       "System.Runtime.InteropServices.RuntimeInformation/4.3.0": {
+        "type": "package",
         "dependencies": {
           "System.Reflection": "4.3.0",
           "System.Reflection.Extensions": "4.3.0",
@@ -896,6 +965,7 @@
         }
       },
       "System.Runtime.Numerics/4.3.0": {
+        "type": "package",
         "dependencies": {
           "System.Globalization": "4.3.0",
           "System.Resources.ResourceManager": "4.3.0",
@@ -910,6 +980,7 @@
         }
       },
       "System.Security.Cryptography.Algorithms/4.3.0": {
+        "type": "package",
         "dependencies": {
           "System.IO": "4.3.0",
           "System.Runtime": "4.3.0",
@@ -920,6 +991,7 @@
         }
       },
       "System.Security.Cryptography.Encoding/4.3.0": {
+        "type": "package",
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.1.0",
           "System.Collections": "4.3.0",
@@ -949,6 +1021,7 @@
         }
       },
       "System.Security.Cryptography.Primitives/4.3.0": {
+        "type": "package",
         "dependencies": {
           "System.Diagnostics.Debug": "4.3.0",
           "System.Globalization": "4.3.0",
@@ -966,6 +1039,7 @@
         }
       },
       "System.Security.Cryptography.X509Certificates/4.3.0": {
+        "type": "package",
         "dependencies": {
           "System.Runtime": "4.3.0",
           "System.Runtime.Handles": "4.3.0",
@@ -977,6 +1051,7 @@
         }
       },
       "System.Text.Encoding/4.3.0": {
+        "type": "package",
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.1.0",
           "Microsoft.NETCore.Targets": "1.1.0",
@@ -990,6 +1065,7 @@
         }
       },
       "System.Text.Encoding.Extensions/4.3.0": {
+        "type": "package",
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.1.0",
           "Microsoft.NETCore.Targets": "1.1.0",
@@ -1004,6 +1080,7 @@
         }
       },
       "System.Text.RegularExpressions/4.3.0": {
+        "type": "package",
         "dependencies": {
           "System.Runtime": "4.3.0"
         },
@@ -1015,6 +1092,7 @@
         }
       },
       "System.Threading/4.3.0": {
+        "type": "package",
         "dependencies": {
           "System.Runtime": "4.3.0",
           "System.Threading.Tasks": "4.3.0"
@@ -1027,6 +1105,7 @@
         }
       },
       "System.Threading.Tasks/4.3.0": {
+        "type": "package",
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.1.0",
           "Microsoft.NETCore.Targets": "1.1.0",
@@ -1040,6 +1119,7 @@
         }
       },
       "System.Threading.Tasks.Extensions/4.3.0": {
+        "type": "package",
         "dependencies": {
           "System.Collections": "4.3.0",
           "System.Runtime": "4.3.0",
@@ -1053,6 +1133,7 @@
         }
       },
       "System.Threading.Timer/4.3.0": {
+        "type": "package",
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.1.0",
           "Microsoft.NETCore.Targets": "1.1.0",
@@ -1063,6 +1144,7 @@
         }
       },
       "System.Xml.ReaderWriter/4.3.0": {
+        "type": "package",
         "dependencies": {
           "System.Collections": "4.3.0",
           "System.Diagnostics.Debug": "4.3.0",
@@ -1088,6 +1170,7 @@
         }
       },
       "System.Xml.XDocument/4.3.0": {
+        "type": "package",
         "dependencies": {
           "System.Collections": "4.3.0",
           "System.Diagnostics.Debug": "4.3.0",
@@ -1110,6 +1193,7 @@
         }
       },
       "Toasts.Forms.Plugin/3.2.0": {
+        "type": "package",
         "compile": {
           "lib/netstandard1.1/Toasts.Forms.Plugin.Abstractions.dll": {}
         },
@@ -1118,6 +1202,7 @@
         }
       },
       "Xam.Plugin.Connectivity/2.3.0": {
+        "type": "package",
         "compile": {
           "lib/portable-net45+wp80+win8+wpa81/Plugin.Connectivity.Abstractions.dll": {},
           "lib/portable-net45+wp80+win8+wpa81/Plugin.Connectivity.dll": {}
@@ -1128,6 +1213,7 @@
         }
       },
       "Xam.Plugin.ExternalMaps/3.0.10": {
+        "type": "package",
         "compile": {
           "lib/portable-net45+wp80+win8+wpa81/Plugin.ExternalMaps.Abstractions.dll": {},
           "lib/portable-net45+wp80+win8+wpa81/Plugin.ExternalMaps.dll": {}
@@ -1138,6 +1224,7 @@
         }
       },
       "Xam.Plugin.Geolocator/3.0.4": {
+        "type": "package",
         "compile": {
           "lib/portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10/Plugin.Geolocator.Abstractions.dll": {},
           "lib/portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10/Plugin.Geolocator.dll": {}
@@ -1148,6 +1235,7 @@
         }
       },
       "Xam.Plugins.Forms.ImageCircle/1.8.1": {
+        "type": "package",
         "dependencies": {
           "Xamarin.Forms": "2.3.2.127"
         },
@@ -1159,6 +1247,7 @@
         }
       },
       "Xam.Plugins.Messaging/4.0.0": {
+        "type": "package",
         "compile": {
           "lib/portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10/Plugin.Messaging.Abstractions.dll": {},
           "lib/portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10/Plugin.Messaging.dll": {}
@@ -1169,6 +1258,7 @@
         }
       },
       "Xamarin.Forms/2.3.4.247": {
+        "type": "package",
         "compile": {
           "lib/portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20/Xamarin.Forms.Core.dll": {},
           "lib/portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20/Xamarin.Forms.Platform.dll": {},
@@ -1178,9 +1268,13 @@
           "lib/portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20/Xamarin.Forms.Core.dll": {},
           "lib/portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20/Xamarin.Forms.Platform.dll": {},
           "lib/portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20/Xamarin.Forms.Xaml.dll": {}
+        },
+        "build": {
+          "build/portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20/Xamarin.Forms.targets": {}
         }
       },
       "Xamarin.Forms.Maps/2.3.4.247": {
+        "type": "package",
         "dependencies": {
           "Xamarin.Forms": "2.3.4.247"
         },
@@ -1189,6 +1283,33 @@
         },
         "runtime": {
           "lib/portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10/Xamarin.Forms.Maps.dll": {}
+        }
+      },
+      "XForms.Shared/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v1.4",
+        "dependencies": {
+          "Autofac": "4.6.0",
+          "FluentValidation": "7.1.0",
+          "Microsoft.NETCore.Portable.Compatibility": "1.0.2",
+          "NETStandard.Library": "1.6.1",
+          "Plugin.Share": "6.1.0.19-beta",
+          "Prism.Core": "6.3.0",
+          "Syncfusion.Xamarin.Pdf": "15.2.0.43",
+          "Syncfusion.Xamarin.SfBusyIndicator": "15.2.0.43",
+          "Syncfusion.Xamarin.SfCalendar": "15.2.0.43",
+          "Syncfusion.Xamarin.SfListView": "15.2.0.43",
+          "Syncfusion.Xamarin.SfPdfViewer": "15.2.0.43",
+          "Syncfusion.Xamarin.SfSchedule": "15.2.0.43",
+          "Toasts.Forms.Plugin": "3.2.0",
+          "Xam.Plugin.Connectivity": "2.3.0",
+          "Xam.Plugin.ExternalMaps": "3.0.10",
+          "Xam.Plugin.Geolocator": "3.0.4",
+          "Xam.Plugins.Forms.ImageCircle": "1.8.1",
+          "Xam.Plugins.Messaging": "4.0.0",
+          "Xamarin.Forms": "2.3.4.247",
+          "Xamarin.Forms.Maps": "2.3.4.247",
+          "sqlite-net-pcl": "1.3.3"
         }
       }
     }
@@ -1744,6 +1865,7 @@
       "type": "package",
       "path": "syncfusion.xamarin.compression/15.2.0.43",
       "files": [
+        ".nupkg.metadata",
         "lib/portable-win+net45+wp80+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/Syncfusion.Compression.Portable.dll",
         "lib/portable-win+net45+wp80+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/Syncfusion.Compression.Portable.xml",
         "syncfusion.xamarin.compression.15.2.0.43.nupkg.sha512",
@@ -1755,6 +1877,7 @@
       "type": "package",
       "path": "syncfusion.xamarin.pdf/15.2.0.43",
       "files": [
+        ".nupkg.metadata",
         "lib/portable-win+net45+wp80+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/Syncfusion.Compression.Portable.dll",
         "lib/portable-win+net45+wp80+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/Syncfusion.Compression.Portable.xml",
         "lib/portable-win+net45+wp80+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/Syncfusion.Pdf.Portable.XML",
@@ -1768,6 +1891,7 @@
       "type": "package",
       "path": "syncfusion.xamarin.sfbusyindicator/15.2.0.43",
       "files": [
+        ".nupkg.metadata",
         "lib/MonoAndroid10/Syncfusion.SfBusyIndicator.Android.dll",
         "lib/MonoAndroid10/Syncfusion.SfBusyIndicator.Android.xml",
         "lib/MonoAndroid10/Syncfusion.SfBusyIndicator.XForms.Android.dll",
@@ -1805,6 +1929,7 @@
       "type": "package",
       "path": "syncfusion.xamarin.sfcalendar/15.2.0.43",
       "files": [
+        ".nupkg.metadata",
         "lib/MonoAndroid10/Syncfusion.SfCalendar.Android.dll",
         "lib/MonoAndroid10/Syncfusion.SfCalendar.Android.xml",
         "lib/MonoAndroid10/Syncfusion.SfCalendar.XForms.Android.dll",
@@ -1850,6 +1975,7 @@
       "type": "package",
       "path": "syncfusion.xamarin.sflistview/15.2.0.43",
       "files": [
+        ".nupkg.metadata",
         "lib/MonoAndroid10/Syncfusion.Core.XForms.XML",
         "lib/MonoAndroid10/Syncfusion.Core.XForms.dll",
         "lib/MonoAndroid10/Syncfusion.DataSource.Portable.XML",
@@ -1894,6 +2020,7 @@
       "type": "package",
       "path": "syncfusion.xamarin.sfpdfviewer/15.2.0.43",
       "files": [
+        ".nupkg.metadata",
         "lib/MonoAndroid10/Syncfusion.Compression.Portable.dll",
         "lib/MonoAndroid10/Syncfusion.Compression.Portable.xml",
         "lib/MonoAndroid10/Syncfusion.Pdf.Portable.XML",
@@ -1934,6 +2061,7 @@
       "type": "package",
       "path": "syncfusion.xamarin.sfschedule/15.2.0.43",
       "files": [
+        ".nupkg.metadata",
         "lib/MonoAndroid10/Syncfusion.SfSchedule.Android.dll",
         "lib/MonoAndroid10/Syncfusion.SfSchedule.XForms.Android.dll",
         "lib/MonoAndroid10/Syncfusion.SfSchedule.XForms.dll",
@@ -4801,7 +4929,7 @@
       ]
     },
     "Xam.Plugin.Geolocator/3.0.4": {
-      "sha512": "mFAZEQxD+PfPoYu2MAWyzCz1TDgAh1mF/sOVxqUvuMSZuF4YffYooK3OlAODkGQj/aGjuQwwjQ9dI9BveMIhNw==",
+      "sha512": "5UMAwRk+dk+Ar0Ei+Jd0H8G0a0tHsm9gJouCXMuGnvEFU2CzOJJKrNfH2QGi7eVfsd5/XHoJhhk6J0Pi38olXA==",
       "type": "package",
       "path": "xam.plugin.geolocator/3.0.4",
       "files": [
@@ -5161,6 +5289,11 @@
         "xamarin.forms.maps.2.3.4.247.nupkg.sha512",
         "xamarin.forms.maps.nuspec"
       ]
+    },
+    "XForms.Shared/1.0.0": {
+      "type": "project",
+      "path": "AllApplications.Shared/project.json",
+      "msbuildProject": "AllApplications.Shared/XForms.Shared.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -5188,5 +5321,74 @@
       "sqlite-net-pcl >= 1.3.3"
     ],
     ".NETStandard,Version=v1.4": []
+  },
+  "packageFolders": {
+    "C:\\Users\\inqui\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Xamarin\\NuGet\\": {}
+  },
+  "project": {
+    "restore": {
+      "projectUniqueName": "C:\\DEV\\Git\\Xamarin-Health-Care\\Application.csproj",
+      "projectName": "Application",
+      "projectPath": "C:\\DEV\\Git\\Xamarin-Health-Care\\Application.csproj",
+      "projectJsonPath": "C:\\DEV\\Git\\Xamarin-Health-Care\\project.json",
+      "packagesPath": "C:\\Users\\inqui\\.nuget\\packages\\",
+      "outputPath": "C:\\DEV\\Git\\Xamarin-Health-Care\\obj\\",
+      "projectStyle": "ProjectJson",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Xamarin\\NuGet\\"
+      ],
+      "configFilePaths": [
+        "C:\\Users\\inqui\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {},
+        "https://nuget.multitracks.com/nuget": {},
+        "https://nuget.syncfusion.com/nuget_xamarin/nuget/getsyncfusionpackages/xamarin": {},
+        "https://nugetized.blob.core.windows.net/live-reload/index.json": {}
+      },
+      "frameworks": {
+        "netstandard1.4": {
+          "projectReferences": {
+            "C:\\DEV\\Git\\Xamarin-Health-Care\\AllApplications.Shared\\XForms.Shared.csproj": {
+              "projectPath": "C:\\DEV\\Git\\Xamarin-Health-Care\\AllApplications.Shared\\XForms.Shared.csproj"
+            }
+          }
+        }
+      }
+    },
+    "dependencies": {
+      "Autofac": "[4.6.0, )",
+      "FluentValidation": "[7.1.0, )",
+      "HockeySDK.Xamarin": "[4.1.5, )",
+      "Microsoft.NETCore.Portable.Compatibility": "[1.0.2, )",
+      "NETStandard.Library": "[1.6.1, )",
+      "Plugin.Share": "[6.1.0.19-beta, )",
+      "Prism.Core": "[6.3.0, )",
+      "Syncfusion.Xamarin.Pdf": "[15.2.0.43, )",
+      "Syncfusion.Xamarin.SfBusyIndicator": "[15.2.0.43, )",
+      "Syncfusion.Xamarin.SfCalendar": "[15.2.0.43, )",
+      "Syncfusion.Xamarin.SfListView": "[15.2.0.43, )",
+      "Syncfusion.Xamarin.SfPdfViewer": "[15.2.0.43, )",
+      "Syncfusion.Xamarin.SfSchedule": "[15.2.0.43, )",
+      "Toasts.Forms.Plugin": "[3.2.0, )",
+      "Xam.Plugin.Connectivity": "[2.3.0, )",
+      "Xam.Plugin.ExternalMaps": "[3.0.10, )",
+      "Xam.Plugin.Geolocator": "[3.0.4, )",
+      "Xam.Plugins.Messaging": "[4.0.0, )",
+      "Xamarin.Forms": "[2.3.4.247, )",
+      "Xamarin.Forms.Maps": "[2.3.4.247, )",
+      "sqlite-net-pcl": "[1.3.3, )"
+    },
+    "frameworks": {
+      "netstandard1.4": {
+        "imports": [
+          "portable-net45+win8+wp8+wpa81"
+        ]
+      }
+    }
   }
 }

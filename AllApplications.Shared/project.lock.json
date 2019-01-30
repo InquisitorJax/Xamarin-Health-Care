@@ -1,6 +1,5 @@
 {
-  "locked": false,
-  "version": 2,
+  "version": 3,
   "targets": {
     ".NETStandard,Version=v1.4": {
       "Autofac/4.6.0": {
@@ -1260,6 +1259,9 @@
           "lib/portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20/Xamarin.Forms.Core.dll": {},
           "lib/portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20/Xamarin.Forms.Platform.dll": {},
           "lib/portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20/Xamarin.Forms.Xaml.dll": {}
+        },
+        "build": {
+          "build/portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20/Xamarin.Forms.targets": {}
         }
       },
       "Xamarin.Forms.Maps/2.3.4.247": {
@@ -1813,6 +1815,7 @@
       "type": "package",
       "path": "syncfusion.xamarin.compression/15.2.0.43",
       "files": [
+        ".nupkg.metadata",
         "lib/portable-win+net45+wp80+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/Syncfusion.Compression.Portable.dll",
         "lib/portable-win+net45+wp80+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/Syncfusion.Compression.Portable.xml",
         "syncfusion.xamarin.compression.15.2.0.43.nupkg.sha512",
@@ -1824,6 +1827,7 @@
       "type": "package",
       "path": "syncfusion.xamarin.pdf/15.2.0.43",
       "files": [
+        ".nupkg.metadata",
         "lib/portable-win+net45+wp80+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/Syncfusion.Compression.Portable.dll",
         "lib/portable-win+net45+wp80+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/Syncfusion.Compression.Portable.xml",
         "lib/portable-win+net45+wp80+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/Syncfusion.Pdf.Portable.XML",
@@ -1837,6 +1841,7 @@
       "type": "package",
       "path": "syncfusion.xamarin.sfbusyindicator/15.2.0.43",
       "files": [
+        ".nupkg.metadata",
         "lib/MonoAndroid10/Syncfusion.SfBusyIndicator.Android.dll",
         "lib/MonoAndroid10/Syncfusion.SfBusyIndicator.Android.xml",
         "lib/MonoAndroid10/Syncfusion.SfBusyIndicator.XForms.Android.dll",
@@ -1874,6 +1879,7 @@
       "type": "package",
       "path": "syncfusion.xamarin.sfcalendar/15.2.0.43",
       "files": [
+        ".nupkg.metadata",
         "lib/MonoAndroid10/Syncfusion.SfCalendar.Android.dll",
         "lib/MonoAndroid10/Syncfusion.SfCalendar.Android.xml",
         "lib/MonoAndroid10/Syncfusion.SfCalendar.XForms.Android.dll",
@@ -1919,6 +1925,7 @@
       "type": "package",
       "path": "syncfusion.xamarin.sflistview/15.2.0.43",
       "files": [
+        ".nupkg.metadata",
         "lib/MonoAndroid10/Syncfusion.Core.XForms.XML",
         "lib/MonoAndroid10/Syncfusion.Core.XForms.dll",
         "lib/MonoAndroid10/Syncfusion.DataSource.Portable.XML",
@@ -1963,6 +1970,7 @@
       "type": "package",
       "path": "syncfusion.xamarin.sfpdfviewer/15.2.0.43",
       "files": [
+        ".nupkg.metadata",
         "lib/MonoAndroid10/Syncfusion.Compression.Portable.dll",
         "lib/MonoAndroid10/Syncfusion.Compression.Portable.xml",
         "lib/MonoAndroid10/Syncfusion.Pdf.Portable.XML",
@@ -2003,6 +2011,7 @@
       "type": "package",
       "path": "syncfusion.xamarin.sfschedule/15.2.0.43",
       "files": [
+        ".nupkg.metadata",
         "lib/MonoAndroid10/Syncfusion.SfSchedule.Android.dll",
         "lib/MonoAndroid10/Syncfusion.SfSchedule.XForms.Android.dll",
         "lib/MonoAndroid10/Syncfusion.SfSchedule.XForms.dll",
@@ -4870,7 +4879,7 @@
       ]
     },
     "Xam.Plugin.Geolocator/3.0.4": {
-      "sha512": "mFAZEQxD+PfPoYu2MAWyzCz1TDgAh1mF/sOVxqUvuMSZuF4YffYooK3OlAODkGQj/aGjuQwwjQ9dI9BveMIhNw==",
+      "sha512": "5UMAwRk+dk+Ar0Ei+Jd0H8G0a0tHsm9gJouCXMuGnvEFU2CzOJJKrNfH2QGi7eVfsd5/XHoJhhk6J0Pi38olXA==",
       "type": "package",
       "path": "xam.plugin.geolocator/3.0.4",
       "files": [
@@ -5258,6 +5267,64 @@
     ],
     ".NETStandard,Version=v1.4": []
   },
-  "tools": {},
-  "projectFileToolGroups": {}
+  "packageFolders": {
+    "C:\\Users\\inqui\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Xamarin\\NuGet\\": {}
+  },
+  "project": {
+    "restore": {
+      "projectUniqueName": "C:\\DEV\\Git\\Xamarin-Health-Care\\AllApplications.Shared\\XForms.Shared.csproj",
+      "projectName": "XForms.Shared",
+      "projectPath": "C:\\DEV\\Git\\Xamarin-Health-Care\\AllApplications.Shared\\XForms.Shared.csproj",
+      "projectJsonPath": "C:\\DEV\\Git\\Xamarin-Health-Care\\AllApplications.Shared\\project.json",
+      "packagesPath": "C:\\Users\\inqui\\.nuget\\packages\\",
+      "outputPath": "C:\\DEV\\Git\\Xamarin-Health-Care\\AllApplications.Shared\\obj\\",
+      "projectStyle": "ProjectJson",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Xamarin\\NuGet\\"
+      ],
+      "configFilePaths": [
+        "C:\\Users\\inqui\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {},
+        "https://nuget.multitracks.com/nuget": {},
+        "https://nuget.syncfusion.com/nuget_xamarin/nuget/getsyncfusionpackages/xamarin": {},
+        "https://nugetized.blob.core.windows.net/live-reload/index.json": {}
+      }
+    },
+    "dependencies": {
+      "Autofac": "[4.6.0, )",
+      "FluentValidation": "[7.1.0, )",
+      "Microsoft.NETCore.Portable.Compatibility": "[1.0.2, )",
+      "NETStandard.Library": "[1.6.1, )",
+      "Plugin.Share": "[6.1.0.19-beta, )",
+      "Prism.Core": "[6.3.0, )",
+      "Syncfusion.Xamarin.Pdf": "[15.2.0.43, )",
+      "Syncfusion.Xamarin.SfBusyIndicator": "[15.2.0.43, )",
+      "Syncfusion.Xamarin.SfCalendar": "[15.2.0.43, )",
+      "Syncfusion.Xamarin.SfListView": "[15.2.0.43, )",
+      "Syncfusion.Xamarin.SfPdfViewer": "[15.2.0.43, )",
+      "Syncfusion.Xamarin.SfSchedule": "[15.2.0.43, )",
+      "Toasts.Forms.Plugin": "[3.2.0, )",
+      "Xam.Plugin.Connectivity": "[2.3.0, )",
+      "Xam.Plugin.ExternalMaps": "[3.0.10, )",
+      "Xam.Plugin.Geolocator": "[3.0.4, )",
+      "Xam.Plugins.Forms.ImageCircle": "[1.8.1, )",
+      "Xam.Plugins.Messaging": "[4.0.0, )",
+      "Xamarin.Forms": "[2.3.4.247, )",
+      "Xamarin.Forms.Maps": "[2.3.4.247, )",
+      "sqlite-net-pcl": "[1.3.3, )"
+    },
+    "frameworks": {
+      "netstandard1.4": {
+        "imports": [
+          "portable-net45+win8+wp8+wpa81"
+        ]
+      }
+    }
+  }
 }

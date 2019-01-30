@@ -43,3 +43,5 @@ Thumbs.db
 /PrivateTokens.cs
 /Images/AppIcons
 /Windows/PrivateTokens.cs
+/.vs
+/Droid/SampleApplication.Droid.csproj.bak
